@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "last_updated": "2026-06-12",
+    "season": "2025/26",
+    "league": "SAFA Vhembe Hollywoodbets Regional League — Stream I",
+    "inqaku_url": "https://inqaku.com/team/view?season_id=15244&logteam_id=146222"
+  },
+  "next_fixtures": [
+    { "date": "Sat 13 Jun 2026", "opponent": "Mukondeni Shoe Shine Boys FC", "venue": "Mukondeni Ground", "time": "15:00", "home_away": "AWAY" },
+    { "date": "Sun 14 Jun 2026", "opponent": "Tshikundamalema Waterfall FC", "venue": "Phalama Ground", "time": "15:00", "home_away": "HOME" },
+    { "date": "Tue 16 Jun 2026", "opponent": "Mahenic FC", "venue": "TBC", "time": "15:30", "home_away": "TBC" },
+    { "date": "Sat 20 Jun 2026", "opponent": "Lukau Tshishivhe Tigerboys", "venue": "TBC", "time": "15:30", "home_away": "TBC" },
+    { "date": "Sun 21 Jun 2026", "opponent": "Lurangwe FC", "venue": "TBC", "time": "15:30", "home_away": "TBC" },
+    { "date": "Sat 27 Jun 2026", "opponent": "Lukau Hot Aces", "venue": "TBC", "time": "15:30", "home_away": "TBC" },
+    { "date": "Sun 28 Jun 2026", "opponent": "Makuya Big Cat FC", "venue": "TBC", "time": "15:30", "home_away": "TBC" }
+  ],
+  "results": [
+    { "date": "Sun 7 Jun 2026",  "opponent": "Bashasha Lions FC",          "score_abc": 1, "score_opp": 0, "home_away": "HOME", "venue": "Phalama Ground" },
+    { "date": "Sat 6 Jun 2026",  "opponent": "Mangaya Living Comodores",    "score_abc": 2, "score_opp": 1, "home_away": "AWAY", "venue": "Mangaya Ground" },
+    { "date": "Sun 31 May 2026", "opponent": "Tshitavha Brave Lion FC",     "score_abc": 4, "score_opp": 0, "home_away": "HOME", "venue": "Phalama Ground" },
+    { "date": "Sat 30 May 2026", "opponent": "Tshilovi Fighting Angel FC",  "score_abc": 4, "score_opp": 1, "home_away": "AWAY", "venue": "Tshilovi Ground" },
+    { "date": "Sun 24 May 2026", "opponent": "Tshandama Try Together",      "score_abc": 3, "score_opp": 0, "home_away": "HOME", "venue": "Phalama Ground" },
+    { "date": "Sat 23 May 2026", "opponent": "Tshibvumo FC",                "score_abc": 5, "score_opp": 0, "home_away": "AWAY", "venue": "Tshibvumo Ground" },
+    { "date": "Sun 17 May 2026", "opponent": "Sambandou Unt Profession",    "score_abc": 3, "score_opp": 1, "home_away": "HOME", "venue": "Phalama Ground" },
+    { "date": "Sat 16 May 2026", "opponent": "Thengwe Flying Peace",        "score_abc": 1, "score_opp": 1, "home_away": "AWAY", "venue": "Thengwe Ground" },
+    { "date": "Sat 9 May 2026",  "opponent": "Mulodi Freedom Birds",        "score_abc": 1, "score_opp": 0, "home_away": "HOME", "venue": "Phalama Ground" },
+    { "date": "Sun 3 May 2026",  "opponent": "Sambandou 7 Hunters",         "score_abc": 2, "score_opp": 0, "home_away": "AWAY", "venue": "Sambandou Ground" }
+  ],
+  "league_table": [
+    { "pos": 1,  "team": "Thengwe Flying Peace",        "p": 4, "w": 4, "d": 0, "l": 0, "gf": 6,  "ga": 1,  "gd": 5,   "pts": 12, "is_abc": false },
+    { "pos": 2,  "team": "Tshitavha Brave Lion FC",     "p": 4, "w": 3, "d": 1, "l": 0, "gf": 7,  "ga": 3,  "gd": 4,   "pts": 10, "is_abc": false },
+    { "pos": 3,  "team": "ABC FC",                      "p": 3, "w": 3, "d": 0, "l": 0, "gf": 8,  "ga": 1,  "gd": 7,   "pts": 9,  "is_abc": true  },
+    { "pos": 4,  "team": "Mulodi Freedom Birds",        "p": 3, "w": 3, "d": 0, "l": 0, "gf": 5,  "ga": 1,  "gd": 4,   "pts": 9,  "is_abc": false },
+    { "pos": 5,  "team": "Tshilavulu Elite FC",         "p": 3, "w": 2, "d": 1, "l": 0, "gf": 7,  "ga": 1,  "gd": 6,   "pts": 7,  "is_abc": false },
+    { "pos": 6,  "team": "Makuya Big Cat",              "p": 3, "w": 2, "d": 1, "l": 0, "gf": 5,  "ga": 1,  "gd": 4,   "pts": 7,  "is_abc": false },
+    { "pos": 7,  "team": "Bashasha Lions FC",           "p": 4, "w": 2, "d": 1, "l": 1, "gf": 5,  "ga": 4,  "gd": 1,   "pts": 7,  "is_abc": false },
+    { "pos": 8,  "team": "Mutshenzheni Gorrilas",       "p": 4, "w": 2, "d": 1, "l": 1, "gf": 4,  "ga": 3,  "gd": 1,   "pts": 7,  "is_abc": false },
+    { "pos": 9,  "team": "Tshibvumo FC",                "p": 4, "w": 2, "d": 0, "l": 2, "gf": 6,  "ga": 5,  "gd": 1,   "pts": 6,  "is_abc": false },
+    { "pos": 10, "team": "Tshilovi Fighting Angel FC",  "p": 4, "w": 1, "d": 2, "l": 1, "gf": 4,  "ga": 3,  "gd": 1,   "pts": 5,  "is_abc": false },
+    { "pos": 11, "team": "Tshandama Try Together",      "p": 4, "w": 1, "d": 2, "l": 1, "gf": 2,  "ga": 2,  "gd": 0,   "pts": 5,  "is_abc": false },
+    { "pos": 12, "team": "Lukau Hot Aces",              "p": 4, "w": 1, "d": 1, "l": 2, "gf": 3,  "ga": 3,  "gd": 0,   "pts": 4,  "is_abc": false },
+    { "pos": 13, "team": "Mukondeni Shoe Shine Boys",   "p": 4, "w": 1, "d": 1, "l": 2, "gf": 2,  "ga": 4,  "gd": -2,  "pts": 4,  "is_abc": false },
+    { "pos": 14, "team": "Sambandou Unt Profession",    "p": 4, "w": 1, "d": 1, "l": 2, "gf": 1,  "ga": 3,  "gd": -2,  "pts": 4,  "is_abc": false },
+    { "pos": 15, "team": "Mahenic FC",                  "p": 4, "w": 1, "d": 1, "l": 2, "gf": 1,  "ga": 4,  "gd": -3,  "pts": 4,  "is_abc": false },
+    { "pos": 16, "team": "Lurangwe",                    "p": 4, "w": 1, "d": 0, "l": 3, "gf": 3,  "ga": 4,  "gd": -1,  "pts": 3,  "is_abc": false },
+    { "pos": 17, "team": "Sambandou 7 Hunters",         "p": 3, "w": 1, "d": 0, "l": 2, "gf": 4,  "ga": 6,  "gd": -2,  "pts": 3,  "is_abc": false },
+    { "pos": 18, "team": "Rambuda Young Fighters",      "p": 4, "w": 1, "d": 0, "l": 3, "gf": 1,  "ga": 3,  "gd": -2,  "pts": 3,  "is_abc": false },
+    { "pos": 19, "team": "Lukau Tshishivhe Tigerboys",  "p": 4, "w": 1, "d": 0, "l": 3, "gf": 2,  "ga": 6,  "gd": -4,  "pts": 3,  "is_abc": false },
+    { "pos": 20, "team": "Maholoni Stone Breakers",     "p": 3, "w": 1, "d": 0, "l": 2, "gf": 2,  "ga": 7,  "gd": -5,  "pts": 3,  "is_abc": false },
+    { "pos": 21, "team": "Mavunde Hugry Vultures",      "p": 4, "w": 1, "d": 0, "l": 3, "gf": 2,  "ga": 8,  "gd": -6,  "pts": 3,  "is_abc": false },
+    { "pos": 22, "team": "Mangaya Living Comodores",    "p": 4, "w": 0, "d": 2, "l": 2, "gf": 1,  "ga": 3,  "gd": -2,  "pts": 2,  "is_abc": false },
+    { "pos": 23, "team": "Tshikundamalema Water Fall",  "p": 4, "w": 0, "d": 1, "l": 3, "gf": 3,  "ga": 8,  "gd": -5,  "pts": 1,  "is_abc": false }
+  ]
+}

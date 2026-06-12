@@ -185,3 +185,39 @@ function closeMobileNav() {
       </div>`;
   }
 })();
+
+// ── Show/Hide Full League Table ────────────────────────────
+(function () {
+  const btn   = document.getElementById('show-full-table');
+  const extra = document.getElementById('table-extra');
+  if (!btn || !extra) return;
+
+  btn.addEventListener('click', () => {
+    const isHidden = extra.hasAttribute('hidden');
+    if (isHidden) {
+      extra.removeAttribute('hidden');
+      btn.textContent = 'Show fewer ↑';
+    } else {
+      extra.setAttribute('hidden', '');
+      btn.textContent = 'Show all 23 teams ↓';
+    }
+  });
+})();
+
+// ── data-reveal scroll animation ──────────────────────────
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  const els = document.querySelectorAll('[data-reveal]');
+  const style = document.createElement('style');
+  style.textContent = `
+    [data-reveal] { opacity:0; transform:translateY(22px); transition:opacity 0.5s ease, transform 0.5s ease; }
+    [data-reveal].revealed { opacity:1; transform:none; }
+  `;
+  document.head.appendChild(style);
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -24px 0px' });
+  els.forEach(el => io.observe(el));
+})();
