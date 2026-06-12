@@ -152,7 +152,6 @@ function closeMobileNav() {
 })();
 
 // ── Facebook iframe fallback ──────────────────────────────
-// If the Facebook embed is blocked (e.g., due to cookies), show a friendly fallback
 (function () {
   const wrap = document.querySelector('.fb-embed-wrap');
   if (!wrap) return;
@@ -160,10 +159,8 @@ function closeMobileNav() {
   const iframe = wrap.querySelector('iframe');
   if (!iframe) return;
 
-  // Give it 5s to load, then check
   setTimeout(() => {
     try {
-      // If iframe loaded with content it'll have clientHeight
       if (iframe.clientHeight < 50) {
         showFbFallback(wrap);
       }
@@ -221,3 +218,272 @@ function closeMobileNav() {
   }, { threshold: 0.07, rootMargin: '0px 0px -24px 0px' });
   els.forEach(el => io.observe(el));
 })();
+
+
+/* ============================================================
+   REAL-TIME DATA — Vercel Serverless API
+   Fetches fixtures, results and league table live from Inqaku
+   via /api/* serverless functions on every page load.
+   Falls back gracefully to static HTML if fetch fails.
+   ============================================================ */
+
+// Determine the API base URL:
+// - On Vercel production: same domain, e.g. /api/fixtures
+// - In local dev (file://) or non-Vercel hosts: relative path still works if served
+const API_BASE = '';
+
+// ── Skeleton loader helper ─────────────────────────────────
+function showSkeleton(container, rows = 3) {
+  const skRow = `<div style="height:44px;background:linear-gradient(90deg,var(--surface) 25%,var(--gold-10,rgba(245,168,0,0.08)) 50%,var(--surface) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:6px;margin-bottom:8px;"></div>`;
+  container.innerHTML = Array(rows).fill(skRow).join('');
+  if (!document.getElementById('shimmer-kf')) {
+    const s = document.createElement('style');
+    s.id = 'shimmer-kf';
+    s.textContent = `@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}`;
+    document.head.appendChild(s);
+  }
+}
+
+// ── Timestamp badge ────────────────────────────────────────
+function renderTimestamp(container, iso, source) {
+  const ts = document.createElement('p');
+  ts.style.cssText = 'font-size:11px;color:var(--text-muted);margin-top:10px;text-align:right;letter-spacing:0.03em;';
+  const d = new Date(iso);
+  const formatted = d.toLocaleString('en-ZA', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Africa/Johannesburg' });
+  ts.textContent = source === 'inqaku'
+    ? `Live · Updated ${formatted}`
+    : `Cached data · ${formatted}`;
+  container.appendChild(ts);
+}
+
+// ── FIXTURES ──────────────────────────────────────────────
+(function loadFixtures() {
+  const section = document.getElementById('fixtures');
+  if (!section) return;
+
+  // Find the fixtures grid — look for the existing fixture list container
+  let grid = section.querySelector('.fixtures-list, .fixture-grid, [data-fixtures-container]');
+  if (!grid) {
+    // Create a container below the section heading
+    grid = document.createElement('div');
+    grid.setAttribute('data-fixtures-container', '');
+    grid.style.cssText = 'margin-top:24px;';
+    const heading = section.querySelector('h2, .section-label');
+    if (heading && heading.parentNode) {
+      heading.parentNode.insertBefore(grid, heading.nextSibling);
+    } else {
+      section.appendChild(grid);
+    }
+  }
+
+  showSkeleton(grid, 5);
+
+  fetch(`${API_BASE}/api/fixtures`)
+    .then(r => r.json())
+    .then(data => {
+      if (!data.fixtures || data.fixtures.length === 0) {
+        grid.innerHTML = '<p style="color:var(--text-muted);font-size:14px;padding:20px 0;">No upcoming fixtures found.</p>';
+        return;
+      }
+      renderFixtures(grid, data.fixtures);
+      renderTimestamp(grid, data.fetchedAt, data.source);
+    })
+    .catch(() => {
+      // Leave static HTML in place if API unreachable
+      grid.style.display = 'none';
+    });
+})();
+
+function renderFixtures(container, fixtures) {
+  container.innerHTML = fixtures.map(f => `
+    <div class="fixture-card" style="display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--surface);border-radius:10px;margin-bottom:10px;border-left:4px solid ${f.isHome ? 'var(--gold,#F5A800)' : 'var(--text-muted,#888)'};">
+      <div style="min-width:80px;">
+        <div style="font-family:var(--font-sub,sans-serif);font-size:11px;font-weight:700;letter-spacing:0.06em;color:var(--text-muted);text-transform:uppercase;">${f.date}</div>
+        <div style="font-size:10px;margin-top:2px;">
+          <span style="display:inline-block;padding:2px 8px;border-radius:20px;font-family:var(--font-sub,sans-serif);font-size:10px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;background:${f.isHome ? 'var(--gold,#F5A800)' : '#333'};color:${f.isHome ? '#111' : '#fff'};">${f.type}</span>
+        </div>
+      </div>
+      <div style="flex:1;">
+        <div style="font-family:var(--font-sub,sans-serif);font-size:15px;font-weight:800;letter-spacing:0.02em;color:var(--text);">
+          ${f.isHome ? '<strong>ABC FC</strong> vs ' : ''}${f.opponent}${!f.isHome ? ' <strong style="color:var(--gold,#F5A800);">vs ABC FC</strong>' : ''}
+        </div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:3px;">📍 ${f.venue} &nbsp;·&nbsp; ⏰ ${f.time}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── RESULTS ───────────────────────────────────────────────
+(function loadResults() {
+  const section = document.getElementById('results');
+  if (!section) return;
+
+  let grid = section.querySelector('.results-list, .result-grid, [data-results-container]');
+  if (!grid) {
+    grid = document.createElement('div');
+    grid.setAttribute('data-results-container', '');
+    grid.style.cssText = 'margin-top:24px;';
+    const heading = section.querySelector('h2, .section-label');
+    if (heading && heading.parentNode) {
+      heading.parentNode.insertBefore(grid, heading.nextSibling);
+    } else {
+      section.appendChild(grid);
+    }
+  }
+
+  showSkeleton(grid, 5);
+
+  fetch(`${API_BASE}/api/results`)
+    .then(r => r.json())
+    .then(data => {
+      if (!data.results || data.results.length === 0) {
+        grid.innerHTML = '<p style="color:var(--text-muted);font-size:14px;padding:20px 0;">No recent results found.</p>';
+        return;
+      }
+      renderResults(grid, data.results);
+      renderTimestamp(grid, data.fetchedAt, data.source);
+    })
+    .catch(() => {
+      grid.style.display = 'none';
+    });
+})();
+
+function renderResults(container, results) {
+  const outcomeColor = { W: '#28a745', D: '#F5A800', L: '#dc3545' };
+  const outcomeLabel = { W: 'WIN', D: 'DRAW', L: 'LOSS' };
+  container.innerHTML = results.map(r => `
+    <div style="display:flex;align-items:center;gap:16px;padding:14px 20px;background:var(--surface);border-radius:10px;margin-bottom:8px;border-left:4px solid ${outcomeColor[r.outcome] || '#888'};">
+      <div style="min-width:80px;">
+        <div style="font-family:var(--font-sub,sans-serif);font-size:11px;font-weight:700;letter-spacing:0.06em;color:var(--text-muted);text-transform:uppercase;">${r.date}</div>
+        <span style="display:inline-block;margin-top:3px;padding:2px 8px;border-radius:20px;font-family:var(--font-sub,sans-serif);font-size:10px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;background:${outcomeColor[r.outcome] || '#888'};color:#fff;">${outcomeLabel[r.outcome] || r.outcome}</span>
+      </div>
+      <div style="flex:1;">
+        <div style="font-family:var(--font-sub,sans-serif);font-size:15px;font-weight:800;letter-spacing:0.02em;color:var(--text);">
+          ${r.isHome ? '<strong>ABC FC</strong>' : r.opponent} ${r.abcGoals !== '' ? `<span style="font-size:18px;color:var(--gold,#F5A800);font-weight:900;">${r.abcGoals} – ${r.oppGoals}</span>` : r.score} ${r.isHome ? r.opponent : '<strong style="color:var(--gold,#F5A800);">ABC FC</strong>'}
+        </div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">${r.type} · ${r.isHome ? 'Phalama Ground' : 'Away'}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── LEAGUE TABLE ──────────────────────────────────────────
+(function loadTable() {
+  const section = document.getElementById('table');
+  if (!section) return;
+
+  const existingTop    = document.getElementById('table-top');
+  const existingExtra  = document.getElementById('table-extra');
+  const showBtn        = document.getElementById('show-full-table');
+
+  // We'll replace the tbody content of an existing table, or build a fresh one
+  let tableEl = section.querySelector('table');
+  let tbody    = tableEl ? tableEl.querySelector('tbody') : null;
+
+  // If no table found, create wrapper
+  let wrapper = section.querySelector('[data-table-container]');
+  if (!tableEl) {
+    wrapper = document.createElement('div');
+    wrapper.setAttribute('data-table-container', '');
+    wrapper.style.cssText = 'margin-top:24px;overflow-x:auto;';
+    const heading = section.querySelector('h2, .section-label');
+    if (heading && heading.parentNode) {
+      heading.parentNode.insertBefore(wrapper, heading.nextSibling);
+    } else {
+      section.appendChild(wrapper);
+    }
+    showSkeleton(wrapper, 6);
+  } else if (tbody) {
+    showSkeleton(tbody, 6);
+  }
+
+  fetch(`${API_BASE}/api/table`)
+    .then(r => r.json())
+    .then(data => {
+      if (!data.table || data.table.length === 0) return; // keep static HTML
+
+      if (tableEl && tbody) {
+        // Update existing table rows in place
+        renderTableRows(tbody, data.table, existingTop, existingExtra, showBtn);
+      } else if (wrapper) {
+        renderFullTable(wrapper, data.table);
+      }
+
+      // Update the timestamp indicator in the section
+      let ts = section.querySelector('[data-table-ts]');
+      if (!ts) {
+        ts = document.createElement('p');
+        ts.setAttribute('data-table-ts', '');
+        ts.style.cssText = 'font-size:11px;color:var(--text-muted);margin-top:10px;text-align:right;letter-spacing:0.03em;';
+        section.appendChild(ts);
+      }
+      const d = new Date(data.fetchedAt);
+      const formatted = d.toLocaleString('en-ZA', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Africa/Johannesburg' });
+      ts.textContent = data.source === 'inqaku'
+        ? `Live · Updated ${formatted}`
+        : `Cached data · ${formatted}`;
+    })
+    .catch(() => {
+      // Keep static HTML table intact
+    });
+})();
+
+function renderTableRows(tbody, teams, topEl, extraEl, showBtn) {
+  const top   = teams.slice(0, 10);
+  const extra = teams.slice(10);
+
+  function rowHTML(t) {
+    const isABC = t.team.toLowerCase().includes('abc');
+    return `<tr style="${isABC ? 'background:rgba(245,168,0,0.12);font-weight:800;' : ''}">
+      <td style="padding:10px 12px;text-align:center;font-variant-numeric:tabular-nums;">${t.pos}</td>
+      <td style="padding:10px 12px;white-space:nowrap;max-width:180px;overflow:hidden;text-overflow:ellipsis;">${isABC ? `<strong style="color:var(--gold,#F5A800);">${t.team}</strong>` : t.team}</td>
+      <td style="padding:10px 8px;text-align:center;font-variant-numeric:tabular-nums;">${t.played}</td>
+      <td style="padding:10px 8px;text-align:center;font-variant-numeric:tabular-nums;">${t.won}</td>
+      <td style="padding:10px 8px;text-align:center;font-variant-numeric:tabular-nums;">${t.drawn}</td>
+      <td style="padding:10px 8px;text-align:center;font-variant-numeric:tabular-nums;">${t.lost}</td>
+      <td style="padding:10px 8px;text-align:center;font-variant-numeric:tabular-nums;">${t.gf}</td>
+      <td style="padding:10px 8px;text-align:center;font-variant-numeric:tabular-nums;">${t.ga}</td>
+      <td style="padding:10px 8px;text-align:center;font-variant-numeric:tabular-nums;">${t.gd >= 0 ? '+' : ''}${t.gd}</td>
+      <td style="padding:10px 12px;text-align:center;font-variant-numeric:tabular-nums;font-weight:700;color:var(--gold,#F5A800);">${t.pts}</td>
+    </tr>`;
+  }
+
+  if (topEl) topEl.innerHTML = top.map(rowHTML).join('');
+  if (extraEl) extraEl.innerHTML = extra.map(rowHTML).join('');
+}
+
+function renderFullTable(container, teams) {
+  const isABC = t => t.team.toLowerCase().includes('abc');
+  const rowHTML = t => `<tr style="${isABC(t) ? 'background:rgba(245,168,0,0.12);font-weight:800;' : ''}">
+    <td style="padding:10px 12px;text-align:center;">${t.pos}</td>
+    <td style="padding:10px 12px;">${isABC(t) ? `<strong style="color:var(--gold,#F5A800);">${t.team}</strong>` : t.team}</td>
+    <td style="padding:10px 8px;text-align:center;">${t.played}</td>
+    <td style="padding:10px 8px;text-align:center;">${t.won}</td>
+    <td style="padding:10px 8px;text-align:center;">${t.drawn}</td>
+    <td style="padding:10px 8px;text-align:center;">${t.lost}</td>
+    <td style="padding:10px 8px;text-align:center;">${t.gf}</td>
+    <td style="padding:10px 8px;text-align:center;">${t.ga}</td>
+    <td style="padding:10px 8px;text-align:center;">${t.gd >= 0 ? '+' : ''}${t.gd}</td>
+    <td style="padding:10px 12px;text-align:center;font-weight:700;color:var(--gold,#F5A800);">${t.pts}</td>
+  </tr>`;
+
+  container.innerHTML = `
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <thead>
+        <tr style="background:var(--gold,#F5A800);color:#111;">
+          <th style="padding:10px 12px;">#</th>
+          <th style="padding:10px 12px;text-align:left;">Team</th>
+          <th style="padding:10px 8px;">P</th>
+          <th style="padding:10px 8px;">W</th>
+          <th style="padding:10px 8px;">D</th>
+          <th style="padding:10px 8px;">L</th>
+          <th style="padding:10px 8px;">GF</th>
+          <th style="padding:10px 8px;">GA</th>
+          <th style="padding:10px 8px;">GD</th>
+          <th style="padding:10px 12px;">Pts</th>
+        </tr>
+      </thead>
+      <tbody>${teams.map(rowHTML).join('')}</tbody>
+    </table>
+  `;
+}
