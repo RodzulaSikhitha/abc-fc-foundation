@@ -1072,19 +1072,53 @@ p, li { text-wrap: pretty; }
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 2px;
+  gap: 3px;
   flex-shrink: 0;
   text-align: right;
 }
-.fx-time  { font-family: var(--font-sub); font-weight: 700; font-size: 0.9rem; color: var(--gold); }
-.fx-venue { font-size: 0.7rem; color: var(--text-muted); }
-.fx-comp  { font-size: 0.65rem; color: var(--text-faint); }
+.fx-time {
+  font-family: var(--font-sub);
+  font-weight: 800;
+  font-size: 0.82rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.fx-ko {
+  background: var(--gold);
+  color: var(--black);
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  padding: 1px 5px;
+  border-radius: 3px;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+.fx-venue {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.fx-ground-dot {
+  color: var(--gold);
+  font-size: 0.5rem;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+.fx-comp  { font-size: 0.6rem; color: var(--text-faint); display: none; }
 
 @media (max-width: 600px) {
-  .fx-row { grid-template-columns: 48px 52px 1fr; gap: 0.5rem; padding: 0.75rem 0.9rem; }
-  .fx-meta-col { display: none; }
-  .fx-tname { max-width: 90px; font-size: 0.75rem; }
+  .fx-row { grid-template-columns: 48px 52px 1fr auto; gap: 0.5rem; padding: 0.75rem 0.9rem; }
+  .fx-meta-col { display: flex; }
+  .fx-tname { max-width: 80px; font-size: 0.72rem; }
   .fx-dd { font-size: 1.3rem; }
+  .fx-ko { font-size: 0.55rem; padding: 1px 4px; }
+  .fx-time { font-size: 0.75rem; }
+  .fx-venue { font-size: 0.62rem; }
 }
 
 /* ── Results list ─────────────────────────────────────────── */
@@ -1252,12 +1286,18 @@ p, li { text-wrap: pretty; }
 }
 .show-full-table-btn:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
 
-.table-fade td { padding: 0.4rem 0.75rem; text-align: center; }
+.table-fade td { padding: 0.5rem 0.75rem; text-align: center; border-top: 1px solid var(--border); }
 
-@media (max-width: 480px) {
+.show-full-table-btn { margin: 0.6rem auto; }
+
+/* League table always visible on mobile — collapse only GF GA GD on small screens */
+@media (max-width: 420px) {
   .hide-xs { display: none; }
+  .league-table thead th,
+  .league-table tbody td { padding: 0.5rem 0.4rem; font-size: 0.78rem; }
+  .col-team { min-width: 120px; font-size: 0.78rem; }
 }
-@media (max-width: 640px) {
+@media (max-width: 560px) {
   .hide-sm { display: none; }
 }
 
