@@ -67,7 +67,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: 'ABC FC Website <onboarding@resend.dev>',
-        to: ['tshibalo.lucas@gmail.com', 'sikhitha.r@gmail.com'],
+        to: ['sikhitha.r@gmail.com'],
         reply_to: email,
         subject: `New Enquiry: ${interestLabel} — ${name}`,
         html: htmlBody,
