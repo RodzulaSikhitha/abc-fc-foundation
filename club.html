@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Club Info, Foundation &amp; Trials | ABC FC</title>
+  <meta name="description" content="Learn about ABC FC — Lion of the North. Founded 2008 in Thohoyandou, Limpopo. Community foundation, player trials, sponsorship opportunities and contact." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.abcfc.co.za/club.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ABC FC | Lion of the North" />
+  <meta property="og:title" content="ABC FC — Club Info, Foundation &amp; Trials" />
+  <meta property="og:description" content="ABC FC — Stream I Champions 2025/26. Founded 2008. Community foundation, player trials, and sponsorship opportunities in Vhembe, Limpopo." />
+  <meta property="og:image" content="https://www.abcfc.co.za/images/og-image.png" />
+  <meta property="og:url" content="https://www.abcfc.co.za/club.html" />
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/icon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#F5A800" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="ABC FC" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Club page extras ── */
+    .club-hero {
+      padding: 5rem 0 3rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .club-hero .eyebrow { margin-bottom: .5rem; }
+    .club-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 9vw, 5.5rem);
+      letter-spacing: .02em;
+      line-height: 1;
+      margin: 0 0 1rem;
+    }
+    .club-hero p {
+      color: var(--text-muted);
+      font-size: clamp(15px, 2.5vw, 17px);
+      max-width: 560px;
+      margin: 0 auto 1.8rem;
+    }
+    /* ── Club Identity Grid ── */
+    .club-identity {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem 2.5rem;
+      align-items: start;
+      padding: 3rem 0;
+    }
+    .club-crest-col { text-align: center; }
+    .club-crest-wrap {
+      width: clamp(100px, 24vw, 160px);
+      height: clamp(100px, 24vw, 160px);
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface);
+      margin: 0 auto;
+    }
+    .club-crest-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .club-colours {
+      display: flex;
+      gap: .5rem;
+      justify-content: center;
+      margin-top: .8rem;
+    }
+    .colour-chip {
+      width: 20px; height: 20px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      display: inline-block;
+    }
+    .club-facts-col { min-width: 0; }
+    .club-facts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+    }
+    .cf-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: .9rem 1rem;
+    }
+    .cf-item strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1.1;
+    }
+    .cf-item span {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    @media(max-width:540px){
+      .club-identity { grid-template-columns: 1fr; gap: 1.5rem; }
+      .club-crest-col { order: -1; }
+      .club-facts-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── Foundation Timeline ── */
+    .foundation-section { padding: 3rem 0; border-top: 1px solid var(--border); }
+    .timeline { position: relative; padding-left: 1.5rem; margin-top: 2rem; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    .tl-item {
+      position: relative;
+      padding: 0 0 2rem 1.5rem;
+    }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -5px; top: 5px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 8px var(--gold);
+    }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-year {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .tl-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      margin: .1rem 0 .3rem;
+      color: var(--text);
+    }
+    .tl-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ── Foundation Impact Stat Cards ── */
+    .impact-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .impact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1rem;
+      text-align: center;
+    }
+    .impact-card strong {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      color: var(--gold);
+      line-height: 1;
+    }
+    .impact-card span {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    @media(max-width:420px){ .impact-row { grid-template-columns: 1fr 1fr; } }
+
+    /* ── Trials Section ── */
+    .trials-section { padding: 3rem 0; border-top: 1px solid var(--border); }
+    .trials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .trial-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+    }
+    .trial-card strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: .25rem;
+    }
+    .trial-card span { font-size: 13px; color: var(--text-muted); }
+    @media(max-width:420px){ .trials-grid { grid-template-columns: 1fr; } }
+
+    /* ── Sponsor Section ── */
+    .sponsor-section { padding: 3rem 0; border-top: 1px solid var(--border); }
+    .sponsor-tiers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .tier-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem 1.2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .tier-card.tier-gold { border-color: var(--gold); }
+    .tier-badge {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--gold);
+      color: #0d0d0d;
+      display: inline-block;
+      margin-bottom: .75rem;
+    }
+    .tier-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      margin: 0 0 .3rem;
+    }
+    .tier-price {
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: .8rem;
+    }
+    .tier-perks {
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+    .tier-perks li {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: .3rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: .5rem;
+    }
+    .tier-perks li:last-child { border-bottom: none; }
+    .tier-perks li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── Contact Section ── */
+    .contact-section { padding: 3rem 0 4rem; border-top: 1px solid var(--border); }
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .contact-info-block { min-width: 0; }
+    .contact-info-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .contact-info-item:last-child { border-bottom: none; }
+    .ci-icon {
+      width: 36px; height: 36px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .ci-icon svg { color: var(--gold); }
+    .ci-text strong {
+      display: block;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: .15rem;
+    }
+    .ci-text a, .ci-text span {
+      font-size: 15px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .ci-text a:hover { color: var(--gold); }
+
+    /* contact form */
+    .contact-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+    }
+    .contact-form h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      margin: 0 0 1.25rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    .form-group { display: flex; flex-direction: column; gap: .35rem; margin-bottom: .75rem; }
+    .form-group label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: .65rem .85rem;
+      font-size: 15px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      width: 100%;
+      box-sizing: border-box;
+      transition: border-color .2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .form-group textarea { min-height: 100px; resize: vertical; }
+    .form-group select { appearance: auto; cursor: pointer; }
+    .form-submit-btn {
+      width: 100%;
+      background: var(--gold);
+      color: #0d0d0d;
+      border: none;
+      border-radius: 8px;
+      padding: .85rem 1.5rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: .05em;
+      cursor: pointer;
+      transition: opacity .2s;
+    }
+    .form-submit-btn:hover { opacity: .88; }
+    @media(max-width:680px){
+      .contact-layout { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media(max-width:380px){
+      .contact-form { padding: 1.25rem; }
+    }
+  </style>
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+  <div class="ticker-bar" role="marquee" aria-label="Latest news ticker">
+    <div class="ticker-label">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      LIVE
+    </div>
+    <div class="ticker-track">
+      <div class="ticker-content">
+        <span>🦁 STREAM I CHAMPIONS 2025/26 — 105 pts, 37 played, 34W 3D 0L</span>
+        <span>🏆 3rd Annual ABC Foundation Tournament 2026 — TOP 32 format · Giraffe Sports confirmed</span>
+        <span>⚽ NEXT: ABC FC vs Mukondeni Shoe Shine Boys · SAT 13 JUN · 15:00 · Phalama Ground</span>
+        <span>🤝 Player Trials — contact us to register your interest</span>
+        <span>🦁 STREAM I CHAMPIONS 2025/26 — 105 pts, 37 played, 34W 3D 0L</span>
+        <span>🏆 3rd Annual ABC Foundation Tournament 2026 — TOP 32 format · Giraffe Sports confirmed</span>
+        <span>⚽ NEXT: ABC FC vs Mukondeni Shoe Shine Boys · SAT 13 JUN · 15:00 · Phalama Ground</span>
+        <span>🤝 Player Trials — contact us to register your interest</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo" aria-label="ABC FC - Home">
+        <img src="images/abc-fc-logo.jpeg" alt="ABC FC crest" class="logo-img" />
+        <div class="logo-words"><span class="lw-name">ABC FC</span><span class="lw-tag">Lion of the North</span></div>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <ul role="list">
+          <li><a href="fixtures.html">Fixtures</a></li>
+          <li><a href="tournament.html">Tournament</a></li>
+          <li><a href="club.html" class="nav-active">Club</a></li>
+          <li><a href="club.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-right">
+        <div class="header-socials">
+          <a href="https://www.facebook.com/p/ABC-fc-61556965480952/" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+        </div>
+        <button class="btn-join" onclick="window.location='club.html#contact'">Join the Pride</button>
+        <button class="theme-btn" data-theme-toggle aria-label="Toggle theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-hidden="true" aria-label="Mobile navigation">
+      <ul role="list">
+        <li><a href="fixtures.html"    onclick="closeMobileNav()">Fixtures &amp; Table</a></li>
+        <li><a href="tournament.html"  onclick="closeMobileNav()">Tournament</a></li>
+        <li><a href="club.html"        onclick="closeMobileNav()">Club</a></li>
+        <li><a href="club.html#contact" onclick="closeMobileNav()">Contact</a></li>
+        <li><a href="https://abcfc.store" target="_blank" rel="noopener" onclick="closeMobileNav()">🛒 Shop</a></li>
+      </ul>
+      <div class="mobile-nav-bottom">
+        <a href="https://www.facebook.com/p/ABC-fc-61556965480952/" target="_blank" rel="noopener" class="btn-join-mobile">Follow on Facebook</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ── CLUB HERO ── -->
+    <section class="club-hero" id="club">
+      <div class="container">
+        <div class="eyebrow gold-text">Est. 2008 · Thohoyandou, Limpopo</div>
+        <h1>African by Choice<br>Football Club</h1>
+        <p>Roaring with Attitude, Belief &amp; Courage — representing Vhembe, Limpopo and the spirit of community football.</p>
+        <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;">
+          <a href="#trials" class="btn-primary-lg">Player Trials</a>
+          <a href="#sponsor" class="btn-outline-lg">Sponsor Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CLUB IDENTITY ── -->
+    <section class="section" style="padding: 2rem 0 1rem; border-bottom:1px solid var(--border);">
+      <div class="container">
+        <div class="club-identity">
+          <div class="club-crest-col">
+            <div class="club-crest-wrap">
+              <img src="images/abc-fc-logo.jpeg" alt="ABC FC crest" />
+            </div>
+            <div class="club-colours" title="Club colours: Gold, Black, White">
+              <span class="colour-chip" style="background:#F5A800;" title="Gold"></span>
+              <span class="colour-chip" style="background:#0d0d0d;" title="Black"></span>
+              <span class="colour-chip" style="background:#ffffff;" title="White"></span>
+            </div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:.4rem;text-align:center;">Gold · Black · White</div>
+          </div>
+          <div class="club-facts-col">
+            <div class="eyebrow" style="margin-bottom:.75rem;">Club Identity</div>
+            <div class="club-facts-grid">
+              <div class="cf-item">
+                <strong>2008</strong>
+                <span>Year Founded</span>
+              </div>
+              <div class="cf-item">
+                <strong>Stream I</strong>
+                <span>SAFA Vhembe Hollywoodbets</span>
+              </div>
+              <div class="cf-item">
+                <strong>Lion of the North</strong>
+                <span>Club Nickname</span>
+              </div>
+              <div class="cf-item">
+                <strong>Phalama Ground</strong>
+                <span>Home Venue, Mutale</span>
+              </div>
+              <div class="cf-item">
+                <strong>Lucas Tshibalo Mudau</strong>
+                <span>Founder &amp; Chairman, MPA</span>
+              </div>
+              <div class="cf-item">
+                <strong>4.3K Followers</strong>
+                <span>Facebook Community</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FOUNDATION ── -->
+    <section class="section foundation-section" id="foundation">
+      <div class="container">
+        <div class="eyebrow gold-text">Community Impact</div>
+        <h2 class="section-h2">ABC FC Foundation</h2>
+        <p class="section-lead">The ABC FC Foundation exists to uplift the Vhembe community through football — developing young talent, creating economic opportunity, and building pride in Limpopo.</p>
+
+        <div class="impact-row">
+          <div class="impact-card" data-reveal>
+            <strong>R190K</strong>
+            <span>Raised through tournaments</span>
+          </div>
+          <div class="impact-card" data-reveal>
+            <strong>3</strong>
+            <span>Community tournaments held</span>
+          </div>
+          <div class="impact-card" data-reveal>
+            <strong>32</strong>
+            <span>Clubs in 2026 tournament</span>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="tl-item" data-reveal>
+            <div class="tl-year">2008</div>
+            <div class="tl-title">Club Founded</div>
+            <div class="tl-desc">Lucas Tshibalo Mudau establishes ABC FC in Thohoyandou, Limpopo — building a football club from the ground up in the SAFA Vhembe region.</div>
+          </div>
+          <div class="tl-item" data-reveal>
+            <div class="tl-year">2023</div>
+            <div class="tl-title">1st ABC Foundation Tournament</div>
+            <div class="tl-desc">The inaugural community tournament launches, bringing clubs from across Vhembe together. Fundraising for player development and community outreach begins.</div>
+          </div>
+          <div class="tl-item" data-reveal>
+            <div class="tl-year">2024</div>
+            <div class="tl-title">2nd Tournament &amp; Giraffe Sports Partnership</div>
+            <div class="tl-desc">Second tournament successfully held at Phalama Ground. Giraffe Sports joins as official merchandise &amp; apparel partner, providing sporting regalia for participants.</div>
+          </div>
+          <div class="tl-item" data-reveal>
+            <div class="tl-year">2025</div>
+            <div class="tl-title">Stream I Dominance Begins</div>
+            <div class="tl-desc">ABC FC asserts total control of the SAFA Vhembe Hollywoodbets Regional League Stream I — a 34W 3D 0L record in the 2025/26 season. R190,000 raised through three tournaments.</div>
+          </div>
+          <div class="tl-item" data-reveal>
+            <div class="tl-year">2026</div>
+            <div class="tl-title">3rd Annual Tournament &amp; Stream I Champions</div>
+            <div class="tl-desc">TOP 32 knockout format at Phalama Ground. 105 points, 92 goals scored, 12 conceded. Gomora United (chairman Joe Seanego) confirmed as participating club. The Lion of the North roars loud.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PLAYER TRIALS ── -->
+    <section class="section trials-section" id="trials">
+      <div class="container">
+        <div class="eyebrow gold-text">Join the Squad</div>
+        <h2 class="section-h2">Player Trials</h2>
+        <p class="section-lead">ABC FC is always on the lookout for talented, committed footballers who embody our values — Attitude, Belief and Courage. If you have what it takes to represent the Lion of the North, we want to hear from you.</p>
+
+        <div class="trials-grid">
+          <div class="trial-card" data-reveal>
+            <strong>Age Groups</strong>
+            <span>Open to players across all eligible age groups. Senior squad and development pathways available.</span>
+          </div>
+          <div class="trial-card" data-reveal>
+            <strong>Location</strong>
+            <span>Trials held at Phalama Ground, Mutale, Vhembe, Limpopo.</span>
+          </div>
+          <div class="trial-card" data-reveal>
+            <strong>What to Bring</strong>
+            <span>Boot, shinguards, ID or birth certificate and a hunger to compete at the highest regional level.</span>
+          </div>
+          <div class="trial-card" data-reveal>
+            <strong>How to Register</strong>
+            <span>Fill in the contact form below or WhatsApp/call +27 71 109 2360. Dates announced on our Facebook page.</span>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:center;">
+          <a href="#contact" class="btn-primary-lg">Register Your Interest</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SPONSOR US ── -->
+    <section class="section sponsor-section" id="sponsor">
+      <div class="container">
+        <div class="eyebrow gold-text">Partnership &amp; Investment</div>
+        <h2 class="section-h2">Sponsor ABC FC</h2>
+        <p class="section-lead">Partner with the SAFA Vhembe Stream I Champions and put your brand in front of a passionate Limpopo football community. We offer flexible sponsorship packages that deliver real visibility.</p>
+
+        <div class="sponsor-tiers">
+          <div class="tier-card tier-gold" data-reveal>
+            <div class="tier-badge">FEATURED</div>
+            <h3>Gold Partner</h3>
+            <div class="tier-price">Premium Visibility Package</div>
+            <ul class="tier-perks">
+              <li>Main kit front branding</li>
+              <li>Tournament headline sponsorship</li>
+              <li>Facebook post mentions (4.3K+ followers)</li>
+              <li>Banner at Phalama Ground matches</li>
+              <li>Named in all press releases</li>
+              <li>Website logo placement</li>
+            </ul>
+          </div>
+          <div class="tier-card" data-reveal>
+            <h3>Silver Partner</h3>
+            <div class="tier-price">Supporting Package</div>
+            <ul class="tier-perks">
+              <li>Kit sleeve or back branding</li>
+              <li>Tournament co-sponsor recognition</li>
+              <li>Facebook mentions on match days</li>
+              <li>Website sponsor listing</li>
+            </ul>
+          </div>
+          <div class="tier-card" data-reveal>
+            <h3>Community Partner</h3>
+            <div class="tier-price">In-Kind or Cash Contribution</div>
+            <ul class="tier-perks">
+              <li>Training kit or equipment supply</li>
+              <li>Social media shoutout</li>
+              <li>Foundation programme acknowledgement</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.4rem 1.5rem;margin-top:1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;margin-bottom:.2rem;">Current Partners</div>
+            <div style="font-size:13px;color:var(--text-muted);">Hollywoodbets · SAFA Vhembe · Singo Fuels · Giraffe Sports · Gomora United</div>
+          </div>
+          <a href="#contact" class="btn-primary-lg">Become a Partner</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="eyebrow gold-text">Get in Touch</div>
+        <h2 class="section-h2">Contact Us</h2>
+
+        <div class="contact-layout">
+          <!-- Contact Info -->
+          <div class="contact-info-block">
+            <div class="contact-info-item">
+              <div class="ci-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div class="ci-text">
+                <strong>Phone / WhatsApp</strong>
+                <a href="tel:+27711092360">+27 71 109 2360</a>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="ci-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="ci-text">
+                <strong>Email</strong>
+                <a href="mailto:tshibalo.lucas@gmail.com">tshibalo.lucas@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="ci-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </div>
+              <div class="ci-text">
+                <strong>Facebook</strong>
+                <a href="https://www.facebook.com/p/ABC-fc-61556965480952/" target="_blank" rel="noopener">ABC FC — 4.3K Followers</a>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="ci-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="ci-text">
+                <strong>Ground</strong>
+                <span>Phalama Ground, Mutale<br>Vhembe, Limpopo</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form">
+            <h3>Send Us a Message</h3>
+            <form id="club-contact-form" onsubmit="handleClubContact(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="cf-name">Full Name</label>
+                  <input type="text" id="cf-name" name="name" placeholder="Your name" required />
+                </div>
+                <div class="form-group">
+                  <label for="cf-phone">Phone / WhatsApp</label>
+                  <input type="tel" id="cf-phone" name="phone" placeholder="+27 ..." />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="cf-email">Email Address</label>
+                <input type="email" id="cf-email" name="email" placeholder="your@email.com" required />
+              </div>
+              <div class="form-group">
+                <label for="cf-reason">Reason for Contact</label>
+                <select id="cf-reason" name="reason" required>
+                  <option value="" disabled selected>Select a reason…</option>
+                  <option value="player-trials">Player Trials</option>
+                  <option value="sponsorship">Sponsorship / Partnership</option>
+                  <option value="foundation">Foundation / Community</option>
+                  <option value="tournament">Tournament Registration</option>
+                  <option value="media">Media / Press Enquiry</option>
+                  <option value="general">General Enquiry</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="cf-message">Message</label>
+                <textarea id="cf-message" name="message" placeholder="Tell us more…" required></textarea>
+              </div>
+              <button type="submit" class="form-submit-btn">Send Message</button>
+              <div id="cf-feedback" style="display:none;margin-top:.75rem;font-size:14px;color:var(--gold);text-align:center;"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="sponsors-marquee-wrap" aria-label="Our sponsors and partners">
+    <div class="sponsors-marquee-label">PARTNERS &amp; SPONSORS</div>
+    <div class="sponsors-marquee-track-wrap">
+      <div class="sponsors-marquee-track">
+        <div class="sp-item sp-current"><span class="sp-badge">CURRENT</span><span class="sp-name">Hollywoodbets</span></div>
+        <div class="sp-item sp-current"><span class="sp-badge">CURRENT</span><span class="sp-name">SAFA Vhembe</span></div>
+        <div class="sp-item sp-current"><span class="sp-badge">CURRENT</span><span class="sp-name">Singo Fuels</span></div>
+        <div class="sp-item sp-current"><span class="sp-badge">CURRENT</span><span class="sp-name">Giraffe Sports</span></div>
+        <div class="sp-item sp-current"><span class="sp-badge">CURRENT</span><span class="sp-name">Gomora United</span></div>
+        <div class="sp-item sp-current"><span class="sp-badge">CURRENT</span><span class="sp-name">Hollywoodbets</span></div>
+        <div class="sp-item sp-current"><span class="sp-badge">CURRENT</span><span class="sp-name">SAFA Vhembe</span></div>
+        <div class="sp-item sp-current"><span class="sp-badge">CURRENT</span><span class="sp-name">Singo Fuels</span></div>
+        <div class="sp-item sp-current"><span class="sp-badge">CURRENT</span><span class="sp-name">Giraffe Sports</span></div>
+        <div class="sp-item sp-current"><span class="sp-badge">CURRENT</span><span class="sp-name">Gomora United</span></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/abc-fc-logo.jpeg" alt="ABC FC crest" class="footer-crest" />
+          <div class="fb-words">
+            <strong>ABC FC Foundation</strong>
+            <span>African by Choice Football Club</span>
+            <span>Lion of the North · Est. 2008</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <strong>The Club</strong>
+          <ul role="list">
+            <li><a href="fixtures.html">Fixtures &amp; Results</a></li>
+            <li><a href="fixtures.html#table">League Table</a></li>
+            <li><a href="tournament.html">Tournament</a></li>
+            <li><a href="index.html#news">News</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <strong>Get Involved</strong>
+          <ul role="list">
+            <li><a href="club.html#foundation">Foundation</a></li>
+            <li><a href="club.html#trials">Player Trials</a></li>
+            <li><a href="club.html#sponsor">Sponsor Us</a></li>
+            <li><a href="https://abcfc.store" target="_blank" rel="noopener">Shop</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <strong>Follow Us</strong>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/p/ABC-fc-61556965480952/" target="_blank" rel="noopener" class="fsoc-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              Facebook
+            </a>
+          </div>
+          <div class="footer-contact-mini">
+            <a href="tel:+27711092360">+27 71 109 2360</a>
+            <a href="mailto:tshibalo.lucas@gmail.com">tshibalo.lucas@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="footer-year"></span> ABC FC Foundation. All rights reserved.</span>
+        <span class="footer-motto">#LionOfTheNorth · #We_Remain_Humble</span>
+      </div>
+    </div>
+  </footer>
+
+  <nav class="bottom-quicknav" aria-label="Quick navigation">
+    <a href="fixtures.html" class="bqn-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Fixtures
+    </a>
+    <a href="fixtures.html#table" class="bqn-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>
+      Table
+    </a>
+    <a href="index.html" class="bqn-item bqn-center">
+      <img src="images/abc-fc-logo.jpeg" alt="ABC FC" class="bqn-crest" />
+    </a>
+    <a href="tournament.html" class="bqn-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+      Tournament
+    </a>
+    <a href="https://abcfc.store" target="_blank" rel="noopener" class="bqn-item bqn-shop">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      Shop
+    </a>
+  </nav>
+
+  <script>
+    function handleClubContact(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('.form-submit-btn');
+      const feedback = document.getElementById('cf-feedback');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      // Build mailto link as fallback since no backend
+      const name    = encodeURIComponent(document.getElementById('cf-name').value);
+      const phone   = encodeURIComponent(document.getElementById('cf-phone').value);
+      const email   = encodeURIComponent(document.getElementById('cf-email').value);
+      const reason  = encodeURIComponent(document.getElementById('cf-reason').value);
+      const message = encodeURIComponent(document.getElementById('cf-message').value);
+      const subject = encodeURIComponent('ABC FC Enquiry — ' + document.getElementById('cf-reason').value);
+      const body    = encodeURIComponent(
+        'Name: ' + document.getElementById('cf-name').value + '\n' +
+        'Phone: ' + document.getElementById('cf-phone').value + '\n' +
+        'Email: ' + document.getElementById('cf-email').value + '\n' +
+        'Reason: ' + document.getElementById('cf-reason').value + '\n\n' +
+        document.getElementById('cf-message').value
+      );
+      window.location.href = 'mailto:tshibalo.lucas@gmail.com?subject=' + subject + '&body=' + body;
+      setTimeout(() => {
+        feedback.textContent = 'Your message has been prepared — complete sending in your email app.';
+        feedback.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+        form.reset();
+      }, 800);
+    }
+  </script>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

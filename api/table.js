@@ -1,6 +1,6 @@
 // Vercel Serverless Function — /api/table
 // Fetches the SAFA Vhembe league table from Inqaku and returns structured JSON.
-// Cached at Vercel edge for 10 minutes (s-maxage=600) — table changes less frequently.
+// Cached at Vercel edge for 24 hours (s-maxage=86400) — refreshes daily at midnight.
 
 const https = require('https');
 const http = require('http');
@@ -62,43 +62,45 @@ function parseTable(html) {
       cells.push(text);
     }
 
-    // League table rows have: Pos | Team | P | W | D | L | GF | GA | GD | Pts
-    // or: Team | P | W | D | L | GF | GA | GD | Pts (pos implicit)
-    if (cells.length < 5) continue;
+    // Inqaku league table rows have 11 cells:
+    // [0]=Pos [1]=empty [2]=Team [3]=P [4]=W [5]=D [6]=L [7]=GF [8]=GA [9]=GD(pre-computed) [10]=Pts
+    // Interleaved sub-rows have only 3 cells — skip them.
+    if (cells.length < 11) continue;
 
     // Skip header rows
     const first = cells[0].toLowerCase();
     if (first === 'pos' || first === '#' || first === 'team' || first === 'club') continue;
-    if (isNaN(parseInt(cells[0])) && isNaN(parseInt(cells[cells.length - 1]))) continue;
 
-    let name, played, won, drawn, lost, gf, ga, pts;
+    // Must start with a position number
+    if (isNaN(parseInt(cells[0]))) continue;
 
-    if (cells.length >= 9 && !isNaN(parseInt(cells[0]))) {
-      // Format: Pos | Team | P | W | D | L | GF | GA | Pts
-      [, name, played, won, drawn, lost, gf, ga, pts] = cells;
-    } else if (cells.length >= 8) {
-      // Format: Team | P | W | D | L | GF | GA | Pts
-      [name, played, won, drawn, lost, gf, ga, pts] = cells;
-    } else {
-      continue;
-    }
+    const name   = cells[2];
+    const played = cells[3];
+    const won    = cells[4];
+    const drawn  = cells[5];
+    const lost   = cells[6];
+    const gf     = cells[7];
+    const ga     = cells[8];
+    const gdRaw  = cells[9]; // pre-computed string, may be negative e.g. '-2'
+    const pts    = cells[10];
 
     // Validate numeric fields
-    if (isNaN(parseInt(pts))) continue;
+    if (!name || isNaN(parseInt(pts))) continue;
 
     const gfN = parseInt(gf) || 0;
     const gaN = parseInt(ga) || 0;
+    const gdN = parseInt(gdRaw); // use Inqaku's own GD value (handles negatives correctly)
 
     teams.push({
       pos: pos++,
-      team: name || 'Unknown',
+      team: name.trim() || 'Unknown',
       played: parseInt(played) || 0,
       won: parseInt(won) || 0,
       drawn: parseInt(drawn) || 0,
       lost: parseInt(lost) || 0,
       gf: gfN,
       ga: gaN,
-      gd: gfN - gaN,
+      gd: isNaN(gdN) ? gfN - gaN : gdN,
       pts: parseInt(pts) || 0,
     });
   }
@@ -138,7 +140,7 @@ module.exports = async function handler(req, res) {
     return res.status(200).end();
   }
 
-  res.setHeader('Cache-Control', 's-maxage=600, stale-while-revalidate=120');
+  res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate=3600');
   res.setHeader('Content-Type', 'application/json');
 
   try {
