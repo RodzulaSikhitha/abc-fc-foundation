@@ -1,0 +1,33 @@
+{
+  "name": "ABC FC | Lion of the North",
+  "short_name": "ABC FC",
+  "description": "Official home of ABC Football Club — Lion of the North. SAFA Vhembe Hollywoodbets Regional League. Thohoyandou, Limpopo. Est. 2008.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0d0d",
+  "theme_color": "#F5A800",
+  "orientation": "portrait-primary",
+  "lang": "en-ZA",
+  "categories": ["sports"],
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "images/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png"
+    }
+  ]
+}
