@@ -307,7 +307,17 @@ function renderFixtures(container, fixtures) {
         <div style="font-family:var(--font-sub,sans-serif);font-size:15px;font-weight:800;letter-spacing:0.02em;color:var(--text);">
           ${f.isHome ? '<strong>ABC FC</strong> vs ' : ''}${f.opponent}${!f.isHome ? ' <strong style="color:var(--gold,#F5A800);">vs ABC FC</strong>' : ''}
         </div>
-        <div style="font-size:12px;color:var(--text-muted);margin-top:3px;">📍 ${f.venue} &nbsp;·&nbsp; ⏰ ${f.time}</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:3px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+          <span style="display:inline-flex;align-items:center;gap:3px;">
+            <svg width="13" height="14" viewBox="0 0 18 20" fill="none" style="color:var(--gold,#F5A800);flex-shrink:0;" aria-hidden="true"><path d="M9 1L1.5 4V10C1.5 14.4 4.8 18.4 9 19.6C13.2 18.4 16.5 14.4 16.5 10V4L9 1Z" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="9" cy="10.5" r="3.2" fill="none" stroke="currentColor" stroke-width="1.1"/><circle cx="9" cy="10.5" r="0.9" fill="currentColor"/></svg>
+            ${f.venue}
+          </span>
+          <span style="color:var(--text-faint,#555);">·</span>
+          <span style="display:inline-flex;align-items:center;gap:3px;">
+            <svg width="13" height="15" viewBox="0 0 20 22" fill="none" style="color:var(--gold,#F5A800);flex-shrink:0;" aria-hidden="true"><path d="M10 1L2 4.5V10.5C2 15.2 5.4 19.6 10 21C14.6 19.6 18 15.2 18 10.5V4.5L10 1Z" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="10" cy="11" r="4.5" fill="none" stroke="currentColor" stroke-width="1.2"/><line x1="10" y1="11" x2="10" y2="8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><line x1="10" y1="11" x2="12.5" y2="11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            ${f.time}
+          </span>
+        </div>
       </div>
     </div>
   `).join('');
