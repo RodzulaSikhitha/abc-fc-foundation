@@ -2149,56 +2149,67 @@ p, li { text-wrap: pretty; }
 
 /* ── Tournament Join Banner ──────────────────────────────── */
 .tourn-banner {
-  background: var(--gold);
+  background: #ffffff;
   color: #0d0d0d;
-  padding: 14px clamp(16px,5vw,48px);
+  padding: 18px clamp(16px,5vw,48px);
+  border-bottom: 3px solid var(--gold);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.10);
 }
 .tourn-banner-inner {
   max-width: var(--content-max);
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 .tourn-banner-badge {
   font-family: var(--font-display);
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  background: #0d0d0d;
-  color: var(--gold);
-  padding: 3px 10px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  background: var(--gold);
+  color: #0d0d0d;
+  padding: 4px 12px;
   border-radius: 4px;
   white-space: nowrap;
   flex-shrink: 0;
 }
 .tourn-banner-msg {
   font-family: var(--font-sub);
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
   color: #0d0d0d;
   flex: 1;
   margin: 0;
   line-height: 1.4;
 }
-.tourn-banner-msg strong { font-weight: 800; }
+.tourn-banner-msg strong {
+  font-weight: 900;
+  font-size: 15px;
+  color: #0d0d0d;
+}
 .tourn-banner-cta {
   font-family: var(--font-sub);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  background: #0d0d0d;
-  color: var(--gold);
-  padding: 8px 18px;
+  background: var(--gold);
+  color: #0d0d0d;
+  padding: 11px 24px;
   border-radius: 6px;
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
-  transition: opacity var(--transition);
+  box-shadow: 0 4px 14px rgba(245,168,0,0.4);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
-.tourn-banner-cta:hover { opacity: 0.85; color: var(--gold); }
+.tourn-banner-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245,168,0,0.5);
+  color: #0d0d0d;
+}
 @media (max-width: 600px) {
-  .tourn-banner-msg { font-size: 12px; }
-  .tourn-banner-cta { width: 100%; text-align: center; margin-top: 4px; }
+  .tourn-banner-msg { font-size: 13px; }
+  .tourn-banner-cta { width: 100%; text-align: center; margin-top: 6px; }
 }
