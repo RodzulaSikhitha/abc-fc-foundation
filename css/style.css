@@ -2244,3 +2244,29 @@ p, li { text-wrap: pretty; }
   .tourn-banner-cta { width: 100%; text-align: center; }
   .tourn-banner-note { max-width: 100%; }
 }
+
+/* ── Footer quick-nav (tournament page & others) ─────────────── */
+.footer-quicknav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 20px;
+  margin-bottom: 24px;
+}
+.fqn-link {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  padding: 4px 0;
+  transition: color .2s;
+}
+.fqn-link:hover { color: #F5A800; }
+.fqn-link.fqn-active { color: #F5A800; }
+@media (max-width: 480px) {
+  .footer-quicknav { gap: 10px 16px; }
+  .fqn-link { font-size: 12px; }
+}
