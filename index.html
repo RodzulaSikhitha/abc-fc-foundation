@@ -51,11 +51,11 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "SportsOrganization",
+        "@type": "SportsTeam",
         "@id": "https://www.abcfc.co.za/#organization",
         "name": "ABC FC",
         "alternateName": ["African by Choice FC", "Lion of the North", "ABC Football Club"],
-        "description": "ABC FC are the 2025/26 SAFA Vhembe Hollywoodbets Regional League Stream I Champions. Founded in 2008 and based in Thohoyandou, Limpopo, South Africa.",
+        "description": "ABC FC are the 2025/26 SAFA Vhembe Hollywoodbets Regional League Stream I Champions. Founded in 2008 by Lucas Tshibalo Mudau in Thohoyandou, Limpopo, South Africa. Unbeaten league season: 34W 3D 0L, 105 points, 92 goals for, 12 against.",
         "url": "https://www.abcfc.co.za",
         "logo": {
           "@type": "ImageObject",
@@ -74,6 +74,7 @@
           "name": "Phalama Ground",
           "address": {
             "@type": "PostalAddress",
+            "streetAddress": "Phalama Ground",
             "addressLocality": "Mutale",
             "addressRegion": "Limpopo",
             "addressCountry": "ZA"
@@ -84,15 +85,30 @@
           "@type": "SportsLeague",
           "name": "SAFA Vhembe Hollywoodbets Regional League Stream I"
         },
+        "founder": {
+          "@type": "Person",
+          "name": "Lucas Tshibalo Mudau",
+          "honorificSuffix": "MPA"
+        },
+        "award": "SAFA Vhembe Hollywoodbets Regional League Stream I Champions 2025/26",
         "sameAs": [
-          "https://www.facebook.com/p/ABC-fc-61556965480952/"
+          "https://www.facebook.com/p/ABC-fc-61556965480952/",
+          "https://inqaku.com/team/view?season_id=15244&logteam_id=146222"
         ],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+27-71-109-2360",
-          "email": "tshibalo.lucas@gmail.com",
-          "contactType": "general"
-        }
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+27-71-109-2360",
+            "contactType": "customer support",
+            "availableLanguage": ["English", "Tshivenda"]
+          },
+          {
+            "@type": "ContactPoint",
+            "email": "tshibalo.lucas@gmail.com",
+            "contactType": "customer support"
+          }
+        ],
+        "keywords": "ABC FC, Lion of the North, SAFA Vhembe, football, soccer, Limpopo, Thohoyandou, Mutale"
       },
       {
         "@type": "WebSite",
