@@ -116,7 +116,7 @@ p, li { text-wrap: pretty; }
   margin-bottom: 10px;
 }
 .gold-text { color: var(--gold); }
-.white-text { color: var(--white); }
+.white-text { color: #ffffff; }
 
 .section-h2 {
   font-family: var(--font-display);
@@ -125,7 +125,7 @@ p, li { text-wrap: pretty; }
   color: var(--text);
   margin-bottom: 12px;
 }
-.section-h2.white-text { color: var(--white); }
+.section-h2.white-text { color: #ffffff; }
 .section-h2.centered { text-align: center; }
 
 .section-header-row { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 12px; }
@@ -1342,8 +1342,8 @@ p, li { text-wrap: pretty; }
 /* ── Tournament section ───────────────────────────────────── */
 .tournament-section {
   position: relative;
-  padding: 5rem 0;
-  background: var(--black);
+  padding: 4rem 0;
+  background: #0d0d0d;
   overflow: hidden;
 }
 .tournament-bg {
@@ -1375,8 +1375,8 @@ p, li { text-wrap: pretty; }
 }
 .tf-card:hover { background: rgba(245,168,0,0.08); border-color: var(--gold); transform: translateY(-3px); }
 .tf-icon { color: var(--gold); }
-.tf-card strong { font-family: var(--font-sub); font-weight: 700; font-size: 0.95rem; color: var(--white); }
-.tf-card span { font-size: 0.78rem; color: var(--white-muted); }
+.tf-card strong { font-family: var(--font-sub); font-weight: 700; font-size: 0.95rem; color: #ffffff; }
+.tf-card span { font-size: 0.78rem; color: rgba(255,255,255,0.65); }
 
 .tournament-partners { margin: 2rem 0; }
 .tp-heading {
@@ -1409,8 +1409,8 @@ p, li { text-wrap: pretty; }
 }
 .tp-abbr { font-family: var(--font-display); font-size: 1.1rem; color: var(--black); letter-spacing: 0.05em; }
 .tp-info { display: flex; flex-direction: column; gap: 0.4rem; min-width: 0; }
-.tp-info strong { font-family: var(--font-sub); font-weight: 700; color: var(--white); font-size: 0.95rem; }
-.tp-info span { font-size: 0.78rem; color: var(--white-muted); line-height: 1.4; }
+.tp-info strong { font-family: var(--font-sub); font-weight: 700; color: #ffffff; font-size: 0.95rem; }
+.tp-info span { font-size: 0.78rem; color: rgba(255,255,255,0.65); line-height: 1.4; }
 
 .tournament-cta-row {
   display: flex;
@@ -2145,4 +2145,60 @@ p, li { text-wrap: pretty; }
   font-size: 13px;
   color: rgba(255,255,255,0.65);
   line-height: 1.5;
+}
+
+/* ── Tournament Join Banner ──────────────────────────────── */
+.tourn-banner {
+  background: var(--gold);
+  color: #0d0d0d;
+  padding: 14px clamp(16px,5vw,48px);
+}
+.tourn-banner-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.tourn-banner-badge {
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  background: #0d0d0d;
+  color: var(--gold);
+  padding: 3px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.tourn-banner-msg {
+  font-family: var(--font-sub);
+  font-size: 13px;
+  font-weight: 600;
+  color: #0d0d0d;
+  flex: 1;
+  margin: 0;
+  line-height: 1.4;
+}
+.tourn-banner-msg strong { font-weight: 800; }
+.tourn-banner-cta {
+  font-family: var(--font-sub);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: #0d0d0d;
+  color: var(--gold);
+  padding: 8px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity var(--transition);
+}
+.tourn-banner-cta:hover { opacity: 0.85; color: var(--gold); }
+@media (max-width: 600px) {
+  .tourn-banner-msg { font-size: 12px; }
+  .tourn-banner-cta { width: 100%; text-align: center; margin-top: 4px; }
 }

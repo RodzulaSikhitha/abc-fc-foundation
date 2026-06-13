@@ -6,8 +6,7 @@
 (function () {
   const btn  = document.querySelector('[data-theme-toggle]');
   const root = document.documentElement;
-  const mq   = window.matchMedia('(prefers-color-scheme: dark)');
-  let   theme = mq.matches ? 'dark' : 'light';
+  let   theme = 'light';
   root.setAttribute('data-theme', theme);
   updateIcon();
 
