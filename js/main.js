@@ -449,9 +449,7 @@ function renderTableRows(tbody, teams, topEl, extraEl, showBtn) {
       <td style="padding:10px 12px;white-space:nowrap;max-width:180px;overflow:hidden;text-overflow:ellipsis;">${isABC ? `<strong style="color:var(--gold,#F5A800);">${t.team}</strong>` : t.team}</td>
       <td style="padding:10px 8px;text-align:center;font-variant-numeric:tabular-nums;">${t.played}</td>
       <td style="padding:10px 8px;text-align:center;font-variant-numeric:tabular-nums;">${t.won}</td>
-      <td style="padding:10px 8px;text-align:center;font-variant-numeric:tabular-nums;">${t.drawn}</td>
       <td style="padding:10px 8px;text-align:center;font-variant-numeric:tabular-nums;">${t.lost}</td>
-      <td style="padding:10px 8px;text-align:center;font-variant-numeric:tabular-nums;">${t.gd >= 0 ? '+' : ''}${t.gd}</td>
       <td style="padding:10px 12px;text-align:center;font-variant-numeric:tabular-nums;font-weight:800;color:var(--gold,#F5A800);">${t.pts}</td>
     </tr>`;
   }
@@ -467,9 +465,7 @@ function renderFullTable(container, teams) {
     <td style="padding:10px 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px;">${isABC(t) ? `<strong style="color:var(--gold,#F5A800);">${t.team}</strong>` : t.team}</td>
     <td style="padding:10px 8px;text-align:center;">${t.played}</td>
     <td style="padding:10px 8px;text-align:center;">${t.won}</td>
-    <td style="padding:10px 8px;text-align:center;">${t.drawn}</td>
     <td style="padding:10px 8px;text-align:center;">${t.lost}</td>
-    <td style="padding:10px 8px;text-align:center;">${t.gd >= 0 ? '+' : ''}${t.gd}</td>
     <td style="padding:10px 12px;text-align:center;font-weight:800;color:var(--gold,#F5A800);">${t.pts}</td>
   </tr>`;
 
@@ -481,9 +477,7 @@ function renderFullTable(container, teams) {
           <th style="padding:10px 12px;text-align:left;">Team</th>
           <th style="padding:10px 8px;text-align:center;">P</th>
           <th style="padding:10px 8px;text-align:center;">W</th>
-          <th style="padding:10px 8px;text-align:center;">D</th>
           <th style="padding:10px 8px;text-align:center;">L</th>
-          <th style="padding:10px 8px;text-align:center;">GD</th>
           <th style="padding:10px 12px;text-align:center;">Pts</th>
         </tr>
       </thead>
