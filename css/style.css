@@ -2270,3 +2270,30 @@ p, li { text-wrap: pretty; }
   .footer-quicknav { gap: 10px 16px; }
   .fqn-link { font-size: 12px; }
 }
+
+/* ── Tournament sponsor pills (teaser on tournament4.html) ──── */
+.t4-sponsor-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 0;
+}
+.t4-sponsor-pill {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 8px 14px;
+}
+.t4-sponsor-pill--gold {
+  color: #F5A800;
+  background: rgba(245,168,0,0.08);
+  border-color: rgba(245,168,0,0.3);
+}
