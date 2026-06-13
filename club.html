@@ -974,10 +974,18 @@
       btn.disabled = true;
       btn.textContent = 'Sending…';
       try {
-        const res = await fetch('https://formspree.io/f/xbdeppne', {
+        const formData = new FormData(form);
+        const body = {
+          name: formData.get('name'),
+          phone: formData.get('phone'),
+          email: formData.get('email'),
+          interest: formData.get('interest'),
+          message: formData.get('message'),
+        };
+        const res = await fetch('/api/contact', {
           method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
+          body: JSON.stringify(body),
+          headers: { 'Content-Type': 'application/json' }
         });
         if (res.ok) {
           feedback.textContent = 'Message sent! We will get back to you within 24 hours.';

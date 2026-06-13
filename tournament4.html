@@ -613,13 +613,8 @@
           <!-- Contact form — Formspree -->
           <form
             id="contact-form"
-            action="https://formspree.io/f/xbdeppne"
-            method="POST"
             class="t4-form"
           >
-            <input type="hidden" name="_replyto" value="tshibalo.lucas@gmail.com" />
-            <input type="hidden" name="_cc" value="sikhitha.r@gmail.com" />
-            <input type="hidden" name="_subject" value="New message from ABC FC website" />
             <input
               type="text" name="name" required autocomplete="name"
               placeholder="Full Name" class="t4-input"
@@ -706,10 +701,18 @@
         btn.textContent = 'Sending…';
         btn.disabled = true;
         try {
-          const res = await fetch(form.action, {
+          const formData = new FormData(form);
+          const body = {
+            name: formData.get('name'),
+            phone: formData.get('phone'),
+            email: formData.get('email'),
+            interest: formData.get('interest'),
+            message: formData.get('message'),
+          };
+          const res = await fetch('/api/contact', {
             method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
+            body: JSON.stringify(body),
+            headers: { 'Content-Type': 'application/json' }
           });
           if (res.ok) {
             form.innerHTML = '<div style="text-align:center;padding:40px 20px;"><p style=\'font-family:Bebas Neue,sans-serif;font-size:2rem;color:#F5A800;margin:0 0 8px;\'>Message Sent!</p><p style=\'font-family:Barlow Condensed,sans-serif;font-size:16px;color:rgba(255,255,255,0.6);\'>We\'ll get back to you within 24 hours.</p></div>';
