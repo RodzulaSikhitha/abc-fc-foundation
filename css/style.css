@@ -1167,11 +1167,12 @@ p, li { text-wrap: pretty; }
 .res-teams-col {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
   min-width: 0;
+  overflow: hidden;
 }
-.res-abc  { font-family: var(--font-sub); font-weight: 700; font-size: 0.85rem; white-space: nowrap; color: var(--gold); }
-.res-opp  { font-family: var(--font-sub); font-size: 0.82rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.res-abc  { font-family: var(--font-sub); font-weight: 700; font-size: 0.82rem; white-space: nowrap; flex-shrink: 0; color: var(--gold); }
+.res-opp  { font-family: var(--font-sub); font-size: 0.78rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; flex: 1; color: var(--text-muted); }
 .res-score-wrap { flex-shrink: 0; }
 .res-score {
   font-family: var(--font-display);
@@ -1716,35 +1717,43 @@ p, li { text-wrap: pretty; }
 .pos-team-block {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1.5rem 2rem;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .pos-crest {
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
   border-radius: 50%;
   flex-shrink: 0;
 }
 
-.pos-team-info { display: flex; flex-direction: column; gap: 4px; }
+.pos-team-info { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 
 .pos-team-name {
   font-family: var(--font-display);
-  font-size: clamp(1.4rem, 4vw, 1.8rem);
+  font-size: clamp(1.2rem, 3.5vw, 1.8rem);
   color: var(--text);
   line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .pos-league {
   font-family: var(--font-sub);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--gold);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .pos-stats-row {
@@ -1786,9 +1795,13 @@ p, li { text-wrap: pretty; }
 
 /* Mobile: stack position card */
 @media (max-width: 520px) {
-  .pos-num-block { padding: 1.5rem 1.75rem; min-width: 90px; }
-  .pos-team-block { padding: 1.25rem 1.25rem; }
-  .pos-crest { width: 44px; height: 44px; }
+  .pos-num-block { padding: 1.25rem 1.25rem; min-width: 76px; }
+  .pos-team-block { padding: 1rem; gap: 0.5rem; }
+  .pos-crest { width: 36px; height: 36px; }
+  .pos-number { font-size: 3.5rem; }
+  .pos-stats-row { padding: 0.75rem 0.5rem; }
+  .ps-val { font-size: 1.3rem; }
+  .ps-lbl { font-size: 9px; }
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1840,12 +1853,7 @@ p, li { text-wrap: pretty; }
   .shop-cta-btn { width: 100%; text-align: center; }
 }
 
-/* Remove old .news-grid 4-col — 3 cards now */
-.news-grid {
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-}
-
-/* nc-badge — remove emoji dependency, use text */
+/* nc-badge */
 .nc-badge {
   font-family: var(--font-sub);
   font-size: 10px;
@@ -1854,4 +1862,250 @@ p, li { text-wrap: pretty; }
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 0.5rem;
+}
+
+/* ═══════════════════════════════════════════════════════
+   FACEBOOK POSTS — HORIZONTAL SCROLL STRIP
+   ═══════════════════════════════════════════════════════ */
+
+.fb-posts-scroll-wrap {
+  position: relative;
+  margin: 0 -16px; /* bleed to edges on mobile */
+}
+
+.fb-posts-track {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  padding: 4px 16px 12px 16px;
+}
+.fb-posts-track::-webkit-scrollbar { display: none; }
+
+/* Right fade hint */
+.fb-scroll-hint-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 48px;
+  height: 100%;
+  background: linear-gradient(to right, transparent, var(--bg));
+  pointer-events: none;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+
+/* Individual post card */
+.fb-post-card {
+  flex: 0 0 260px;
+  scroll-snap-align: start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color var(--transition), transform var(--transition);
+}
+.fb-post-card:hover {
+  border-color: rgba(245,168,0,0.35);
+  transform: translateY(-2px);
+}
+
+.fb-post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fb-post-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid var(--gold);
+}
+.fb-post-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fb-post-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+}
+.fb-post-name {
+  font-family: var(--font-sub);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+.fb-post-date {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: var(--font-sub);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fb-logo-icon { flex-shrink: 0; opacity: 0.85; }
+
+.fb-post-body {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  flex: 1;
+  margin: 0;
+}
+
+/* Post type tags */
+.fb-post-tag {
+  display: inline-block;
+  font-family: var(--font-sub);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  width: fit-content;
+}
+.fb-post-tag.champs    { background: rgba(245,168,0,0.15); color: var(--gold); }
+.fb-post-tag.tournament{ background: rgba(99,102,241,0.12); color: #818cf8; }
+.fb-post-tag.milestone { background: rgba(34,197,94,0.12); color: #22c55e; }
+.fb-post-tag.bafana    { background: rgba(239,68,68,0.1);  color: #f87171; }
+
+.fb-post-cta {
+  font-family: var(--font-sub);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1877F2;
+  text-decoration: none;
+  align-self: flex-start;
+}
+.fb-post-cta:hover { text-decoration: underline; }
+
+/* Follow row */
+.fb-follow-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+.fb-follow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #1877F2;
+  color: #fff;
+  font-family: var(--font-sub);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  transition: background var(--transition), transform var(--transition);
+}
+.fb-follow-pill:hover { background: #1557c0; transform: translateY(-1px); }
+
+/* Wider cards on desktop — show 3 at a time */
+@media (min-width: 768px) {
+  .fb-post-card { flex: 0 0 300px; }
+  .fb-posts-scroll-wrap { margin: 0; }
+  .fb-posts-track { padding: 4px 0 12px 0; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   PAGE HERO (fixtures.html sub-page header)
+   ═══════════════════════════════════════════════════════ */
+.page-hero {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 3rem 0 2rem;
+  margin-top: 0;
+}
+.page-hero-inner { text-align: left; }
+.page-hero-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  line-height: 1;
+  color: var(--text);
+  margin: 0.25rem 0;
+}
+.page-hero-sub {
+  font-family: var(--font-sub);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Active nav link */
+.nav-active { color: var(--gold) !important; }
+.bqn-active { color: var(--gold) !important; }
+
+/* ── Fixtures "more" CTA row ─────────────────────────── */
+.fixtures-more-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+.fixtures-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sub);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(245,168,0,0.3);
+  border-radius: var(--radius-full);
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: background var(--transition), border-color var(--transition);
+  width: 100%;
+  justify-content: center;
+}
+.fixtures-more-btn:hover {
+  background: rgba(245,168,0,0.08);
+  border-color: var(--gold);
+}
+
+/* ── Tournament fact cards — no icon version ─────────── */
+.tf-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tf-card strong {
+  font-family: var(--font-sub);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+}
+.tf-card span {
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.5;
 }

@@ -61,10 +61,7 @@
 
       <nav class="main-nav" aria-label="Primary navigation">
         <ul role="list">
-          <li><a href="#fixtures">Fixtures</a></li>
-          <li><a href="#results">Results</a></li>
-          <li><a href="#table">Table</a></li>
-          <li><a href="#tournament">Tournament</a></li>
+          <li><a href="fixtures.html">Fixtures</a></li>
           <li><a href="#news">News</a></li>
           <li><a href="#club">Club</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -90,13 +87,10 @@
     <!-- Mobile slide-down nav -->
     <nav class="mobile-nav" id="mobile-nav" aria-hidden="true" aria-label="Mobile navigation">
       <ul role="list">
-        <li><a href="#fixtures"   onclick="closeMobileNav()">Fixtures</a></li>
-        <li><a href="#results"    onclick="closeMobileNav()">Results</a></li>
-        <li><a href="#table"      onclick="closeMobileNav()">Table</a></li>
-        <li><a href="#tournament" onclick="closeMobileNav()">Tournament</a></li>
-        <li><a href="#news"       onclick="closeMobileNav()">News</a></li>
-        <li><a href="#club"       onclick="closeMobileNav()">Club</a></li>
-        <li><a href="#contact"    onclick="closeMobileNav()">Contact</a></li>
+        <li><a href="fixtures.html"   onclick="closeMobileNav()">Fixtures &amp; Table</a></li>
+        <li><a href="#news"           onclick="closeMobileNav()">News</a></li>
+        <li><a href="#club"           onclick="closeMobileNav()">Club</a></li>
+        <li><a href="#contact"        onclick="closeMobileNav()">Contact</a></li>
         <li><a href="https://abcfc.store" target="_blank" rel="noopener" onclick="closeMobileNav()">🛒 Shop</a></li>
       </ul>
       <div class="mobile-nav-bottom">
@@ -171,7 +165,7 @@
       </div>
     </section>
 
-    <!-- ▓▓ NEXT MATCH ▓▓ -->
+    <!-- ▓▓ NEXT MATCH TEASER ▓▓ -->
     <section class="section fixtures-section" id="fixtures">
       <div class="container">
         <div class="section-header-row">
@@ -179,13 +173,13 @@
             <div class="eyebrow">2025/26 Season</div>
             <h2 class="section-h2">Next Match</h2>
           </div>
-          <a href="https://inqaku.com/team/view?season_id=15244&logteam_id=146222" target="_blank" rel="noopener" class="see-all-link">
-            All fixtures on Inqaku
+          <a href="fixtures.html" class="see-all-link">
+            All fixtures &amp; results
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
 
-        <div class="fixtures-list" id="fixtures-list">
+        <div class="fixtures-list">
           <div class="fx-row fx-home" data-reveal>
             <div class="fx-date-col">
               <span class="fx-day">SAT</span>
@@ -213,123 +207,13 @@
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ▓▓ RESULTS ▓▓ -->
-    <section class="section results-section" id="results">
-      <div class="container">
-        <div class="section-header-row">
-          <div>
-            <div class="eyebrow">2025/26 Season</div>
-            <h2 class="section-h2">Recent Results</h2>
-          </div>
-          <a href="https://inqaku.com/team/view?season_id=15244&logteam_id=146222&tab=results" target="_blank" rel="noopener" class="see-all-link">
-            Full history on Inqaku
+        <!-- Tap to see more — mobile-friendly CTA row -->
+        <div class="fixtures-more-row">
+          <a href="fixtures.html" class="fixtures-more-btn">
+            View all fixtures, results &amp; table
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-        </div>
-
-        <div class="results-list">
-          <div class="res-row res-win" data-reveal>
-            <div class="res-date-col"><span class="res-date">7 Jun</span><span class="res-ha home">H</span></div>
-            <div class="res-teams-col"><span class="res-abc">ABC FC</span><span class="res-score-wrap"><span class="res-score win">1 – 0</span></span><span class="res-opp">Bashasha Lions FC</span></div>
-            <div class="res-outcome win-tag">W</div>
-          </div>
-          <div class="res-row res-win" data-reveal>
-            <div class="res-date-col"><span class="res-date">6 Jun</span><span class="res-ha away">A</span></div>
-            <div class="res-teams-col"><span class="res-abc">ABC FC</span><span class="res-score-wrap"><span class="res-score win">2 – 1</span></span><span class="res-opp">Mangaya Living Comodores</span></div>
-            <div class="res-outcome win-tag">W</div>
-          </div>
-          <div class="res-row res-win" data-reveal>
-            <div class="res-date-col"><span class="res-date">31 May</span><span class="res-ha home">H</span></div>
-            <div class="res-teams-col"><span class="res-abc">ABC FC</span><span class="res-score-wrap"><span class="res-score win">4 – 0</span></span><span class="res-opp">Tshitavha Brave Lion FC</span></div>
-            <div class="res-outcome win-tag">W</div>
-          </div>
-          <div class="res-row res-win" data-reveal>
-            <div class="res-date-col"><span class="res-date">30 May</span><span class="res-ha away">A</span></div>
-            <div class="res-teams-col"><span class="res-abc">ABC FC</span><span class="res-score-wrap"><span class="res-score win">4 – 1</span></span><span class="res-opp">Tshilovi Fighting Angel FC</span></div>
-            <div class="res-outcome win-tag">W</div>
-          </div>
-          <div class="res-row res-win" data-reveal>
-            <div class="res-date-col"><span class="res-date">24 May</span><span class="res-ha home">H</span></div>
-            <div class="res-teams-col"><span class="res-abc">ABC FC</span><span class="res-score-wrap"><span class="res-score win">3 – 0</span></span><span class="res-opp">Tshandama Try Together</span></div>
-            <div class="res-outcome win-tag">W</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ▓▓ LEAGUE POSITION ▓▓ -->
-    <section class="section table-section" id="table">
-      <div class="container">
-        <div class="section-header-row">
-          <div>
-            <div class="eyebrow">Hollywoodbets Regional League · Stream I</div>
-            <h2 class="section-h2">League Position</h2>
-          </div>
-          <a href="https://inqaku.com/team/view?season_id=15244&logteam_id=146222" target="_blank" rel="noopener" class="see-all-link">
-            Full table on Inqaku
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-
-        <div class="pos-card-wrap" data-reveal>
-          <div class="pos-card">
-            <div class="pos-card-main">
-              <div class="pos-num-block">
-                <span class="pos-label">POSITION</span>
-                <span class="pos-number">1</span>
-                <span class="pos-suffix">ST</span>
-              </div>
-              <div class="pos-divider"></div>
-              <div class="pos-team-block">
-                <img src="images/abc-fc-logo.jpeg" alt="ABC FC crest" class="pos-crest" />
-                <div class="pos-team-info">
-                  <span class="pos-team-name">ABC FC</span>
-                  <span class="pos-league">Stream I Champions 2025/26</span>
-                </div>
-              </div>
-            </div>
-            <div class="pos-stats-row">
-              <div class="pos-stat">
-                <span class="ps-val">105</span>
-                <span class="ps-lbl">Points</span>
-              </div>
-              <div class="pos-stat">
-                <span class="ps-val">34</span>
-                <span class="ps-lbl">Won</span>
-              </div>
-              <div class="pos-stat">
-                <span class="ps-val">3</span>
-                <span class="ps-lbl">Drawn</span>
-              </div>
-              <div class="pos-stat">
-                <span class="ps-val">0</span>
-                <span class="ps-lbl">Lost</span>
-              </div>
-              <div class="pos-stat">
-                <span class="ps-val">+80</span>
-                <span class="ps-lbl">GD</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ▓▓ TOURNAMENT ▓▓ -->
-    <section class="section tournament-section" id="tournament">
-      <div class="tournament-bg" aria-hidden="true"></div>
-      <div class="container">
-        <div class="eyebrow gold-text">Annual Event</div>
-        <h2 class="section-h2 white-text">ABC Foundation Tournament 2026</h2>
-        <p class="section-lead white-text">
-          The 3rd Annual ABC Foundation Tournament — 32 clubs, one ground, one community. Phalama Ground, Mutale, Vhembe.
-        </p>
-        <div class="tournament-cta-row">
-          <a href="#contact" class="btn-primary-lg">Register Your Club</a>
-          <a href="https://www.facebook.com/p/ABC-fc-61556965480952/" target="_blank" rel="noopener" class="btn-outline-lg">Follow for Updates</a>
         </div>
       </div>
     </section>
@@ -348,28 +232,91 @@
           </a>
         </div>
 
-        <div class="news-grid">
-          <div class="news-card featured-news" data-reveal>
-            <div class="nc-badge">CHAMPIONS</div>
-            <h3 class="nc-title">Stream I Champions 2025/26</h3>
-            <p class="nc-body">ABC FC are officially crowned 2025/26 SAFA Vhembe Hollywoodbets Regional League Stream I Champions. The Lion of the North roars! #Ndi_Team_Ya_Lucas</p>
-            <a href="https://www.facebook.com/p/ABC-fc-61556965480952/" target="_blank" rel="noopener" class="nc-cta">View on Facebook →</a>
-          </div>
+        <!-- Horizontal-scroll Facebook post cards -->
+        <div class="fb-posts-scroll-wrap">
+          <div class="fb-posts-track">
 
-          <div class="news-card" data-reveal>
-            <div class="nc-badge">TOURNAMENT</div>
-            <h3 class="nc-title">ABC Foundation Tournament 2026</h3>
-            <p class="nc-body">Giraffe Sports confirmed as merchandise partner and Joe Seanego (Gomora United) joins as tournament partner. TOP 32 knockout format at Phalama Ground.</p>
-            <a href="#tournament" class="nc-cta">Tournament Details →</a>
-          </div>
+            <!-- Post 1 — Champions -->
+            <div class="fb-post-card">
+              <div class="fb-post-header">
+                <div class="fb-post-avatar">
+                  <img src="images/abc-fc-logo.jpeg" alt="ABC FC" />
+                </div>
+                <div class="fb-post-meta">
+                  <span class="fb-post-name">ABC FC</span>
+                  <span class="fb-post-date">7 Jun · Stream I Champions</span>
+                </div>
+                <svg class="fb-logo-icon" width="18" height="18" viewBox="0 0 24 24" fill="#1877F2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </div>
+              <p class="fb-post-body">ABC FC are officially crowned 2025/26 SAFA Vhembe Hollywoodbets Regional League Stream I Champions. The Lion of the North roars! 🦁 #Ndi_Team_Ya_Lucas</p>
+              <div class="fb-post-tag champs">CHAMPIONS</div>
+              <a href="https://www.facebook.com/p/ABC-fc-61556965480952/" target="_blank" rel="noopener" class="fb-post-cta">View on Facebook →</a>
+            </div>
 
-          <div class="news-card" data-reveal>
-            <div class="nc-badge">BAFANA BAFANA</div>
-            <h3 class="nc-title">One Nation, One Team, One Spirit</h3>
-            <p class="nc-body">ABC FC stands behind Bafana Bafana at FIFA World Cup 2026. As South Africa takes on the world stage - Lion of the North roars with them.</p>
-            <a href="https://www.facebook.com/p/ABC-fc-61556965480952/" target="_blank" rel="noopener" class="nc-cta">View on Facebook →</a>
+            <!-- Post 2 — Tournament -->
+            <div class="fb-post-card">
+              <div class="fb-post-header">
+                <div class="fb-post-avatar">
+                  <img src="images/abc-fc-logo.jpeg" alt="ABC FC" />
+                </div>
+                <div class="fb-post-meta">
+                  <span class="fb-post-name">ABC FC</span>
+                  <span class="fb-post-date">3 Jun · Tournament</span>
+                </div>
+                <svg class="fb-logo-icon" width="18" height="18" viewBox="0 0 24 24" fill="#1877F2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </div>
+              <p class="fb-post-body">Giraffe Sports confirmed as official merchandise partner for the 3rd Annual ABC Foundation Tournament 2026. TOP 32 format, Phalama Ground. Register your club now!</p>
+              <div class="fb-post-tag tournament">TOURNAMENT</div>
+              <a href="https://www.facebook.com/p/ABC-fc-61556965480952/" target="_blank" rel="noopener" class="fb-post-cta">View on Facebook →</a>
+            </div>
+
+            <!-- Post 3 — R190K raised -->
+            <div class="fb-post-card">
+              <div class="fb-post-header">
+                <div class="fb-post-avatar">
+                  <img src="images/abc-fc-logo.jpeg" alt="ABC FC" />
+                </div>
+                <div class="fb-post-meta">
+                  <span class="fb-post-name">ABC FC</span>
+                  <span class="fb-post-date">May · Milestone</span>
+                </div>
+                <svg class="fb-logo-icon" width="18" height="18" viewBox="0 0 24 24" fill="#1877F2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </div>
+              <p class="fb-post-body">R190,000 raised from tournaments in just 3 months — the brand grows. Thank you to every partner, player, and supporter who believed in the Lion of the North. 🙏</p>
+              <div class="fb-post-tag milestone">MILESTONE</div>
+              <a href="https://www.facebook.com/p/ABC-fc-61556965480952/" target="_blank" rel="noopener" class="fb-post-cta">View on Facebook →</a>
+            </div>
+
+            <!-- Post 4 — Bafana Bafana -->
+            <div class="fb-post-card">
+              <div class="fb-post-header">
+                <div class="fb-post-avatar">
+                  <img src="images/abc-fc-logo.jpeg" alt="ABC FC" />
+                </div>
+                <div class="fb-post-meta">
+                  <span class="fb-post-name">ABC FC</span>
+                  <span class="fb-post-date">Jun · World Cup 2026</span>
+                </div>
+                <svg class="fb-logo-icon" width="18" height="18" viewBox="0 0 24 24" fill="#1877F2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </div>
+              <p class="fb-post-body">ABC FC stands behind Bafana Bafana at FIFA World Cup 2026. One Nation, One Team, One Spirit. #ProudlySouthAfrican 🇿🇦</p>
+              <div class="fb-post-tag bafana">BAFANA BAFANA</div>
+              <a href="https://www.facebook.com/p/ABC-fc-61556965480952/" target="_blank" rel="noopener" class="fb-post-cta">View on Facebook →</a>
+            </div>
+
           </div>
+          <!-- Scroll fade hints -->
+          <div class="fb-scroll-hint-right" aria-hidden="true"></div>
         </div>
+
+        <!-- Follow CTA -->
+        <div class="fb-follow-row">
+          <a href="https://www.facebook.com/p/ABC-fc-61556965480952/" target="_blank" rel="noopener" class="fb-follow-pill">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            Follow ABC FC · 4.3K Followers
+          </a>
+        </div>
+
       </div>
     </section>
 
@@ -625,18 +572,18 @@
 
   <!-- ▓▓ BOTTOM QUICK-NAV (Mobile) ▓▓ -->
   <nav class="bottom-quicknav" aria-label="Quick navigation">
-    <a href="#fixtures" class="bqn-item">
+    <a href="fixtures.html" class="bqn-item">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       Fixtures
     </a>
-    <a href="#table" class="bqn-item">
+    <a href="fixtures.html#table" class="bqn-item">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>
       Table
     </a>
-    <a href="https://www.facebook.com/p/ABC-fc-61556965480952/" target="_blank" rel="noopener" class="bqn-item bqn-center">
+    <a href="index.html" class="bqn-item bqn-center">
       <img src="images/abc-fc-logo.jpeg" alt="ABC FC" class="bqn-crest" />
     </a>
-    <a href="#tournament" class="bqn-item">
+    <a href="fixtures.html#tournament" class="bqn-item">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
       Tournament
     </a>
