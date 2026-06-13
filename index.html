@@ -987,7 +987,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 ABC FC Foundation. All rights reserved. Registered Non-Profit Organisation - South Africa.</span>
+        <span>© <span id="footer-year"></span> ABC FC Foundation. All rights reserved. Registered Non-Profit Organisation - South Africa.</span>
         <span class="footer-motto">#LionOfTheNorth · #We_Remain_Humble</span>
       </div>
     </div>
@@ -1015,6 +1015,39 @@
       Contact
     </a>
   </nav>
+
+  <!-- ▓▓ COOKIE CONSENT BANNER ▓▓ -->
+  <div id="cookie-banner" role="dialog" aria-label="Cookie consent" aria-live="polite" style="display:none;">
+    <div class="cookie-inner">
+      <div class="cookie-text">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;color:var(--gold,#F5A800);"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        <p>We use cookies to keep the site working and to show relevant content. By clicking <strong>Accept</strong> you agree to our use of cookies. <a href="#" id="cookie-learn-more" style="color:var(--gold,#F5A800);text-decoration:underline;white-space:nowrap;">Learn more</a></p>
+      </div>
+      <div class="cookie-actions">
+        <button id="cookie-decline" class="cookie-btn cookie-btn-outline">Decline</button>
+        <button id="cookie-accept" class="cookie-btn cookie-btn-primary">Accept All</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cookie policy modal -->
+  <div id="cookie-modal" role="dialog" aria-modal="true" aria-label="Cookie Policy" style="display:none;">
+    <div class="cookie-modal-inner">
+      <button id="cookie-modal-close" aria-label="Close" style="position:absolute;top:16px;right:16px;background:none;border:none;cursor:pointer;color:var(--text-muted);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <h2 style="font-family:var(--font-sub);font-size:20px;font-weight:800;letter-spacing:0.04em;margin-bottom:16px;color:var(--gold,#F5A800);">Cookie Policy</h2>
+      <p style="font-size:13px;line-height:1.7;color:var(--text-muted);margin-bottom:12px;">This website (ABC FC Foundation) uses cookies and similar technologies to ensure it functions correctly and to improve your experience.</p>
+      <h3 style="font-family:var(--font-sub);font-size:13px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">What we use</h3>
+      <ul style="font-size:13px;line-height:1.8;color:var(--text-muted);padding-left:16px;margin-bottom:12px;">
+        <li><strong style="color:var(--text);">Essential cookies</strong> - Required for the site to load and navigate correctly.</li>
+        <li><strong style="color:var(--text);">Preference cookies</strong> - Remembers your light/dark mode choice.</li>
+        <li><strong style="color:var(--text);">Embedded content</strong> - The Facebook feed on this page may set cookies from Meta. We have no control over these.</li>
+      </ul>
+      <p style="font-size:12px;color:var(--text-faint);">We do not sell your data. You can withdraw consent at any time by clearing your browser cookies. This site is operated by ABC FC Foundation, Thohoyandou, Limpopo, South Africa.</p>
+      <button id="cookie-modal-accept" class="cookie-btn cookie-btn-primary" style="margin-top:20px;width:100%;">Accept and Close</button>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>

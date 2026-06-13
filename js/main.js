@@ -487,3 +487,6 @@ function renderFullTable(container, teams) {
     </table>
   `;
 }
+
+// Dynamic copyright year
+const fy = document.getElementById('footer-year'); if (fy) fy.textContent = new Date().getFullYear();
