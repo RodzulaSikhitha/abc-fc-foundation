@@ -3,12 +3,14 @@
 // Set this in: Vercel Dashboard → Project → Settings → Environment Variables
 
 export default async function handler(req, res) {
+  if (req.method === 'OPTIONS') return res.status(204).end();
   // Only allow POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, phone, email, interest, message, hp_field } = req.body;
+  const body = (req.body && typeof req.body === 'object') ? req.body : {};
+  const { name, phone, email, interest, message, hp_field } = body;
 
   // Honeypot: real users never fill this hidden field. Pretend success for bots.
   if (hp_field) {
@@ -18,6 +20,15 @@ export default async function handler(req, res) {
   // Basic validation
   if (!name || !email || !message) {
     return res.status(400).json({ error: 'Name, email and message are required.' });
+  }
+  // Reject oversized / malformed input
+  const within = (v, max) => typeof v === 'string' && v.length <= max;
+  if (!within(name, 200) || !within(email, 200) || !within(message, 5000) ||
+      (phone && !within(phone, 40)) || (interest && !within(interest, 100))) {
+    return res.status(400).json({ error: 'Invalid input.' });
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return res.status(400).json({ error: 'Please provide a valid email address.' });
   }
 
   const apiKey = process.env.RESEND_API_KEY;
