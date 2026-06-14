@@ -6,13 +6,15 @@
 (function () {
   const btn  = document.querySelector('[data-theme-toggle]');
   const root = document.documentElement;
-  let   theme = 'light';
+  // Respect saved preference; default to dark if none saved
+  let theme = localStorage.getItem('abcfc-theme') || 'dark';
   root.setAttribute('data-theme', theme);
   updateIcon();
 
   if (btn) btn.addEventListener('click', () => {
     theme = theme === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', theme);
+    localStorage.setItem('abcfc-theme', theme);
     updateIcon();
   });
 
