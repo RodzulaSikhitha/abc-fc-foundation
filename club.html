@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Club Info, Foundation &amp; Trials | ABC FC</title>
-  <meta name="description" content="Learn about ABC FC — Lion of the North. Founded 2008 in Thohoyandou, Limpopo. Community foundation, player trials, sponsorship opportunities and contact." />
+  <title>Club Info &amp; Foundation | ABC FC</title>
+  <meta name="description" content="Learn about ABC FC — Lion of the North. Founded 2008 in Thohoyandou, Limpopo. Community foundation, sponsorship opportunities and contact." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.abcfc.co.za/club.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="ABC FC | Lion of the North" />
-  <meta property="og:title" content="ABC FC — Club Info, Foundation &amp; Trials" />
-  <meta property="og:description" content="ABC FC — Stream I Champions 2025/26. Founded 2008. Community foundation, player trials, and sponsorship opportunities in Vhembe, Limpopo." />
+  <meta property="og:title" content="ABC FC — Club Info &amp; Foundation" />
+  <meta property="og:description" content="ABC FC — Stream I Champions 2025/26. Founded 2008. Community foundation, and sponsorship opportunities in Vhembe, Limpopo." />
   <meta property="og:image" content="https://www.abcfc.co.za/images/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -19,8 +19,8 @@
   <meta property="og:locale" content="en_ZA" />
   <!-- Twitter / X card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="ABC FC — Club Info, Foundation &amp; Trials" />
-  <meta name="twitter:description" content="Stream I Champions 2025/26 · Founded 2008 · Thohoyandou, Limpopo · Player trials open · Sponsor us" />
+  <meta name="twitter:title" content="ABC FC — Club Info &amp; Foundation" />
+  <meta name="twitter:description" content="Stream I Champions 2025/26 · Founded 2008 · Thohoyandou, Limpopo · Sponsor us" />
   <meta name="twitter:image" content="https://www.abcfc.co.za/images/og-image.png" />
   <!-- ── Favicons & App Icons ── -->
   <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
@@ -93,14 +93,14 @@
             "contactType": "customer support"
           }
         ],
-        "keywords": "ABC FC, Lion of the North, SAFA Vhembe, football, soccer, Limpopo, Thohoyandou, Mutale, player trials, sponsorship"
+        "keywords": "ABC FC, Lion of the North, SAFA Vhembe, football, soccer, Limpopo, Thohoyandou, Mutale, sponsorship"
       },
       {
         "@type": "WebPage",
         "@id": "https://www.abcfc.co.za/club.html",
         "url": "https://www.abcfc.co.za/club.html",
-        "name": "ABC FC — Club Info, Foundation & Trials",
-        "description": "Official club information, community foundation history, player trials and sponsorship opportunities for ABC FC, Lion of the North.",
+        "name": "ABC FC — Club Info & Foundation",
+        "description": "Official club information, community foundation history and sponsorship opportunities for ABC FC, Lion of the North.",
         "isPartOf": { "@id": "https://www.abcfc.co.za/#website" },
         "about": { "@id": "https://www.abcfc.co.za/#organization" },
         "breadcrumb": {
@@ -121,15 +121,7 @@
               "@type": "Answer",
               "text": "ABC FC play their home matches at Phalama Ground in Mutale, Vhembe, Limpopo."
             }
-          },
-          {
-            "@type": "Question",
-            "name": "How do I attend ABC FC player trials?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Contact ABC FC on +27 71 109 2360 or email tshibalo.lucas@gmail.com to register your interest. Trials are held at Phalama Ground, Mutale. Follow the Facebook page for trial dates."
-            }
-          },
+          },},
           {
             "@type": "Question",
             "name": "Who founded ABC FC?",
@@ -183,7 +175,7 @@
     /* ── Club Identity Grid ── */
     .club-identity {
       display: grid;
-      grid-template-columns: auto 1fr;
+      grid-template-columns: clamp(120px,24vw,180px) 1fr;
       gap: 2rem 2.5rem;
       align-items: start;
       padding: 3rem 0;
@@ -319,32 +311,6 @@
       letter-spacing: .05em;
     }
     @media(max-width:420px){ .impact-row { grid-template-columns: 1fr 1fr; } }
-
-    /* ── Trials Section ── */
-    .trials-section { padding: 3rem 0; border-top: 1px solid var(--border); }
-    .trials-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin: 1.5rem 0 2rem;
-    }
-    .trial-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--gold);
-      border-radius: 8px;
-      padding: 1rem 1.1rem;
-    }
-    .trial-card strong {
-      display: block;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: .25rem;
-    }
-    .trial-card span { font-size: 13px; color: var(--text-muted); }
-    @media(max-width:420px){ .trials-grid { grid-template-columns: 1fr; } }
 
     /* ── Sponsor Section ── */
     .sponsor-section { padding: 3rem 0; border-top: 1px solid var(--border); }
@@ -539,12 +505,10 @@
       <div class="ticker-content">
         <span>🦁 STREAM I CHAMPIONS 2025/26 — 105 pts, 37 played, 34W 3D 0L</span>
         <span>🏆 4th Annual ABC Foundation Tournament 2026 — TOP 32 format · Giraffe Sports confirmed</span>
-        <span>⚽ NEXT: ABC FC vs Mukondeni Shoe Shine Boys · SAT 13 JUN · 15:00 · Phalama Ground</span>
-        <span>🤝 Player Trials — contact us to register your interest</span>
+        <span>⚽ NEXT: ABC FC vs Mukondeni Shoe Shine Boys · SUN 14 JUN · 15:00 · Phalama Ground</span>
         <span>🦁 STREAM I CHAMPIONS 2025/26 — 105 pts, 37 played, 34W 3D 0L</span>
         <span>🏆 4th Annual ABC Foundation Tournament 2026 — TOP 32 format · Giraffe Sports confirmed</span>
-        <span>⚽ NEXT: ABC FC vs Mukondeni Shoe Shine Boys · SAT 13 JUN · 15:00 · Phalama Ground</span>
-        <span>🤝 Player Trials — contact us to register your interest</span>
+        <span>⚽ NEXT: ABC FC vs Mukondeni Shoe Shine Boys · SUN 14 JUN · 15:00 · Phalama Ground</span>
       </div>
     </div>
   </div>
@@ -601,7 +565,7 @@
         <h1>African by Choice<br>Football Club</h1>
         <p>Roaring with Attitude, Belief &amp; Courage — representing Vhembe, Limpopo and the spirit of community football.</p>
         <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;">
-          <a href="#trials" class="btn-primary-lg">Player Trials</a>
+          <a href="#contact" class="btn-primary-lg">Get Involved</a>
           <a href="#sponsor" class="btn-outline-lg">Sponsor Us</a>
         </div>
       </div>
@@ -707,39 +671,7 @@
       </div>
     </section>
 
-    <!-- ── PLAYER TRIALS ── -->
-    <section class="section trials-section" id="trials">
-      <div class="container">
-        <div class="eyebrow gold-text">Join the Squad</div>
-        <h2 class="section-h2">Player Trials</h2>
-        <p class="section-lead">ABC FC is always on the lookout for talented, committed footballers who embody our values — Attitude, Belief and Courage. If you have what it takes to represent the Lion of the North, we want to hear from you.</p>
-
-        <div class="trials-grid">
-          <div class="trial-card" data-reveal>
-            <strong>Age Groups</strong>
-            <span>Open to players across all eligible age groups. Senior squad and development pathways available.</span>
-          </div>
-          <div class="trial-card" data-reveal>
-            <strong>Location</strong>
-            <span>Trials held at Phalama Ground, Mutale, Vhembe, Limpopo.</span>
-          </div>
-          <div class="trial-card" data-reveal>
-            <strong>What to Bring</strong>
-            <span>Boot, shinguards, ID or birth certificate and a hunger to compete at the highest regional level.</span>
-          </div>
-          <div class="trial-card" data-reveal>
-            <strong>How to Register</strong>
-            <span>Fill in the contact form below or WhatsApp/call +27 71 109 2360. Dates announced on our Facebook page.</span>
-          </div>
-        </div>
-
-        <div style="display:flex;justify-content:center;">
-          <a href="#contact" class="btn-primary-lg">Register Your Interest</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── SPONSOR US ── -->
+<!-- ── SPONSOR US ── -->
     <section class="section sponsor-section" id="sponsor">
       <div class="container">
         <div class="eyebrow gold-text">Partnership &amp; Investment</div>
@@ -863,8 +795,7 @@
                 <label for="cf-reason">Reason for Contact</label>
                 <select id="cf-reason" name="reason" required>
                   <option value="" disabled selected>Select a reason…</option>
-                  <option value="player-trials">Player Trials</option>
-                  <option value="sponsorship">Sponsorship / Partnership</option>
+                      <option value="sponsorship">Sponsorship / Partnership</option>
                   <option value="foundation">Foundation / Community</option>
                   <option value="tournament">Tournament Registration</option>
                   <option value="media">Media / Press Enquiry</option>
@@ -884,15 +815,6 @@
     </section>
 
   </main>
-
-  <div class="sponsors-marquee-wrap" aria-label="Our sponsors and partners">
-    <div class="sponsors-marquee-label">PARTNERS &amp; SPONSORS</div>
-    <div class="sponsors-marquee-track-wrap">
-      <div class="sponsors-marquee-track">
-      </div>
-    </div>
-  </div>
-
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
@@ -917,7 +839,6 @@
           <strong>Get Involved</strong>
           <ul role="list">
             <li><a href="foundation.html">Foundation</a></li>
-            <li><a href="trials.html">Player Trials</a></li>
             <li><a href="sponsors.html">Sponsor Us</a></li>
             <li><a href="https://abcfc.store" target="_blank" rel="noopener">Shop</a></li>
           </ul>
