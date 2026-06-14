@@ -849,6 +849,14 @@
 
     /* Small delay so the page renders first */
     setTimeout(() => { raf = requestAnimationFrame(tick); }, 600);
+
+    /* Stop as soon as the user scrolls */
+    window.addEventListener('scroll', function stopOnScroll() {
+      cancelAnimationFrame(raf);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      canvas.style.display = 'none';
+      window.removeEventListener('scroll', stopOnScroll);
+    }, { passive: true, once: true });
   })();
   </script>
 
