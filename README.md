@@ -4,18 +4,20 @@ Official website for **ABC FC Foundation (NPC)** — African by Choice Football 
 
 ## About
 
-ABC FC Foundation is a registered Non-Profit Company (NPC) founded in May 2023 by **Lucas Tshibalo Mudau, MPA**. The foundation uses the power of football to inspire and support less privileged communities across South Africa, primarily based in Makwarela, Thohoyandou, Limpopo (Vhembe District).
+ABC FC Foundation is a registered Non-Profit Company (NPC) founded by **Lucas Tshibalo Mudau, MPA**. The foundation uses the power of football to inspire and support less privileged communities across South Africa, primarily based in Makwarela, Thohoyandou, Limpopo (Vhembe District).
 
-The club competes in the **Hollywood Bets SAB League** under **SAFA Vhembe Region**.
+The club (African by Choice FC, est. 2008) competes in the **Hollywoodbets Regional League** under **SAFA Vhembe Region**, where it was crowned **Stream I Champions 2025/26**.
 
 ## Club Identity
 
 - **Full Name:** African by Choice Football Club (ABC FC)
-- **Founded:** May 2023
+- **Nickname:** Lion of the North
+- **Founded:** 2008
+- **Home Ground:** Phalama Ground, Mutale
 - **Location:** Makwarela, Thohoyandou, Limpopo, South Africa
-- **League:** Hollywood Bets SAB League — SAFA Vhembe Region
-- **Colours:** Navy Blue (#001F5B), Gold (#FFD700), White (#FFFFFF)
-- **Social:** [Facebook](https://www.facebook.com/ABCUFC) | [Instagram](https://www.instagram.com/abc_united2011/)
+- **League:** Hollywoodbets Regional League — SAFA Vhembe Region (Stream I Champions 2025/26)
+- **Colours:** Amber Gold (#F5A800), Black (#111111), White (#FFFFFF)
+- **Social:** [Facebook](https://www.facebook.com/p/ABC-fc-61556965480952/)
 
 ## Website Sections
 
@@ -46,9 +48,9 @@ The club competes in the **Hollywood Bets SAB League** under **SAFA Vhembe Regio
 
 ## Contact
 
-- Email: abcfcfoundation@gmail.com
-- Phone: +27 71 913 1214 / +27 79 151 1963
-- Location: Makwarela, Thohoyandou, Limpopo, South Africa
+- Email: tshibalo.lucas@gmail.com
+- Phone: +27 71 109 2360
+- Location: Thohoyandou, Vhembe District, Limpopo, South Africa
 
 ---
 

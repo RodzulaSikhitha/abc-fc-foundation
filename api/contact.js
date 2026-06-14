@@ -8,7 +8,12 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, phone, email, interest, message } = req.body;
+  const { name, phone, email, interest, message, hp_field } = req.body;
+
+  // Honeypot: real users never fill this hidden field. Pretend success for bots.
+  if (hp_field) {
+    return res.status(200).json({ success: true });
+  }
 
   // Basic validation
   if (!name || !email || !message) {
@@ -20,7 +25,21 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Email service not configured.' });
   }
 
-  const interestLabel = interest || 'General Enquiry';
+  // Escape user input before embedding in the email HTML to prevent
+  // HTML/link injection in the recipient's mail client.
+  const esc = (v) =>
+    String(v == null ? '' : v)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+
+  const safeName     = esc(name);
+  const safeEmail    = esc(email);
+  const safePhone    = phone ? esc(phone) : 'Not provided';
+  const safeMessage  = esc(message).replace(/\n/g, '<br/>');
+  const interestLabel = interest ? esc(interest) : 'General Enquiry';
 
   const htmlBody = `
     <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#0d0d0d;color:#ffffff;border-radius:12px;overflow:hidden;">
@@ -32,15 +51,15 @@ export default async function handler(req, res) {
         <table style="width:100%;border-collapse:collapse;">
           <tr>
             <td style="padding:10px 0;border-bottom:1px solid #1e1e1e;color:#F5A800;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;width:140px;">Full Name</td>
-            <td style="padding:10px 0;border-bottom:1px solid #1e1e1e;color:#ffffff;font-size:15px;">${name}</td>
+            <td style="padding:10px 0;border-bottom:1px solid #1e1e1e;color:#ffffff;font-size:15px;">${safeName}</td>
           </tr>
           <tr>
             <td style="padding:10px 0;border-bottom:1px solid #1e1e1e;color:#F5A800;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Email</td>
-            <td style="padding:10px 0;border-bottom:1px solid #1e1e1e;color:#ffffff;font-size:15px;"><a href="mailto:${email}" style="color:#F5A800;">${email}</a></td>
+            <td style="padding:10px 0;border-bottom:1px solid #1e1e1e;color:#ffffff;font-size:15px;"><a href="mailto:${safeEmail}" style="color:#F5A800;">${safeEmail}</a></td>
           </tr>
           <tr>
             <td style="padding:10px 0;border-bottom:1px solid #1e1e1e;color:#F5A800;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Phone</td>
-            <td style="padding:10px 0;border-bottom:1px solid #1e1e1e;color:#ffffff;font-size:15px;">${phone || 'Not provided'}</td>
+            <td style="padding:10px 0;border-bottom:1px solid #1e1e1e;color:#ffffff;font-size:15px;">${safePhone}</td>
           </tr>
           <tr>
             <td style="padding:10px 0;border-bottom:1px solid #1e1e1e;color:#F5A800;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Interested In</td>
@@ -48,7 +67,7 @@ export default async function handler(req, res) {
           </tr>
           <tr>
             <td style="padding:10px 0;color:#F5A800;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;vertical-align:top;">Message</td>
-            <td style="padding:10px 0;color:#ffffff;font-size:15px;line-height:1.6;">${message.replace(/\n/g, '<br/>')}</td>
+            <td style="padding:10px 0;color:#ffffff;font-size:15px;line-height:1.6;">${safeMessage}</td>
           </tr>
         </table>
       </div>
@@ -67,9 +86,9 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: 'ABC FC Website <onboarding@resend.dev>',
-        to: ['sikhitha.r@gmail.com'],
+        to: ['tshibalo.lucas@gmail.com', 'sikhitha.r@gmail.com'],
         reply_to: email,
-        subject: `New Enquiry: ${interestLabel} — ${name}`,
+        subject: `New Enquiry: ${interestLabel} — ${safeName}`,
         html: htmlBody,
       }),
     });

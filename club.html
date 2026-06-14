@@ -774,9 +774,9 @@
           <div class="contact-form">
             <h3>Send Us a Message</h3>
             <form id="club-contact-form" onsubmit="handleClubContact(event)">
-              <input type="hidden" name="_replyto" value="tshibalo.lucas@gmail.com" />
-              <input type="hidden" name="_cc" value="sikhitha.r@gmail.com" />
-              <input type="hidden" name="_subject" value="New ABC FC website enquiry" />
+              <!-- Honeypot: hidden from humans, bots tend to fill it -->
+              <input type="text" name="hp_field" tabindex="-1" autocomplete="off" aria-hidden="true"
+                     style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
               <div class="form-row">
                 <div class="form-group">
                   <label for="cf-name">Full Name</label>
@@ -793,7 +793,7 @@
               </div>
               <div class="form-group">
                 <label for="cf-reason">Reason for Contact</label>
-                <select id="cf-reason" name="reason" required>
+                <select id="cf-reason" name="interest" required>
                   <option value="" disabled selected>Select a reason…</option>
                       <option value="sponsorship">Sponsorship / Partnership</option>
                   <option value="foundation">Foundation / Community</option>
@@ -902,6 +902,7 @@
           email: formData.get('email'),
           interest: formData.get('interest'),
           message: formData.get('message'),
+          hp_field: formData.get('hp_field'),
         };
         const res = await fetch('/api/contact', {
           method: 'POST',

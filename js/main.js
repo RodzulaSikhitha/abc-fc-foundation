@@ -130,26 +130,97 @@ function closeMobileNav() {
   targets.forEach(el => io.observe(el));
 })();
 
-// ── Contact Form ──────────────────────────────────────────
+// ── Contact Form (real submit → /api/contact) ─────────────
+// Pages that load main.js and contain a #contact-form without their own
+// dedicated handler (e.g. index.html) are wired up here. Pages that define
+// their own submit handler (club.html, tournament4.html) opt out by NOT
+// using the id "contact-form", or by setting data-custom-handler.
 (function () {
   const form = document.getElementById('contact-form');
-  if (!form) return;
+  if (!form || form.hasAttribute('data-custom-handler')) return;
 
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
-    const btn = form.querySelector('button[type="submit"]');
-    const orig = btn.textContent;
-    btn.textContent = '✓ Message Sent!';
-    btn.style.background = '#28a745';
-    btn.disabled = true;
+    const btn  = form.querySelector('button[type="submit"]');
+    const orig = btn ? btn.textContent : '';
+    let feedback = form.querySelector('[data-form-feedback]');
+    if (!feedback) {
+      feedback = document.createElement('p');
+      feedback.setAttribute('data-form-feedback', '');
+      feedback.style.cssText = 'margin-top:12px;font-size:14px;font-weight:600;';
+      form.appendChild(feedback);
+    }
 
-    setTimeout(() => {
-      btn.textContent = orig;
-      btn.style.background = '';
-      btn.disabled = false;
-      form.reset();
-    }, 3000);
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+    feedback.textContent = '';
+
+    try {
+      const fd = new FormData(form);
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name:     fd.get('name'),
+          phone:    fd.get('phone'),
+          email:    fd.get('email'),
+          interest: fd.get('interest'),
+          message:  fd.get('message'),
+          hp_field: fd.get('hp_field'), // honeypot — left blank by humans
+        }),
+      });
+
+      if (res.ok) {
+        feedback.textContent = 'Message sent! We will get back to you within 48 hours.';
+        feedback.style.color = '#28a745';
+        form.reset();
+      } else {
+        feedback.textContent = 'Something went wrong. Please email us at tshibalo.lucas@gmail.com';
+        feedback.style.color = '#dc3545';
+      }
+    } catch {
+      feedback.textContent = 'Connection error. Please email us at tshibalo.lucas@gmail.com';
+      feedback.style.color = '#dc3545';
+    } finally {
+      if (btn) { btn.disabled = false; btn.textContent = orig || 'Send Message'; }
+    }
   });
+})();
+
+// ── Cookie Consent Banner ─────────────────────────────────
+(function () {
+  const banner = document.getElementById('cookie-banner');
+  if (!banner) return;
+
+  const STORAGE_KEY = 'abcfc-cookie-consent';
+  const modal       = document.getElementById('cookie-modal');
+  const accept      = document.getElementById('cookie-accept');
+  const decline     = document.getElementById('cookie-decline');
+  const learnMore   = document.getElementById('cookie-learn-more');
+  const modalClose  = document.getElementById('cookie-modal-close');
+  const modalAccept = document.getElementById('cookie-modal-accept');
+
+  function showBanner()  { banner.style.display = 'block'; }
+  function hideBanner()  { banner.style.display = 'none'; }
+  function showModal()   { if (modal) modal.style.display = 'block'; }
+  function hideModal()   { if (modal) modal.style.display = 'none'; }
+
+  function setConsent(value) {
+    try { localStorage.setItem(STORAGE_KEY, value); } catch (_) {}
+    hideModal();
+    hideBanner();
+  }
+
+  // Only prompt if the visitor has not chosen yet
+  let saved = null;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch (_) {}
+  if (!saved) showBanner();
+
+  if (accept)      accept.addEventListener('click', () => setConsent('accepted'));
+  if (modalAccept) modalAccept.addEventListener('click', () => setConsent('accepted'));
+  if (decline)     decline.addEventListener('click', () => setConsent('declined'));
+  if (learnMore)   learnMore.addEventListener('click', e => { e.preventDefault(); showModal(); });
+  if (modalClose)  modalClose.addEventListener('click', hideModal);
+  if (modal) modal.addEventListener('click', e => { if (e.target === modal) hideModal(); });
 })();
 
 // ── Facebook iframe fallback ──────────────────────────────
