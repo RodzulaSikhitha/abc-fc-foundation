@@ -654,5 +654,205 @@
   </div>
 
   <script src="js/main.js"></script>
+
+  <!-- ▓▓ CHAMPIONSHIP CELEBRATION — confetti + crest ring ▓▓ -->
+  <canvas id="confetti-canvas" aria-hidden="true" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999;"></canvas>
+
+  <style>
+    /* ── Spinning gold star ring around the crest ─────── */
+    .hero-crest-wrap { isolation: isolate; }
+
+    /* Trophy crown badge */
+    .champ-crown {
+      position: absolute;
+      top: -18px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(135deg,#F5A800,#ffd760);
+      color: #000;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 10px; letter-spacing: .16em;
+      padding: 4px 10px; border-radius: 20px;
+      white-space: nowrap;
+      box-shadow: 0 4px 18px rgba(245,168,0,0.55);
+      animation: crown-bounce 2.4s ease-in-out infinite;
+      z-index: 2;
+    }
+    @keyframes crown-bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(-4px); }
+    }
+
+    /* Orbit ring */
+    .champ-orbit {
+      position: absolute;
+      inset: -22px;
+      border-radius: 50%;
+      border: 1.5px dashed rgba(245,168,0,0.25);
+      animation: orbit-spin 18s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .champ-orbit::before,
+    .champ-orbit::after {
+      content: '★';
+      position: absolute;
+      font-size: 12px;
+      color: #F5A800;
+      filter: drop-shadow(0 0 6px rgba(245,168,0,0.9));
+    }
+    .champ-orbit::before { top: -8px;   left: 50%; transform: translateX(-50%); }
+    .champ-orbit::after  { bottom: -8px; left: 50%; transform: translateX(-50%); }
+
+    .champ-orbit-2 {
+      position: absolute;
+      inset: -22px;
+      border-radius: 50%;
+      animation: orbit-spin 18s linear infinite reverse;
+      animation-delay: -9s;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .champ-orbit-2::before,
+    .champ-orbit-2::after {
+      content: '✦';
+      position: absolute;
+      font-size: 10px;
+      color: rgba(245,168,0,0.7);
+    }
+    .champ-orbit-2::before { top: 50%; right: -9px; transform: translateY(-50%); }
+    .champ-orbit-2::after  { top: 50%; left: -9px;  transform: translateY(-50%); }
+
+    @keyframes orbit-spin { to { transform: rotate(360deg); } }
+
+    /* Gold shimmer border on the crest */
+    .hero-crest {
+      border: 3px solid #F5A800 !important;
+      box-shadow:
+        0 0 0 6px rgba(245,168,0,0.12),
+        0 0 0 12px rgba(245,168,0,0.06),
+        0 0 60px rgba(245,168,0,0.35) !important;
+      animation: crest-shimmer 3s ease-in-out infinite !important;
+    }
+    @keyframes crest-shimmer {
+      0%,100% { box-shadow: 0 0 0 6px rgba(245,168,0,0.12), 0 0 0 12px rgba(245,168,0,0.06), 0 0 60px rgba(245,168,0,0.35); }
+      50%      { box-shadow: 0 0 0 6px rgba(245,168,0,0.22), 0 0 0 14px rgba(245,168,0,0.1),  0 0 90px rgba(245,168,0,0.55); }
+    }
+  </style>
+
+  <script>
+  (function () {
+    /* ── 1. Inject orbit rings + crown badge into hero-crest-wrap ── */
+    const wrap = document.querySelector('.hero-crest-wrap');
+    if (wrap) {
+      wrap.insertAdjacentHTML('beforeend',
+        '<div class="champ-crown">Champions 2025/26</div>' +
+        '<div class="champ-orbit" aria-hidden="true"></div>' +
+        '<div class="champ-orbit-2" aria-hidden="true"></div>'
+      );
+    }
+
+    /* ── 2. Canvas confetti burst ───────────────────────────────── */
+    const canvas = document.getElementById('confetti-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+
+    /* Colour palette — gold, white, black, amber */
+    const COLOURS = ['#F5A800','#ffd760','#ffffff','#ffb700','#ffe29a','#fff0b3'];
+    const SHAPES  = ['rect','circle','star'];
+
+    /* Generate particles */
+    const TOTAL = 180;
+    const particles = [];
+
+    for (let i = 0; i < TOTAL; i++) {
+      const angle = (Math.random() * Math.PI * 2);
+      const speed = 3 + Math.random() * 6;
+      /* Launch from centre of viewport */
+      particles.push({
+        x:      canvas.width  * 0.5,
+        y:      canvas.height * 0.38,
+        vx:     Math.cos(angle) * speed,
+        vy:     Math.sin(angle) * speed - (3 + Math.random() * 4), /* upward bias */
+        size:   4 + Math.random() * 7,
+        colour: COLOURS[Math.floor(Math.random() * COLOURS.length)],
+        shape:  SHAPES[Math.floor(Math.random() * SHAPES.length)],
+        rot:    Math.random() * Math.PI * 2,
+        rotV:   (Math.random() - 0.5) * 0.18,
+        alpha:  1,
+        decay:  0.010 + Math.random() * 0.008,
+        gravity:0.18 + Math.random() * 0.12,
+        wobble: Math.random() * Math.PI * 2,
+        wobbleS:0.05 + Math.random() * 0.08,
+      });
+    }
+
+    function drawStar(cx, cy, r, ctx) {
+      ctx.beginPath();
+      for (let i = 0; i < 5; i++) {
+        const a1 = (i * 4 * Math.PI / 5) - Math.PI / 2;
+        const a2 = (i * 4 * Math.PI / 5 + 2 * Math.PI / 5) - Math.PI / 2;
+        ctx.lineTo(cx + r * Math.cos(a1), cy + r * Math.sin(a1));
+        ctx.lineTo(cx + r * 0.4 * Math.cos(a2), cy + r * 0.4 * Math.sin(a2));
+      }
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    let frame = 0;
+    let raf;
+    function tick() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      let alive = false;
+
+      for (const p of particles) {
+        if (p.alpha <= 0) continue;
+        alive = true;
+
+        p.wobble += p.wobbleS;
+        p.vx += Math.cos(p.wobble) * 0.04;
+        p.vy += p.gravity;
+        p.x  += p.vx;
+        p.y  += p.vy;
+        p.rot += p.rotV;
+        p.alpha -= p.decay;
+
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, p.alpha);
+        ctx.fillStyle   = p.colour;
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+
+        if (p.shape === 'rect') {
+          ctx.fillRect(-p.size / 2, -p.size / 4, p.size, p.size / 2);
+        } else if (p.shape === 'circle') {
+          ctx.beginPath();
+          ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+          ctx.fill();
+        } else {
+          drawStar(0, 0, p.size / 2, ctx);
+        }
+        ctx.restore();
+      }
+
+      frame++;
+      if (alive && frame < 600) {
+        raf = requestAnimationFrame(tick);
+      } else {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        canvas.style.display = 'none';
+      }
+    }
+
+    /* Small delay so the page renders first */
+    setTimeout(() => { raf = requestAnimationFrame(tick); }, 600);
+  })();
+  </script>
+
 </body>
 </html>
