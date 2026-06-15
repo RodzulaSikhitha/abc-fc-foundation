@@ -118,13 +118,28 @@ function parseFixtures(html) {
     });
   }
 
-  return fixtures;
+  // Strip fixtures whose date has already passed
+  return fixtures.filter(f => isFutureOrToday(f.date));
+}
+
+// Returns true if dateStr (e.g. "Tue 16 Jun" or "16 Jun 2026") is today or in the future
+function isFutureOrToday(dateStr) {
+  const months = { jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11 };
+  const parts = (dateStr || '').toLowerCase().split(/[\s,]+/);
+  let day = null, month = null, year = new Date().getFullYear();
+  for (const p of parts) {
+    if (/^\d{4}$/.test(p))                              year  = parseInt(p);
+    else if (/^\d{1,2}$/.test(p) && +p >= 1 && +p <= 31) day = parseInt(p);
+    else { for (const [m, idx] of Object.entries(months)) { if (p.startsWith(m)) { month = idx; break; } } }
+  }
+  if (day === null || month === null) return true; // keep if unparseable
+  const today = new Date(); today.setHours(0,0,0,0);
+  return new Date(year, month, day) >= today;
 }
 
 // Fallback static fixtures (used when Inqaku is unreachable)
+// Always filtered by isFutureOrToday at runtime so past dates are never shown.
 const FALLBACK_FIXTURES = [
-  { date: 'Sat 13 Jun', opponent: 'Mukondeni Shoe Shine Boys FC', isHome: true, venue: 'Phalama Ground', time: '15:30', type: 'HOME' },
-  { date: 'Sun 14 Jun', opponent: 'Tshikundamalema Waterfall FC', isHome: false, venue: 'Away — TBC', time: '15:30', type: 'AWAY' },
   { date: 'Tue 16 Jun', opponent: 'Mahenic FC', isHome: false, venue: 'Away — TBC', time: '15:30', type: 'AWAY' },
   { date: 'Sat 20 Jun', opponent: 'Lukau Tshishivhe Tigerboys', isHome: true, venue: 'Phalama Ground', time: '15:30', type: 'HOME' },
   { date: 'Sun 21 Jun', opponent: 'Lurangwe FC', isHome: false, venue: 'Away — TBC', time: '15:30', type: 'AWAY' },

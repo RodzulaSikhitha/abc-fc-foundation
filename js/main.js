@@ -296,13 +296,12 @@ function closeMobileNav() {
    REAL-TIME DATA — Vercel Serverless API
    Fetches fixtures, results and league table live from Inqaku
    via /api/* serverless functions on every page load.
+   Auto-refreshes every 5 minutes without a page reload.
    Falls back gracefully to static HTML if fetch fails.
    ============================================================ */
 
-// Determine the API base URL:
-// - On Vercel production: same domain, e.g. /api/fixtures
-// - In local dev (file://) or non-Vercel hosts: relative path still works if served
 const API_BASE = '';
+const REFRESH_MS = 5 * 60 * 1000; // 5 minutes
 
 // ── Skeleton loader helper ─────────────────────────────────
 function showSkeleton(container, rows = 3) {
@@ -318,53 +317,126 @@ function showSkeleton(container, rows = 3) {
 
 // ── Timestamp badge ────────────────────────────────────────
 function renderTimestamp(container, iso, source) {
-  const ts = document.createElement('p');
-  ts.style.cssText = 'font-size:11px;color:var(--text-muted);margin-top:10px;text-align:right;letter-spacing:0.03em;';
+  let ts = container.querySelector('[data-ts]');
+  if (!ts) {
+    ts = document.createElement('p');
+    ts.setAttribute('data-ts', '');
+    ts.style.cssText = 'font-size:11px;color:var(--text-muted);margin-top:10px;text-align:right;letter-spacing:0.03em;';
+    container.appendChild(ts);
+  }
   const d = new Date(iso);
   const formatted = d.toLocaleString('en-ZA', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Africa/Johannesburg' });
   ts.textContent = source === 'inqaku'
     ? `Live · Updated ${formatted}`
     : `Cached data · ${formatted}`;
-  container.appendChild(ts);
 }
 
-// ── FIXTURES ──────────────────────────────────────────────
-(function loadFixtures() {
-  const section = document.getElementById('fixtures');
-  if (!section) return;
-
-  // Find the fixtures grid — look for the existing fixture list container
-  let grid = section.querySelector('.fixtures-list, .fixture-grid, [data-fixtures-container]');
-  if (!grid) {
-    // Create a container below the section heading
-    grid = document.createElement('div');
-    grid.setAttribute('data-fixtures-container', '');
-    grid.style.cssText = 'margin-top:24px;';
-    const heading = section.querySelector('h2, .section-label');
-    if (heading && heading.parentNode) {
-      heading.parentNode.insertBefore(grid, heading.nextSibling);
-    } else {
-      section.appendChild(grid);
-    }
+// ── Parse date string into { dayName, dd, mon } ───────────
+function parseDateParts(dateStr) {
+  const DAY_NAMES  = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+  const MON_ABBRS  = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  const parts = (dateStr || '').trim().split(/[\s,]+/);
+  let dayName = '', dd = '', mon = '';
+  for (const p of parts) {
+    const u = p.toUpperCase();
+    if (DAY_NAMES.includes(u))                                        dayName = u;
+    else if (/^\d{1,2}$/.test(p) && +p <= 31)                        dd = p;
+    else if (MON_ABBRS.some(m => u.startsWith(m)))                   mon = u.substring(0, 3);
   }
+  if (!dayName && dd && mon) {
+    try {
+      const yr = new Date().getFullYear();
+      const dt = new Date(`${dd} ${mon} ${yr}`);
+      if (!isNaN(dt.getTime())) dayName = DAY_NAMES[dt.getDay()];
+    } catch (_) {}
+  }
+  return { dayName, dd, mon };
+}
 
-  showSkeleton(grid, 5);
+// ── SVG icons reused across renderers ─────────────────────
+const SVG_CLOCK = `<svg class="icon-shield-clock" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10 1L2 4.5V10.5C2 15.2 5.4 19.6 10 21C14.6 19.6 18 15.2 18 10.5V4.5L10 1Z" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="10" cy="11" r="4.5" fill="none" stroke="currentColor" stroke-width="1.2"/><line x1="10" y1="11" x2="10" y2="8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><line x1="10" y1="11" x2="12.5" y2="11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`;
+const SVG_PITCH = `<svg class="icon-shield-pitch" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 1L1.5 4V10C1.5 14.4 4.8 18.4 9 19.6C13.2 18.4 16.5 14.4 16.5 10V4L9 1Z" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="9" cy="10.5" r="3.2" fill="none" stroke="currentColor" stroke-width="1.1"/><circle cx="9" cy="10.5" r="0.9" fill="currentColor"/></svg>`;
+
+// ── FIXTURES ──────────────────────────────────────────────
+function fetchAndRenderFixtures() {
+  const fixturesSection    = document.getElementById('fixtures');
+  const allFixturesSection = document.getElementById('all-fixtures');
+  if (!fixturesSection && !allFixturesSection) return;
 
   fetch(`${API_BASE}/api/fixtures`)
     .then(r => r.json())
     .then(data => {
-      if (!data.fixtures || data.fixtures.length === 0) {
-        grid.innerHTML = '<p style="color:var(--text-muted);font-size:14px;padding:20px 0;">No upcoming fixtures found.</p>';
-        return;
+      const fixtures = data.fixtures || [];
+      if (!fixtures.length) return;
+
+      // "Next Match" — rendered silently into any [data-next-match] or [data-next-match-only] container
+      if (fixturesSection) {
+        const nextEl = fixturesSection.querySelector('[data-next-match],[data-next-match-only]');
+        if (nextEl) {
+          renderNextMatch(nextEl, fixtures[0]);
+        }
       }
-      renderFixtures(grid, data.fixtures);
-      renderTimestamp(grid, data.fetchedAt, data.source);
+
+      // Update ticker spans with live next match info
+      const { dayName: tDay, dd: tDd, mon: tMon } = parseDateParts(fixtures[0].date);
+      const tickerText = `NEXT: ABC FC vs ${fixtures[0].opponent} ${tDay} ${tDd} ${tMon} · ${fixtures[0].time} · ${fixtures[0].isHome ? 'HOME' : 'AWAY'} · ${fixtures[0].venue}`;
+      document.querySelectorAll('[data-ticker-next]').forEach(el => { el.textContent = tickerText; });
+
+      // "All Fixtures" — render remaining fixtures (skip first, already shown in Next Match)
+      if (allFixturesSection) {
+        const grid = allFixturesSection.querySelector('.fixtures-list, [data-fixtures-container]');
+        if (grid) {
+          const rest = fixtures.length > 1 ? fixtures.slice(1) : fixtures;
+          renderFxRows(grid, rest);
+          renderTimestamp(grid, data.fetchedAt, data.source);
+        }
+      }
     })
-    .catch(() => {
-      // Leave static HTML in place if API unreachable
-      grid.style.display = 'none';
-    });
-})();
+    .catch(() => {});
+}
+
+// Renders a list of fixtures in .fx-row style (used for "All Fixtures" sections)
+function renderFxRows(container, fixtures) {
+  container.innerHTML = fixtures.map(f => fxRowHTML(f)).join('');
+}
+
+// Renders a single fixture in .fx-row style (used for "Next Match" sections)
+function renderNextMatch(container, f) {
+  container.innerHTML = fxRowHTML(f);
+}
+
+function fxRowHTML(f) {
+  const { dayName, dd, mon } = parseDateParts(f.date);
+  const abbr = (f.opponent || '').split(/\s+/).map(w => w[0]).join('').substring(0, 3).toUpperCase();
+  const isHome = f.isHome;
+  return `
+    <div class="fx-row ${isHome ? 'fx-home' : 'fx-away'}">
+      <div class="fx-date-col">
+        <span class="fx-day">${dayName}</span>
+        <span class="fx-dd">${dd}</span>
+        <span class="fx-mon">${mon}</span>
+      </div>
+      <div class="fx-badge-col">
+        <span class="fx-type ${isHome ? 'home' : 'away'}">${isHome ? 'HOME' : 'AWAY'}</span>
+      </div>
+      <div class="fx-teams-col">
+        <div class="fx-team">
+          <img src="images/abc-fc-logo.jpeg" alt="ABC FC" class="fx-crest" />
+          <span class="fx-tname">ABC FC</span>
+        </div>
+        <div class="fx-vs">VS</div>
+        <div class="fx-team fx-team-right">
+          <span class="fx-crest-abbr">${abbr}</span>
+          <span class="fx-tname">${f.opponent || 'TBC'}</span>
+        </div>
+      </div>
+      <div class="fx-meta-col">
+        <span class="fx-time"><span class="fx-ko">${SVG_CLOCK}</span> ${f.time || 'TBC'}</span>
+        <span class="fx-venue"><span class="fx-ground-dot">${SVG_PITCH}</span> ${f.venue || 'TBC'}</span>
+        <span class="fx-comp">${f.competition || 'Hollywoodbets Regional League'}</span>
+      </div>
+    </div>`;
+}
 
 function renderFixtures(container, fixtures) {
   container.innerHTML = fixtures.map(f => `
@@ -396,7 +468,7 @@ function renderFixtures(container, fixtures) {
 }
 
 // ── RESULTS ───────────────────────────────────────────────
-(function loadResults() {
+function fetchAndRenderResults() {
   const section = document.getElementById('results');
   if (!section) return;
 
@@ -406,11 +478,8 @@ function renderFixtures(container, fixtures) {
     grid.setAttribute('data-results-container', '');
     grid.style.cssText = 'margin-top:24px;';
     const heading = section.querySelector('h2, .section-label');
-    if (heading && heading.parentNode) {
-      heading.parentNode.insertBefore(grid, heading.nextSibling);
-    } else {
-      section.appendChild(grid);
-    }
+    if (heading && heading.parentNode) heading.parentNode.insertBefore(grid, heading.nextSibling);
+    else section.appendChild(grid);
   }
 
   showSkeleton(grid, 5);
@@ -418,17 +487,15 @@ function renderFixtures(container, fixtures) {
   fetch(`${API_BASE}/api/results`)
     .then(r => r.json())
     .then(data => {
-      if (!data.results || data.results.length === 0) {
+      if (!data.results || !data.results.length) {
         grid.innerHTML = '<p style="color:var(--text-muted);font-size:14px;padding:20px 0;">No recent results found.</p>';
         return;
       }
       renderResults(grid, data.results);
       renderTimestamp(grid, data.fetchedAt, data.source);
     })
-    .catch(() => {
-      grid.style.display = 'none';
-    });
-})();
+    .catch(() => { grid.style.display = 'none'; });
+}
 
 function renderResults(container, results) {
   const outcomeColor = { W: '#28a745', D: '#F5A800', L: '#dc3545' };
@@ -450,30 +517,24 @@ function renderResults(container, results) {
 }
 
 // ── LEAGUE TABLE ──────────────────────────────────────────
-(function loadTable() {
+function fetchAndRenderTable() {
   const section = document.getElementById('table');
   if (!section) return;
 
-  const existingTop    = document.getElementById('table-top');
-  const existingExtra  = document.getElementById('table-extra');
-  const showBtn        = document.getElementById('show-full-table');
-
-  // We'll replace the tbody content of an existing table, or build a fresh one
+  const existingTop   = document.getElementById('table-top');
+  const existingExtra = document.getElementById('table-extra');
+  const showBtn       = document.getElementById('show-full-table');
   let tableEl = section.querySelector('table');
-  let tbody    = tableEl ? tableEl.querySelector('tbody') : null;
-
-  // If no table found, create wrapper
+  let tbody   = tableEl ? tableEl.querySelector('tbody') : null;
   let wrapper = section.querySelector('[data-table-container]');
+
   if (!tableEl) {
     wrapper = document.createElement('div');
     wrapper.setAttribute('data-table-container', '');
     wrapper.style.cssText = 'margin-top:24px;overflow-x:auto;';
     const heading = section.querySelector('h2, .section-label');
-    if (heading && heading.parentNode) {
-      heading.parentNode.insertBefore(wrapper, heading.nextSibling);
-    } else {
-      section.appendChild(wrapper);
-    }
+    if (heading && heading.parentNode) heading.parentNode.insertBefore(wrapper, heading.nextSibling);
+    else section.appendChild(wrapper);
     showSkeleton(wrapper, 6);
   } else if (tbody) {
     showSkeleton(tbody, 6);
@@ -482,16 +543,12 @@ function renderResults(container, results) {
   fetch(`${API_BASE}/api/table`)
     .then(r => r.json())
     .then(data => {
-      if (!data.table || data.table.length === 0) return; // keep static HTML
-
+      if (!data.table || !data.table.length) return;
       if (tableEl && tbody) {
-        // Update existing table rows in place
         renderTableRows(tbody, data.table, existingTop, existingExtra, showBtn);
       } else if (wrapper) {
         renderFullTable(wrapper, data.table);
       }
-
-      // Update the timestamp indicator in the section
       let ts = section.querySelector('[data-table-ts]');
       if (!ts) {
         ts = document.createElement('p');
@@ -501,19 +558,14 @@ function renderResults(container, results) {
       }
       const d = new Date(data.fetchedAt);
       const formatted = d.toLocaleString('en-ZA', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Africa/Johannesburg' });
-      ts.textContent = data.source === 'inqaku'
-        ? `Live · Updated ${formatted}`
-        : `Cached data · ${formatted}`;
+      ts.textContent = data.source === 'inqaku' ? `Live · Updated ${formatted}` : `Cached data · ${formatted}`;
     })
-    .catch(() => {
-      // Keep static HTML table intact
-    });
-})();
+    .catch(() => {});
+}
 
 function renderTableRows(tbody, teams, topEl, extraEl, showBtn) {
   const top   = teams.slice(0, 10);
   const extra = teams.slice(10);
-
   function rowHTML(t) {
     const isABC = t.team.toLowerCase().includes('abc');
     return `<tr style="${isABC ? 'background:rgba(245,168,0,0.12);font-weight:800;' : ''}">
@@ -525,7 +577,6 @@ function renderTableRows(tbody, teams, topEl, extraEl, showBtn) {
       <td style="padding:10px 12px;text-align:center;font-variant-numeric:tabular-nums;font-weight:800;color:var(--gold,#F5A800);">${t.pts}</td>
     </tr>`;
   }
-
   if (topEl) topEl.innerHTML = top.map(rowHTML).join('');
   if (extraEl) extraEl.innerHTML = extra.map(rowHTML).join('');
 }
@@ -540,7 +591,6 @@ function renderFullTable(container, teams) {
     <td style="padding:10px 8px;text-align:center;">${t.lost}</td>
     <td style="padding:10px 12px;text-align:center;font-weight:800;color:var(--gold,#F5A800);">${t.pts}</td>
   </tr>`;
-
   container.innerHTML = `
     <table style="width:100%;border-collapse:collapse;font-size:13px;">
       <thead>
@@ -554,9 +604,19 @@ function renderFullTable(container, teams) {
         </tr>
       </thead>
       <tbody>${teams.map(rowHTML).join('')}</tbody>
-    </table>
-  `;
+    </table>`;
 }
+
+// ── Initial load + 5-minute auto-refresh ──────────────────
+fetchAndRenderFixtures();
+fetchAndRenderResults();
+fetchAndRenderTable();
+
+setInterval(() => {
+  fetchAndRenderFixtures();
+  fetchAndRenderResults();
+  fetchAndRenderTable();
+}, REFRESH_MS);
 
 // Dynamic copyright year
 const fy = document.getElementById('footer-year'); if (fy) fy.textContent = new Date().getFullYear();
