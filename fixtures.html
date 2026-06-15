@@ -186,15 +186,15 @@
         </div>
 
         <div class="fixtures-list" data-next-match-only>
-          <!-- Next match highlighted -->
-          <div class="fx-row fx-home fx-next-highlight" data-reveal>
+          <!-- Next match highlighted — updated by API on load -->
+          <div class="fx-row fx-away fx-next-highlight" data-reveal>
             <div class="fx-date-col">
-              <span class="fx-day">SAT</span>
-              <span class="fx-dd">13</span>
+              <span class="fx-day">TUE</span>
+              <span class="fx-dd">16</span>
               <span class="fx-mon">JUN</span>
             </div>
             <div class="fx-badge-col">
-              <span class="fx-type home">HOME</span>
+              <span class="fx-type away">AWAY</span>
             </div>
             <div class="fx-teams-col">
               <div class="fx-team">
@@ -203,8 +203,8 @@
               </div>
               <div class="fx-vs">VS</div>
               <div class="fx-team fx-team-right">
-                <span class="fx-crest-abbr">MSB</span>
-                <span class="fx-tname">Mukondeni Shoe Shine Boys</span>
+                <span class="fx-crest-abbr">MAH</span>
+                <span class="fx-tname">Mahenic FC</span>
               </div>
             </div>
             <div class="fx-meta-col">
@@ -213,12 +213,12 @@
     <circle cx="10" cy="11" r="4.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
     <line x1="10" y1="11" x2="10" y2="8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
     <line x1="10" y1="11" x2="12.5" y2="11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-  </svg></span> 15:00</span>
+  </svg></span> 15:30</span>
               <span class="fx-venue"><span class="fx-ground-dot"><svg class="icon-shield-pitch" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M9 1L1.5 4V10C1.5 14.4 4.8 18.4 9 19.6C13.2 18.4 16.5 14.4 16.5 10V4L9 1Z" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
     <circle cx="9" cy="10.5" r="3.2" fill="none" stroke="currentColor" stroke-width="1.1"/>
     <circle cx="9" cy="10.5" r="0.9" fill="currentColor"/>
-  </svg></span> Phalama Ground</span>
+  </svg></span> Away — TBC</span>
               <span class="fx-comp">Hollywoodbets Regional League</span>
             </div>
           </div>
@@ -237,40 +237,7 @@
         </div>
 
         <div class="fixtures-list">
-          <div class="fx-row fx-away" data-reveal>
-            <div class="fx-date-col">
-              <span class="fx-day">SUN</span>
-              <span class="fx-dd">14</span>
-              <span class="fx-mon">JUN</span>
-            </div>
-            <div class="fx-badge-col"><span class="fx-type away">AWAY</span></div>
-            <div class="fx-teams-col">
-              <div class="fx-team">
-                <img src="images/abc-fc-logo.jpeg" alt="ABC FC" class="fx-crest" />
-                <span class="fx-tname">ABC FC</span>
-              </div>
-              <div class="fx-vs">VS</div>
-              <div class="fx-team fx-team-right">
-                <span class="fx-crest-abbr">TWF</span>
-                <span class="fx-tname">Tshikundamalema Waterfall</span>
-              </div>
-            </div>
-            <div class="fx-meta-col">
-              <span class="fx-time"><span class="fx-ko"><svg class="icon-shield-clock" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M10 1L2 4.5V10.5C2 15.2 5.4 19.6 10 21C14.6 19.6 18 15.2 18 10.5V4.5L10 1Z" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-    <circle cx="10" cy="11" r="4.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
-    <line x1="10" y1="11" x2="10" y2="8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-    <line x1="10" y1="11" x2="12.5" y2="11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-  </svg></span> 15:00</span>
-              <span class="fx-venue"><span class="fx-ground-dot"><svg class="icon-shield-pitch" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M9 1L1.5 4V10C1.5 14.4 4.8 18.4 9 19.6C13.2 18.4 16.5 14.4 16.5 10V4L9 1Z" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-    <circle cx="9" cy="10.5" r="3.2" fill="none" stroke="currentColor" stroke-width="1.1"/>
-    <circle cx="9" cy="10.5" r="0.9" fill="currentColor"/>
-  </svg></span> Phalama Ground</span>
-              <span class="fx-comp">Hollywoodbets Regional League</span>
-            </div>
-          </div>
-
+          <!-- Populated by API; static rows below are fallback only -->
           <div class="fx-row" data-reveal>
             <div class="fx-date-col">
               <span class="fx-day">TUE</span>
