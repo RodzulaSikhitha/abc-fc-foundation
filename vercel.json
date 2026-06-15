@@ -9,13 +9,16 @@
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Permissions-Policy": "geolocation=(), microphone=(), camera=()",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
-        "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://connect.facebook.net https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.fbcdn.net https://*.facebook.com; frame-src https://www.facebook.com https://web.facebook.com; connect-src 'self' https://vitals.vercel-insights.com https://*.facebook.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; form-action 'self'"
+        "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://connect.facebook.net https://static.xx.fbcdn.net https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.fbcdn.net https://*.facebook.com; frame-src https://www.facebook.com https://web.facebook.com; connect-src 'self' https://vitals.vercel-insights.com https://*.facebook.com https://www.facebook.com https://graph.facebook.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; form-action 'self'"
       },
       "continue": true
     },
+    { "src": "^/index\\.html$", "dest": "/", "status": 301 },
+    { "src": "^/(.+)\\.html$", "dest": "/$1", "status": 301 },
     { "src": "/api/(.*)", "dest": "/api/$1" },
     { "src": "/store/(.*)", "dest": "/store/$1" },
     { "src": "/store", "dest": "/store/index.html" },
+    { "src": "^/([a-zA-Z0-9_-]+)$", "dest": "/$1.html" },
     { "src": "/(.*)", "dest": "/$1" }
   ]
 }

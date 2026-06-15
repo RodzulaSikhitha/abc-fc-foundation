@@ -377,6 +377,11 @@ function fetchAndRenderFixtures() {
         }
       }
 
+      // Update ticker spans with live next match info
+      const { dayName: tDay, dd: tDd, mon: tMon } = parseDateParts(fixtures[0].date);
+      const tickerText = `NEXT: ABC FC vs ${fixtures[0].opponent} ${tDay} ${tDd} ${tMon} · ${fixtures[0].time} · ${fixtures[0].isHome ? 'HOME' : 'AWAY'} · ${fixtures[0].venue}`;
+      document.querySelectorAll('[data-ticker-next]').forEach(el => { el.textContent = tickerText; });
+
       // "All Fixtures" — render remaining fixtures (skip first, already shown in Next Match)
       if (allFixturesSection) {
         const grid = allFixturesSection.querySelector('.fixtures-list, [data-fixtures-container]');
