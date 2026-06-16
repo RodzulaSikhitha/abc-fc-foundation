@@ -32,7 +32,8 @@ export default async function handler(req, res) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
+  const fromEmail = process.env.FROM_EMAIL;
+  if (!apiKey || !fromEmail) {
     return res.status(500).json({ error: 'Email service not configured.' });
   }
 
@@ -96,7 +97,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: process.env.FROM_EMAIL || 'ABC FC Website <onboarding@resend.dev>',
+        from: fromEmail,
         to: ['tshibalo.lucas@gmail.com', 'sikhitha.r@gmail.com'],
         reply_to: email,
         subject: `New Enquiry: ${interestLabel} — ${safeName}`,
