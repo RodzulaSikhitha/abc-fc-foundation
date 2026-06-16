@@ -96,7 +96,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'ABC FC Website <onboarding@resend.dev>',
+        from: process.env.FROM_EMAIL || 'ABC FC Website <onboarding@resend.dev>',
         to: ['tshibalo.lucas@gmail.com', 'sikhitha.r@gmail.com'],
         reply_to: email,
         subject: `New Enquiry: ${interestLabel} — ${safeName}`,
