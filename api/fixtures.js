@@ -112,7 +112,7 @@ function parseFixtures(html) {
       date: dateStr,
       opponent: opponent || 'TBC',
       isHome,
-      venue: isHome ? 'Phalama Ground' : (venue !== 'TBC' ? venue : 'Away — TBC'),
+      venue: isHome ? 'Makonde Stadium' : (venue !== 'TBC' ? venue : 'Away — TBC'),
       time: time || '15:30',
       type: isHome ? 'HOME' : 'AWAY',
     });
@@ -141,9 +141,9 @@ function isFutureOrToday(dateStr) {
 // Always filtered by isFutureOrToday at runtime so past dates are never shown.
 const FALLBACK_FIXTURES = [
   { date: 'Tue 16 Jun', opponent: 'Mahenic FC', isHome: false, venue: 'Away — TBC', time: '15:30', type: 'AWAY' },
-  { date: 'Sat 20 Jun', opponent: 'Lukau Tshishivhe Tigerboys', isHome: true, venue: 'Phalama Ground', time: '15:30', type: 'HOME' },
+  { date: 'Sat 20 Jun', opponent: 'Lukau Tshishivhe Tigerboys', isHome: true, venue: 'Makonde Stadium', time: '15:30', type: 'HOME' },
   { date: 'Sun 21 Jun', opponent: 'Lurangwe FC', isHome: false, venue: 'Away — TBC', time: '15:30', type: 'AWAY' },
-  { date: 'Sat 27 Jun', opponent: 'Lukau Hot Aces', isHome: true, venue: 'Phalama Ground', time: '15:30', type: 'HOME' },
+  { date: 'Sat 27 Jun', opponent: 'Lukau Hot Aces', isHome: true, venue: 'Makonde Stadium', time: '15:30', type: 'HOME' },
   { date: 'Sun 28 Jun', opponent: 'Makuya Big Cat FC', isHome: false, venue: 'Away — TBC', time: '15:30', type: 'AWAY' },
 ];
 

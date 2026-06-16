@@ -13,7 +13,7 @@ The club (African by Choice FC, est. 2008) competes in the **Hollywoodbets Regio
 - **Full Name:** African by Choice Football Club (ABC FC)
 - **Nickname:** Lion of the North
 - **Founded:** 2008
-- **Home Ground:** Phalama Ground, Mutale
+- **Home Ground:** Makonde Stadium, Mutale
 - **Location:** Makwarela, Thohoyandou, Limpopo, South Africa
 - **League:** Hollywoodbets Regional League — SAFA Vhembe Region (Stream I Champions 2025/26)
 - **Colours:** Amber Gold (#F5A800), Black (#111111), White (#FFFFFF)

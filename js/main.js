@@ -510,7 +510,7 @@ function renderResults(container, results) {
         <div style="font-family:var(--font-sub,sans-serif);font-size:15px;font-weight:800;letter-spacing:0.02em;color:var(--text);">
           ${r.isHome ? '<strong>ABC FC</strong>' : r.opponent} ${r.abcGoals !== '' ? `<span style="font-size:18px;color:var(--gold,#F5A800);font-weight:900;">${r.abcGoals} – ${r.oppGoals}</span>` : r.score} ${r.isHome ? r.opponent : '<strong style="color:var(--gold,#F5A800);">ABC FC</strong>'}
         </div>
-        <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">${r.type} · ${r.isHome ? 'Phalama Ground' : 'Away'}</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">${r.type} · ${r.isHome ? 'Makonde Stadium' : 'Away'}</div>
       </div>
     </div>
   `).join('');
