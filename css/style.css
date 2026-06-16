@@ -1092,10 +1092,10 @@ p, li { text-wrap: pretty; }
   font-family: var(--font-sub);
   font-size: 0.85rem;
   font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: clamp(80px, 22vw, 140px);
+  white-space: normal;
+  overflow-wrap: break-word;
+  line-height: 1.15;
+  max-width: clamp(90px, 24vw, 160px);
 }
 .fx-vs {
   font-family: var(--font-display);
@@ -1158,7 +1158,7 @@ p, li { text-wrap: pretty; }
 @media (max-width: 600px) {
   .fx-row { grid-template-columns: 44px 46px 1fr auto; gap: 0.4rem; padding: 0.7rem 0.75rem; }
   .fx-meta-col { display: flex; }
-  .fx-tname { max-width: clamp(72px, 20vw, 110px); font-size: 0.72rem; }
+  .fx-tname { max-width: clamp(82px, 26vw, 130px); font-size: 0.72rem; }
   .fx-dd { font-size: 1.25rem; }
   .fx-ko { width: 16px; height: 16px; }
   .fx-ground-dot { width: 12px; height: 12px; }
@@ -1174,7 +1174,7 @@ p, li { text-wrap: pretty; }
     --bottom-nav-h: 58px;
   }
   .fx-row { grid-template-columns: 38px 40px 1fr auto; gap: 0.3rem; padding: 0.6rem 0.6rem; }
-  .fx-tname { max-width: 68px; font-size: 0.68rem; }
+  .fx-tname { max-width: 90px; font-size: 0.65rem; }
   .fx-dd { font-size: 1.1rem; }
   .fx-ko { width: 14px; height: 14px; }
   .fx-ground-dot { width: 11px; height: 11px; }
