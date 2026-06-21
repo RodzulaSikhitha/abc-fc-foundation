@@ -81,7 +81,7 @@
     }
     .hon-hero-eyebrow {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px; font-weight: 800;
+      font-size: 12px; font-weight: 800;
       letter-spacing: .22em; text-transform: uppercase;
       color: var(--hon-gold); margin: 0 0 16px;
       position: relative;
@@ -95,14 +95,14 @@
     .hon-hero-title span { color: var(--hon-gold); display: block; }
     .hon-hero-sub {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(1rem, 2.8vw, 1.3rem); font-weight: 600;
-      color: var(--hon-muted); letter-spacing: .06em;
+      font-size: clamp(1.05rem, 2.8vw, 1.35rem); font-weight: 600;
+      color: rgba(255,255,255,0.82); letter-spacing: .06em;
       margin: 0 0 14px; position: relative;
     }
     .hon-hero-hashtags {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(0.8rem, 2vw, 1rem); font-weight: 700;
-      letter-spacing: .1em; color: var(--hon-gold); opacity: .7;
+      font-size: clamp(0.85rem, 2vw, 1.05rem); font-weight: 700;
+      letter-spacing: .1em; color: var(--hon-gold);
       position: relative;
     }
 
@@ -134,7 +134,7 @@
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 11px; font-weight: 700;
       letter-spacing: .1em; text-transform: uppercase;
-      color: var(--hon-muted);
+      color: rgba(255,255,255,0.75);
     }
 
     /* ── SECTION SCAFFOLD ────────────────────────────── */
@@ -159,7 +159,7 @@
     .hon-lead {
       font-family: 'Inter', sans-serif;
       font-size: clamp(0.88rem, 2vw, 1rem);
-      color: var(--hon-muted); line-height: 1.65;
+      color: rgba(255,255,255,0.72); line-height: 1.65;
       max-width: 640px; margin: 0 0 40px;
     }
 
@@ -170,7 +170,7 @@
     }
     .hon-timeline::before {
       content: '';
-      position: absolute; left: 80px; top: 0; bottom: 0;
+      position: absolute; left: 96px; top: 0; bottom: 0;
       width: 2px;
       background: linear-gradient(to bottom, var(--hon-gold) 0%, rgba(245,168,0,0.1) 100%);
     }
@@ -180,19 +180,23 @@
     }
     .hon-tl-item:last-child { margin-bottom: 0; }
     .hon-tl-year {
-      width: 68px; flex-shrink: 0; text-align: right;
-      padding-top: 6px; padding-right: 0;
+      width: 84px; flex-shrink: 0; text-align: right;
+      padding-top: 6px; padding-right: 4px;
     }
     .hon-tl-year-badge {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.35rem; color: var(--hon-gold);
-      line-height: 1.1; display: block;
-      opacity: .75;
+      font-size: 1.25rem; color: #fff;
+      line-height: 1.15; display: block;
+      background: rgba(245,168,0,0.15);
+      border: 1px solid rgba(245,168,0,0.3);
+      border-radius: 6px;
+      padding: 4px 7px;
+      text-align: center;
     }
     .hon-tl-dot {
       width: 16px; height: 16px; border-radius: 50%;
       flex-shrink: 0;
-      margin: 7px 18px 0 11px;
+      margin: 9px 16px 0 9px;
       border: 2px solid var(--hon-border);
       background: var(--hon-darker);
       position: relative; z-index: 1;
@@ -232,7 +236,7 @@
     .hon-tl-title .champ-gold { color: var(--hon-gold); }
     .hon-tl-desc {
       font-family: 'Inter', sans-serif;
-      font-size: 14px; color: var(--hon-muted);
+      font-size: 14px; color: rgba(255,255,255,0.7);
       line-height: 1.6; margin: 0;
     }
     .hon-champ-pill {
@@ -346,16 +350,17 @@
       .hon-stats-grid { grid-template-columns: repeat(2, 1fr); }
       .hon-stat:nth-child(2) { border-right: none; }
       .hon-stat:nth-child(3) { border-top: 1px solid var(--hon-border); }
-      .hon-timeline::before { left: 58px; }
-      .hon-tl-year { width: 48px; }
-      .hon-tl-year-badge { font-size: 1.1rem; }
-      .hon-tl-dot { margin: 6px 14px 0 10px; }
+      .hon-timeline::before { left: 74px; }
+      .hon-tl-year { width: 62px; }
+      .hon-tl-year-badge { font-size: 1rem; padding: 3px 5px; }
+      .hon-tl-dot { margin: 8px 12px 0 8px; }
       .hon-tourn-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 460px) {
-      .hon-timeline::before { left: 42px; }
-      .hon-tl-year { width: 34px; }
-      .hon-tl-year-badge { font-size: .95rem; }
+      .hon-timeline::before { left: 60px; }
+      .hon-tl-year { width: 50px; }
+      .hon-tl-year-badge { font-size: .85rem; padding: 3px 4px; }
+      .hon-tl-dot { margin: 7px 10px 0 7px; }
     }
   </style>
 
@@ -505,7 +510,7 @@
           <!-- 2025/26 — Stream I Champions (current) -->
           <li class="hon-tl-item" data-reveal>
             <div class="hon-tl-year">
-              <span class="hon-tl-year-badge">2025<br/>26</span>
+              <span class="hon-tl-year-badge">2025/26</span>
             </div>
             <div class="hon-tl-dot hon-tl-dot--champion"></div>
             <div class="hon-tl-card hon-tl-card--champion">
@@ -516,22 +521,13 @@
               <span class="hon-tl-competition">SAFA Vhembe Singo Fuels Regional League &middot; Stream I</span>
               <h3 class="hon-tl-title">Stream I <span class="champ-gold">Champions</span></h3>
               <p class="hon-tl-desc">The Lion of the North at its mightiest. An unbeaten season in the Singo Fuels Regional League — 34 wins, 3 draws, zero losses. A points tally that put the whole of Vhembe on notice. Promotion on the cards.</p>
-              <div class="hon-tl-stats">
-                <span class="hon-tl-stat-item">P&thinsp;<strong>37</strong></span>
-                <span class="hon-tl-stat-item">W&thinsp;<strong>34</strong></span>
-                <span class="hon-tl-stat-item">D&thinsp;<strong>3</strong></span>
-                <span class="hon-tl-stat-item">L&thinsp;<strong>0</strong></span>
-                <span class="hon-tl-stat-item">GF&thinsp;<strong>92</strong></span>
-                <span class="hon-tl-stat-item">GA&thinsp;<strong>12</strong></span>
-                <span class="hon-tl-stat-item">Pts&thinsp;<strong>105</strong></span>
-              </div>
             </div>
           </li>
 
           <!-- 2024/25 — Stream I2 Champions -->
           <li class="hon-tl-item" data-reveal>
             <div class="hon-tl-year">
-              <span class="hon-tl-year-badge">2024<br/>25</span>
+              <span class="hon-tl-year-badge">2024/25</span>
             </div>
             <div class="hon-tl-dot hon-tl-dot--champion"></div>
             <div class="hon-tl-card hon-tl-card--champion">
@@ -548,7 +544,7 @@
           <!-- 2023/24 — Foundation year -->
           <li class="hon-tl-item" data-reveal>
             <div class="hon-tl-year">
-              <span class="hon-tl-year-badge">2023<br/>24</span>
+              <span class="hon-tl-year-badge">2023/24</span>
             </div>
             <div class="hon-tl-dot hon-tl-dot--mid"></div>
             <div class="hon-tl-card">
@@ -570,7 +566,7 @@
       <div class="hon-inner">
         <span class="hon-eyebrow">Cup Competitions</span>
         <h2 class="hon-h2">Tournament Record</h2>
-        <p class="hon-lead">Seven tournaments. Three golds. Four silvers. R185,000 in prizes. The Lion competes — and the Lion delivers.</p>
+        <p class="hon-lead">Three golds. Four silvers. R185,000 in prizes. The Lion competes — and the Lion delivers.</p>
 
         <div class="hon-tourn-grid">
 
