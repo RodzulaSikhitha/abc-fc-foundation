@@ -2,74 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.abcfc.co.za/</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-06-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.abcfc.co.za/fixtures.html</loc>
-    <lastmod>2026-06-13</lastmod>
+    <loc>https://www.abcfc.co.za/fixtures</loc>
+    <lastmod>2026-06-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.abcfc.co.za/tournament.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.abcfc.co.za/club.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.abcfc.co.za/all-fixtures.html</loc>
-    <lastmod>2026-06-13</lastmod>
+    <loc>https://www.abcfc.co.za/all-fixtures</loc>
+    <lastmod>2026-06-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.abcfc.co.za/results.html</loc>
-    <lastmod>2026-06-13</lastmod>
+    <loc>https://www.abcfc.co.za/results</loc>
+    <lastmod>2026-06-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.abcfc.co.za/table.html</loc>
-    <lastmod>2026-06-13</lastmod>
+    <loc>https://www.abcfc.co.za/table</loc>
+    <lastmod>2026-06-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.abcfc.co.za/foundation.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.abcfc.co.za/club-info.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.abcfc.co.za/trials.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.abcfc.co.za/sponsors.html</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.abcfc.co.za/tournament4.html</loc>
-    <lastmod>2026-06-13</lastmod>
+    <loc>https://www.abcfc.co.za/tournament4</loc>
+    <lastmod>2026-06-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.abcfc.co.za/honours</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.abcfc.co.za/club</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.abcfc.co.za/club-info</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.abcfc.co.za/foundation</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.abcfc.co.za/sponsors</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.abcfc.co.za/tournament</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
