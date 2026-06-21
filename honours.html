@@ -266,59 +266,48 @@
  }
  .hon-tl-stat-item strong { color: var(--hon-gold); }
 
- /* ── TOURNAMENT TABLE ────────────────────────────── */
- .hon-tourn-table {
- width: 100%; border-collapse: collapse;
+ /* ── TOURNAMENT GRID ─────────────────────────────── */
+ .hon-tourn-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+ gap: 16px;
+ }
+ .hon-tourn-card {
+ background: var(--hon-dark);
+ border: 1px solid var(--hon-border);
+ border-radius: 12px;
+ padding: 22px 22px 20px;
+ display: flex; flex-direction: column; gap: 12px;
+ transition: border-color .25s, transform .25s;
+ }
+ .hon-tourn-card:hover { border-color: rgba(245,168,0,0.28); transform: translateY(-4px); }
+ .hon-tourn-card--gold {
+ border-color: rgba(245,168,0,0.2);
+ background: linear-gradient(135deg, #161000 0%, #0f0f0f 100%);
+ }
+ .hon-tourn-card--gold:hover { border-color: rgba(245,168,0,0.5); }
+
+ .hon-tourn-header {
+ display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+ }
+ .hon-tourn-medal { font-size: 2rem; line-height: 1; flex-shrink: 0; }
+ .hon-tourn-year {
+ font-family: 'Bebas Neue', sans-serif;
+ font-size: 3rem; color: var(--hon-gold);
+ line-height: 1; opacity: .15;
+ }
+ .hon-tourn-name {
  font-family: 'Barlow Condensed', sans-serif;
+ font-size: 15px; font-weight: 800;
+ color: #fff; line-height: 1.3; flex: 1;
  }
- .hon-tourn-table thead tr {
- border-bottom: 2px solid rgba(245,168,0,0.3);
- }
- .hon-tourn-table thead th {
- font-size: 10px; font-weight: 800; letter-spacing: .2em;
- text-transform: uppercase; color: var(--hon-gold);
- padding: 0 16px 12px; text-align: left;
- }
- .hon-tourn-table thead th:first-child { padding-left: 0; width: 42px; text-align: center; }
- .hon-tourn-table thead th:last-child { text-align: right; }
- .hon-tourn-table tbody tr {
- border-bottom: 1px solid var(--hon-border);
- transition: background .18s;
- }
- .hon-tourn-table tbody tr:last-child { border-bottom: none; }
- .hon-tourn-table tbody tr:hover { background: rgba(255,255,255,0.03); }
- .hon-tourn-table tbody tr.tr-gold { background: rgba(245,168,0,0.04); }
- .hon-tourn-table tbody tr.tr-gold:hover { background: rgba(245,168,0,0.08); }
- .hon-tourn-table td {
- padding: 14px 16px; vertical-align: middle;
- }
- .hon-tourn-table td:first-child { padding-left: 0; text-align: center; font-size: 1.3rem; }
- .hon-tourn-table td:last-child { text-align: right; white-space: nowrap; }
-
- .tt-year {
+ .hon-tourn-result {
  font-family: 'Bebas Neue', sans-serif;
- font-size: 1.15rem; color: rgba(255,255,255,0.5);
- width: 54px; flex-shrink: 0;
+ font-size: clamp(1.3rem, 3vw, 1.7rem);
+ color: var(--hon-gold); margin: 0; line-height: 1;
  }
- .tt-name {
- font-size: 15px; font-weight: 700; color: #fff; line-height: 1.3;
- }
- .tt-result-gold {
- font-family: 'Bebas Neue', sans-serif;
- font-size: 1rem; letter-spacing: .04em;
- color: var(--hon-gold);
- }
- .tt-result-silver {
- font-family: 'Bebas Neue', sans-serif;
- font-size: 1rem; letter-spacing: .04em;
- color: var(--hon-silver);
- }
- .tt-prize {
- font-size: 13px; font-weight: 700; color: var(--hon-gold);
- }
- .tt-prize-none { color: rgba(255,255,255,0.3); font-size: 13px; }
-
- /* keep old class referenced elsewhere */
+ .hon-tourn-result--silver { color: var(--hon-silver); }
+ .hon-tourn-prizes { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px; }
  .hon-prize-tag {
  font-family: 'Barlow Condensed', sans-serif;
  font-size: 11px; font-weight: 700;
@@ -373,13 +362,7 @@
  .hon-tl-year { width: 62px; }
  .hon-tl-year-badge { font-size: .95rem; }
  .hon-tl-dot { margin: 6px 14px 0 10px; }
- /* table: hide Year column, tighten padding */
- .hon-tourn-table thead th:nth-child(2),
- .hon-tourn-table .tt-year { display: none; }
- .hon-tourn-table td { padding: 12px 10px; font-size: 13px; }
- .hon-tourn-table td:first-child { padding-left: 0; }
- .hon-tourn-table td:last-child { padding-right: 0; }
- .tt-name { font-size: 13px; }
+ .hon-tourn-grid { grid-template-columns: 1fr; }
  }
  @media (max-width: 460px) {
  /* year 50px + gap 8px + dot 14px/2 = 65px */
@@ -387,9 +370,6 @@
  .hon-tl-year { width: 50px; }
  .hon-tl-year-badge { font-size: .82rem; }
  .hon-tl-dot { margin: 6px 12px 0 8px; }
- /* hide Prize column too on very small screens */
- .hon-tourn-table thead th:last-child,
- .hon-tourn-table td:last-child { display: none; }
  }
  </style>
 
@@ -597,68 +577,132 @@
  <h2 class="hon-h2">Tournament Record</h2>
  <p class="hon-lead">Three golds. Four silvers. R185,000 in prizes. The Lion competes and the Lion delivers.</p>
 
- <table class="hon-tourn-table" data-reveal>
- <thead>
- <tr>
- <th></th>
- <th>Year</th>
- <th>Tournament</th>
- <th>Result</th>
- <th>Prize</th>
- </tr>
- </thead>
- <tbody>
- <tr class="tr-gold">
- <td>🥇</td>
- <td class="tt-year">2023</td>
- <td class="tt-name">VUWA Supercup 2023</td>
- <td class="tt-result-gold">Champions</td>
- <td class="tt-prize">R10,000</td>
- </tr>
- <tr>
- <td>🥈</td>
- <td class="tt-year">2023</td>
- <td class="tt-name">ABC Foundation U21 Tournament 2023</td>
- <td class="tt-result-silver">Runner-up</td>
- <td class="tt-prize-none">Medals</td>
- </tr>
- <tr>
- <td>🥈</td>
- <td class="tt-year">2024</td>
- <td class="tt-name">Elias Nefale ECCO Estate Annual Tournament 2024</td>
- <td class="tt-result-silver">Runner-up</td>
- <td class="tt-prize">R15,000</td>
- </tr>
- <tr class="tr-gold">
- <td>🥇</td>
- <td class="tt-year">2025</td>
- <td class="tt-name">ABC Foundation Tournament 2025</td>
- <td class="tt-result-gold">Champions</td>
- <td class="tt-prize">R50,000</td>
- </tr>
- <tr>
- <td>🥈</td>
- <td class="tt-year">2025</td>
- <td class="tt-name">Mabena Soccer Challenge 11th Edition 2025</td>
- <td class="tt-result-silver">Runner-up</td>
- <td class="tt-prize">R40,000</td>
- </tr>
- <tr>
- <td>🥈</td>
- <td class="tt-year">2025</td>
- <td class="tt-name">Makhadzi One Woman Show Soccer Tournament 2025</td>
- <td class="tt-result-silver">Runner-up</td>
- <td class="tt-prize">R20,000</td>
- </tr>
- <tr class="tr-gold">
- <td>🥇</td>
- <td class="tt-year">2025</td>
- <td class="tt-name">MLM 1st Annual Soccer Tournament 2025</td>
- <td class="tt-result-gold">Champions</td>
- <td class="tt-prize">R50,000</td>
- </tr>
- </tbody>
- </table>
+ <div class="hon-tourn-grid">
+
+ <!-- 2023 VUWA SUPERCUP GOLD -->
+ <div class="hon-tourn-card hon-tourn-card--gold" data-reveal>
+ <div class="hon-tourn-header">
+ <span class="hon-tourn-medal">🥇</span>
+ <span class="hon-tourn-year">2023</span>
+ </div>
+ <div>
+ <p class="hon-tourn-name">VUWA Supercup 2023</p>
+ <p class="hon-tourn-result">🥇 Champions</p>
+ </div>
+ <div class="hon-tourn-prizes">
+ <span class="hon-prize-tag hon-prize-tag--money">R10,000</span>
+ <span class="hon-prize-tag">Gold Medals</span>
+ <span class="hon-prize-tag">Full Kit</span>
+ <span class="hon-prize-tag">Match Ball</span>
+ </div>
+ </div>
+
+ <!-- 2023 ABC Foundation U21 SILVER -->
+ <div class="hon-tourn-card" data-reveal>
+ <div class="hon-tourn-header">
+ <span class="hon-tourn-medal">🥈</span>
+ <span class="hon-tourn-year">2023</span>
+ </div>
+ <div>
+ <p class="hon-tourn-name">ABC Foundation U21 Tournament 2023</p>
+ <p class="hon-tourn-result hon-tourn-result--silver">🥈 Runner-up</p>
+ </div>
+ <div class="hon-tourn-prizes">
+ <span class="hon-prize-tag">Silver Medals</span>
+ <span class="hon-prize-tag">Finalist</span>
+ </div>
+ </div>
+
+ <!-- 2024 Elias Nefale ECCO Estate SILVER -->
+ <div class="hon-tourn-card" data-reveal>
+ <div class="hon-tourn-header">
+ <span class="hon-tourn-medal">🥈</span>
+ <span class="hon-tourn-year">2024</span>
+ </div>
+ <div>
+ <p class="hon-tourn-name">Elias Nefale ECCO Estate Annual Tournament 2024</p>
+ <p class="hon-tourn-result hon-tourn-result--silver">🥈 Runner-up</p>
+ </div>
+ <div class="hon-tourn-prizes">
+ <span class="hon-prize-tag hon-prize-tag--money">R15,000</span>
+ <span class="hon-prize-tag">Silver Medals</span>
+ <span class="hon-prize-tag">Full Kit</span>
+ <span class="hon-prize-tag">Match Ball</span>
+ </div>
+ </div>
+
+ <!-- 2025 ABC Foundation Tournament GOLD -->
+ <div class="hon-tourn-card hon-tourn-card--gold" data-reveal>
+ <div class="hon-tourn-header">
+ <span class="hon-tourn-medal">🥇</span>
+ <span class="hon-tourn-year">2025</span>
+ </div>
+ <div>
+ <p class="hon-tourn-name">ABC Foundation Tournament 2025</p>
+ <p class="hon-tourn-result">🥇 Champions</p>
+ </div>
+ <div class="hon-tourn-prizes">
+ <span class="hon-prize-tag hon-prize-tag--money">R50,000</span>
+ <span class="hon-prize-tag">Gold Medals</span>
+ <span class="hon-prize-tag">2 Kits</span>
+ <span class="hon-prize-tag">Match Ball</span>
+ </div>
+ </div>
+
+ <!-- 2025 Mabena Soccer Challenge SILVER -->
+ <div class="hon-tourn-card" data-reveal>
+ <div class="hon-tourn-header">
+ <span class="hon-tourn-medal">🥈</span>
+ <span class="hon-tourn-year">2025</span>
+ </div>
+ <div>
+ <p class="hon-tourn-name">Mabena Soccer Challenge 11th Edition 2025</p>
+ <p class="hon-tourn-result hon-tourn-result--silver">🥈 Runner-up</p>
+ </div>
+ <div class="hon-tourn-prizes">
+ <span class="hon-prize-tag hon-prize-tag--money">R40,000</span>
+ <span class="hon-prize-tag">Silver Medals</span>
+ <span class="hon-prize-tag">2 Kits</span>
+ <span class="hon-prize-tag">Match Ball</span>
+ </div>
+ </div>
+
+ <!-- 2025 Makhadzi One Woman Show SILVER -->
+ <div class="hon-tourn-card" data-reveal>
+ <div class="hon-tourn-header">
+ <span class="hon-tourn-medal">🥈</span>
+ <span class="hon-tourn-year">2025</span>
+ </div>
+ <div>
+ <p class="hon-tourn-name">Makhadzi One Woman Show Soccer Tournament 2025</p>
+ <p class="hon-tourn-result hon-tourn-result--silver">🥈 Runner-up</p>
+ </div>
+ <div class="hon-tourn-prizes">
+ <span class="hon-prize-tag hon-prize-tag--money">R20,000</span>
+ <span class="hon-prize-tag">Silver Medals</span>
+ <span class="hon-prize-tag">2 Kappa Kits</span>
+ </div>
+ </div>
+
+ <!-- 2025 MLM 1st Annual GOLD -->
+ <div class="hon-tourn-card hon-tourn-card--gold" data-reveal>
+ <div class="hon-tourn-header">
+ <span class="hon-tourn-medal">🥇</span>
+ <span class="hon-tourn-year">2025</span>
+ </div>
+ <div>
+ <p class="hon-tourn-name">MLM 1st Annual Soccer Tournament 2025</p>
+ <p class="hon-tourn-result">🥇 Champions</p>
+ </div>
+ <div class="hon-tourn-prizes">
+ <span class="hon-prize-tag hon-prize-tag--money">R50,000</span>
+ <span class="hon-prize-tag">Gold Medals</span>
+ <span class="hon-prize-tag">2 Kits</span>
+ <span class="hon-prize-tag">Match Ball</span>
+ </div>
+ </div>
+
+ </div>
  </div>
  </section>
 
