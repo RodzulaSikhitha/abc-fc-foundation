@@ -407,8 +407,8 @@ function renderNextMatch(container, f) {
 
 function fxRowHTML(f) {
   const { dayName, dd, mon } = parseDateParts(f.date);
-  const abbr = (f.opponent || '').split(/\s+/).map(w => w[0]).join('').substring(0, 3).toUpperCase();
   const isHome = f.isHome;
+  const opponentCrest = `<svg class="fx-crest fx-crest-generic" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg>`;
   return `
     <div class="fx-row ${isHome ? 'fx-home' : 'fx-away'}">
       <div class="fx-date-col">
@@ -426,7 +426,7 @@ function fxRowHTML(f) {
         </div>
         <div class="fx-vs">VS</div>
         <div class="fx-team fx-team-right">
-          <span class="fx-crest-abbr">${abbr}</span>
+          ${opponentCrest}
           <span class="fx-tname">${f.opponent || 'TBC'}</span>
         </div>
       </div>
