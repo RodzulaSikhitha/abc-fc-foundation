@@ -405,10 +405,31 @@ function renderNextMatch(container, f) {
   container.innerHTML = fxRowHTML(f);
 }
 
+const TEAM_CRESTS = {
+  'smsa fc': 'images/smsa-fc-logo.jpeg',
+  'smsa': 'images/smsa-fc-logo.jpeg',
+  'saudi fc': 'images/saudi-fc-logo.jpeg',
+  'saudi': 'images/saudi-fc-logo.jpeg',
+  'thohoyandou manchester flying stars': 'images/manchester-flying-stars-logo.jpeg',
+  'manchester flying stars': 'images/manchester-flying-stars-logo.jpeg',
+  'tshamutilikwa b': 'images/tshamutilikwa-b-logo.jpeg',
+  'tshamutilikwa b fire boys': 'images/tshamutilikwa-b-logo.jpeg',
+  'makonde home defenders': 'images/makonde-home-defenders-logo.jpeg',
+  'tshitavha brave lions': 'images/tshitavha-brave-lions-logo.jpeg',
+  'tshitavha brave lions amabhubesi': 'images/tshitavha-brave-lions-logo.jpeg',
+};
+
+function getOpponentCrest(opponent) {
+  const key = (opponent || '').toLowerCase().trim();
+  const src = TEAM_CRESTS[key];
+  if (src) return `<img src="${src}" alt="${opponent}" class="fx-crest" />`;
+  return `<svg class="fx-crest fx-crest-generic" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg>`;
+}
+
 function fxRowHTML(f) {
   const { dayName, dd, mon } = parseDateParts(f.date);
   const isHome = f.isHome;
-  const opponentCrest = `<svg class="fx-crest fx-crest-generic" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg>`;
+  const opponentCrest = getOpponentCrest(f.opponent);
   return `
     <div class="fx-row ${isHome ? 'fx-home' : 'fx-away'}">
       <div class="fx-date-col">
