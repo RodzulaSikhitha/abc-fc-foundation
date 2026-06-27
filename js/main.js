@@ -434,6 +434,11 @@ const TEAM_CRESTS = {
   'magomani all zones fc': 'images/magomani-all-zones-logo.png',
   'magomani all zones': 'images/magomani-all-zones-logo.png',
   'magomani': 'images/magomani-all-zones-logo.png',
+  'mashamba soccer academy': 'images/mashamba-soccer-academy-logo.png',
+  'mashamba': 'images/mashamba-soccer-academy-logo.png',
+  'mukula young santos fc': 'images/mukula-young-santos-logo.png',
+  'mukula young santos': 'images/mukula-young-santos-logo.png',
+  'mukula': 'images/mukula-young-santos-logo.png',
 };
 
 function getOpponentCrest(opponent) {
