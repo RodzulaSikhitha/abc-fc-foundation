@@ -429,6 +429,11 @@ const TEAM_CRESTS = {
   'mub': 'images/maelula-united-brothers-logo.jpeg',
   'mahagala young stars': 'images/mahagala-young-stars-logo.jpeg',
   'mahagala': 'images/mahagala-young-stars-logo.jpeg',
+  'musasenda big v': 'images/musasenda-big-v-logo.jpeg',
+  'musasenda': 'images/musasenda-big-v-logo.jpeg',
+  'magomani all zones fc': 'images/magomani-all-zones-logo.jpeg',
+  'magomani all zones': 'images/magomani-all-zones-logo.jpeg',
+  'magomani': 'images/magomani-all-zones-logo.jpeg',
 };
 
 function getOpponentCrest(opponent) {
