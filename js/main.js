@@ -417,6 +417,18 @@ const TEAM_CRESTS = {
   'makonde home defenders': 'images/makonde-home-defenders-logo.jpeg',
   'tshitavha brave lions': 'images/tshitavha-brave-lions-logo.jpeg',
   'tshitavha brave lions amabhubesi': 'images/tshitavha-brave-lions-logo.jpeg',
+  'ndiitwani shooting stars': 'images/ndiitwani-shooting-stars-logo.jpeg',
+  'ndiitwani': 'images/ndiitwani-shooting-stars-logo.jpeg',
+  'vhembe tron fc': 'images/vhembe-tron-fc-logo.jpeg',
+  'vhembe tron': 'images/vhembe-tron-fc-logo.jpeg',
+  'malale black cat fc': 'images/malale-black-cat-fc-logo.jpeg',
+  'malale black cat': 'images/malale-black-cat-fc-logo.jpeg',
+  'malale': 'images/malale-black-cat-fc-logo.jpeg',
+  'maelula united brothers': 'images/maelula-united-brothers-logo.jpeg',
+  'maelula united': 'images/maelula-united-brothers-logo.jpeg',
+  'mub': 'images/maelula-united-brothers-logo.jpeg',
+  'mahagala young stars': 'images/mahagala-young-stars-logo.jpeg',
+  'mahagala': 'images/mahagala-young-stars-logo.jpeg',
 };
 
 function getOpponentCrest(opponent) {
