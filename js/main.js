@@ -439,6 +439,19 @@ const TEAM_CRESTS = {
   'mukula young santos fc': 'images/mukula-young-santos-logo.png',
   'mukula young santos': 'images/mukula-young-santos-logo.png',
   'mukula': 'images/mukula-young-santos-logo.png',
+  'mbodi pull together fc': 'images/mbodi-pull-together-logo.png',
+  'mbodi pull together': 'images/mbodi-pull-together-logo.png',
+  'mbodi': 'images/mbodi-pull-together-logo.png',
+  'mulodi freedom birds': 'images/mulodi-freedom-birds-logo.png',
+  'mulodi': 'images/mulodi-freedom-birds-logo.png',
+  'chavani shinning stars fc': 'images/chavani-shinning-stars-logo.png',
+  'chavani shinning stars': 'images/chavani-shinning-stars-logo.png',
+  'chavani': 'images/chavani-shinning-stars-logo.png',
+  'madridtas fc': 'images/madridtas-fc-logo.png',
+  'madridtas': 'images/madridtas-fc-logo.png',
+  'makuya big cat fc': 'images/makuya-big-cat-fc-logo.png',
+  'makuya big cat': 'images/makuya-big-cat-fc-logo.png',
+  'makuya': 'images/makuya-big-cat-fc-logo.png',
 };
 
 function getOpponentCrest(opponent) {
