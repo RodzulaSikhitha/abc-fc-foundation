@@ -122,18 +122,30 @@ function parseFixtures(html) {
   return fixtures.filter(f => isFutureOrToday(f.date));
 }
 
-// Returns true if dateStr (e.g. "Tue 16 Jun" or "16 Jun 2026") is today or in the future
+// Returns true if dateStr is today or in the future.
+// Handles: "Tue 16 Jun 2026", "16 Jun 2026", "16 Jun", "16/06/2026", "2026-06-16"
 function isFutureOrToday(dateStr) {
+  const s = (dateStr || '').trim();
+  const today = new Date(); today.setHours(0,0,0,0);
+
+  // Try DD/MM/YYYY or DD-MM-YYYY
+  let m = s.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/);
+  if (m) return new Date(+m[3], +m[2]-1, +m[1]) >= today;
+
+  // Try YYYY-MM-DD (ISO)
+  m = s.match(/^(\d{4})[\/\-](\d{1,2})[\/\-](\d{1,2})$/);
+  if (m) return new Date(+m[1], +m[2]-1, +m[3]) >= today;
+
+  // Try word-based: "Tue 16 Jun 2026", "16 Jun 2026", "16 Jun", etc.
   const months = { jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11 };
-  const parts = (dateStr || '').toLowerCase().split(/[\s,]+/);
+  const parts = s.toLowerCase().split(/[\s,\/\-]+/);
   let day = null, month = null, year = new Date().getFullYear();
   for (const p of parts) {
     if (/^\d{4}$/.test(p))                              year  = parseInt(p);
     else if (/^\d{1,2}$/.test(p) && +p >= 1 && +p <= 31) day = parseInt(p);
-    else { for (const [m, idx] of Object.entries(months)) { if (p.startsWith(m)) { month = idx; break; } } }
+    else { for (const [mn, idx] of Object.entries(months)) { if (p.startsWith(mn)) { month = idx; break; } } }
   }
   if (day === null || month === null) return true; // keep if unparseable
-  const today = new Date(); today.setHours(0,0,0,0);
   return new Date(year, month, day) >= today;
 }
 

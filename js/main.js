@@ -358,6 +358,27 @@ const SVG_CLOCK = `<svg class="icon-shield-clock" viewBox="0 0 20 22" fill="none
 const SVG_PITCH = `<svg class="icon-shield-pitch" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 1L1.5 4V10C1.5 14.4 4.8 18.4 9 19.6C13.2 18.4 16.5 14.4 16.5 10V4L9 1Z" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="9" cy="10.5" r="3.2" fill="none" stroke="currentColor" stroke-width="1.1"/><circle cx="9" cy="10.5" r="0.9" fill="currentColor"/></svg>`;
 
 // ── FIXTURES ──────────────────────────────────────────────
+// Client-side date guard — mirrors the server filter as a safety net against cached stale responses.
+// Handles: "Tue 16 Jun 2026", "16 Jun", "16/06/2026", "2026-06-16"
+function isFixtureFuture(dateStr) {
+  const s = (dateStr || '').trim();
+  const today = new Date(); today.setHours(0,0,0,0);
+  let m = s.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/);
+  if (m) return new Date(+m[3], +m[2]-1, +m[1]) >= today;
+  m = s.match(/^(\d{4})[\/\-](\d{1,2})[\/\-](\d{1,2})$/);
+  if (m) return new Date(+m[1], +m[2]-1, +m[3]) >= today;
+  const months = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+  const parts = s.toLowerCase().split(/[\s,\/\-]+/);
+  let day = null, month = null, year = new Date().getFullYear();
+  for (const p of parts) {
+    if (/^\d{4}$/.test(p)) year = parseInt(p);
+    else if (/^\d{1,2}$/.test(p) && +p >= 1 && +p <= 31) day = parseInt(p);
+    else { for (const [mn, idx] of Object.entries(months)) { if (p.startsWith(mn)) { month = idx; break; } } }
+  }
+  if (day === null || month === null) return true;
+  return new Date(year, month, day) >= today;
+}
+
 function fetchAndRenderFixtures() {
   const fixturesSection    = document.getElementById('fixtures');
   const allFixturesSection = document.getElementById('all-fixtures');
@@ -366,7 +387,7 @@ function fetchAndRenderFixtures() {
   fetch(`${API_BASE}/api/fixtures`)
     .then(r => r.json())
     .then(data => {
-      const fixtures = data.fixtures || [];
+      const fixtures = (data.fixtures || []).filter(f => isFixtureFuture(f.date));
       if (!fixtures.length) return;
 
       // "Next Match" — rendered silently into any [data-next-match] or [data-next-match-only] container
