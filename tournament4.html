@@ -289,6 +289,12 @@
  color: rgba(255,255,255,0.2);
  }
  .t4-team-tbd .t4-team-name { color: rgba(255,255,255,0.3); }
+ .t4-team-invited .t4-team-badge {
+ background: rgba(255,255,255,0.04);
+ border-color: rgba(255,255,255,0.15);
+ color: rgba(255,255,255,0.35);
+ }
+ .t4-team-invited .t4-team-status { color: rgba(255,255,255,0.4); }
  .t4-team-tbd .t4-team-status { color: rgba(255,255,255,0.2); }
  .t4-teams-cta {
  text-align: center; margin-top: 32px;
@@ -618,149 +624,198 @@
  <p class="t4-invite-notice">Only invited teams are allowed to register.</p>
 
  <div class="t4-teams-grid">
- <!-- Host -->
+ <!-- 01 ABC FC - Host -->
  <div class="t4-team-card">
- <div class="t4-team-badge">
- <img src="images/abc-fc-logo.jpeg" alt="ABC FC" style="width:52px;height:52px;object-fit:contain;" />
+  <div class="t4-team-badge"><img src="images/abc-fc-logo.jpeg" alt="ABC FC" style="width:52px;height:52px;object-fit:contain;" /></div>
+  <p class="t4-team-name">ABC FC</p>
+  <span class="t4-team-status">Host Club</span>
  </div>
- <p class="t4-team-name">ABC FC</p>
- <span class="t4-team-status">Host Club</span>
+ <!-- 02 Ntsemi FC - Invited -->
+ <div class="t4-team-card t4-team-invited">
+  <div class="t4-team-badge">?</div>
+  <p class="t4-team-name">Ntsemi FC</p>
+  <span class="t4-team-status">Invited</span>
  </div>
- <!-- Confirmed clubs -->
- <div class="t4-team-card">
- <div class="t4-team-badge">
- <img src="images/supro-logo.png" alt="SUPRO" style="width:52px;height:52px;object-fit:contain;" />
- </div>
- <p class="t4-team-name">SUPRO</p>
- <span class="t4-team-status">Confirmed</span>
- </div>
- <div class="t4-team-card">
- <div class="t4-team-badge">
- <img src="images/smsa-fc-logo.png" alt="SMSA FC" style="width:52px;height:52px;object-fit:contain;" />
- </div>
- <p class="t4-team-name">SMSA FC</p>
- <span class="t4-team-status">Confirmed</span>
- </div>
- <div class="t4-team-card">
- <div class="t4-team-badge">
- <img src="images/mlm-tournament-logo.png" alt="MLM" style="width:52px;height:52px;object-fit:contain;" />
- </div>
- <p class="t4-team-name">MLM</p>
- <span class="t4-team-status">Confirmed</span>
- </div>
- <!-- Confirmed clubs -->
- <div class="t4-team-card">
-  <div class="t4-team-badge"><img src="images/manchester-flying-stars-logo.png" alt="Thohoyandou Manchester Flying Stars" style="width:52px;height:52px;object-fit:contain;" /></div>
-  <p class="t4-team-name">Manchester Flying Stars</p>
-  <span class="t4-team-status">Confirmed</span>
- </div>
+ <!-- 03 Saudi FC - Confirmed -->
  <div class="t4-team-card">
   <div class="t4-team-badge"><img src="images/saudi-fc-logo.png" alt="Saudi FC" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">Saudi FC</p>
   <span class="t4-team-status">Confirmed</span>
  </div>
+ <!-- 04 Ndiitwani Shooting Stars FC - Confirmed -->
  <div class="t4-team-card">
-  <div class="t4-team-badge"><img src="images/tshamutilikwa-b-logo.png" alt="Tshamutilikwa B Fire Boys" style="width:52px;height:52px;object-fit:contain;" /></div>
-  <p class="t4-team-name">Tshamutilikwa B</p>
-  <span class="t4-team-status">Confirmed</span>
- </div>
- <div class="t4-team-card">
-  <div class="t4-team-badge"><img src="images/makonde-home-defenders-logo.png" alt="Makonde Home Defenders" style="width:52px;height:52px;object-fit:contain;" /></div>
-  <p class="t4-team-name">Makonde Home Defenders</p>
-  <span class="t4-team-status">Confirmed</span>
- </div>
- <div class="t4-team-card">
-  <div class="t4-team-badge"><img src="images/tshitavha-brave-lions-logo.png" alt="Tshitavha Brave Lions" style="width:52px;height:52px;object-fit:contain;" /></div>
-  <p class="t4-team-name">Tshitavha Brave Lions</p>
-  <span class="t4-team-status">Confirmed</span>
- </div>
- <div class="t4-team-card">
-  <div class="t4-team-badge"><img src="images/ndiitwani-shooting-stars-logo.png" alt="Ndiitwani Shooting Stars" style="width:52px;height:52px;object-fit:contain;" /></div>
+  <div class="t4-team-badge"><img src="images/ndiitwani-shooting-stars-logo.png" alt="Ndiitwani Shooting Stars FC" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">Ndiitwani Shooting Stars</p>
   <span class="t4-team-status">Confirmed</span>
  </div>
- <div class="t4-team-card">
-  <div class="t4-team-badge"><img src="images/vhembe-tron-fc-logo.png" alt="Vhembe Tron FC" style="width:52px;height:52px;object-fit:contain;" /></div>
-  <p class="t4-team-name">Vhembe Tron FC</p>
-  <span class="t4-team-status">Confirmed</span>
+ <!-- 05 Ramahantsha Blackpool FC - Invited -->
+ <div class="t4-team-card t4-team-invited">
+  <div class="t4-team-badge">?</div>
+  <p class="t4-team-name">Ramahantsha Blackpool FC</p>
+  <span class="t4-team-status">Invited</span>
  </div>
- <div class="t4-team-card">
-  <div class="t4-team-badge"><img src="images/malale-black-cat-fc-logo.png" alt="Malale Black Cat FC" style="width:52px;height:52px;object-fit:contain;" /></div>
-  <p class="t4-team-name">Malale Black Cat FC</p>
-  <span class="t4-team-status">Confirmed</span>
+ <!-- 06 Mukondeni Royals FC - Invited -->
+ <div class="t4-team-card t4-team-invited">
+  <div class="t4-team-badge">?</div>
+  <p class="t4-team-name">Mukondeni Royals FC</p>
+  <span class="t4-team-status">Invited</span>
  </div>
+ <!-- 07 Maelula United Brothers FC - Confirmed -->
  <div class="t4-team-card">
-  <div class="t4-team-badge"><img src="images/maelula-united-brothers-logo.png" alt="Maelula United Brothers" style="width:52px;height:52px;object-fit:contain;" /></div>
+  <div class="t4-team-badge"><img src="images/maelula-united-brothers-logo.png" alt="Maelula United Brothers FC" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">Maelula United Brothers</p>
   <span class="t4-team-status">Confirmed</span>
  </div>
+ <!-- 08 FC Basel - Invited -->
+ <div class="t4-team-card t4-team-invited">
+  <div class="t4-team-badge">?</div>
+  <p class="t4-team-name">FC Basel</p>
+  <span class="t4-team-status">Invited</span>
+ </div>
+ <!-- 09 Musasenda Big Five - Confirmed -->
  <div class="t4-team-card">
-  <div class="t4-team-badge"><img src="images/mahagala-young-stars-logo.png" alt="Mahagala Young Stars" style="width:52px;height:52px;object-fit:contain;" /></div>
-  <p class="t4-team-name">Mahagala Young Stars</p>
+  <div class="t4-team-badge"><img src="images/musasenda-big-v-logo.png" alt="Musasenda Big Five" style="width:52px;height:52px;object-fit:contain;" /></div>
+  <p class="t4-team-name">Musasenda Big Five</p>
   <span class="t4-team-status">Confirmed</span>
  </div>
+ <!-- 10 Makonde Defenders - Confirmed -->
  <div class="t4-team-card">
-  <div class="t4-team-badge"><img src="images/musasenda-big-v-logo.png" alt="Musasenda Big V" style="width:52px;height:52px;object-fit:contain;" /></div>
-  <p class="t4-team-name">Musasenda Big V</p>
+  <div class="t4-team-badge"><img src="images/makonde-home-defenders-logo.png" alt="Makonde Defenders" style="width:52px;height:52px;object-fit:contain;" /></div>
+  <p class="t4-team-name">Makonde Defenders</p>
   <span class="t4-team-status">Confirmed</span>
  </div>
+ <!-- 11 Madritas - Confirmed -->
  <div class="t4-team-card">
-  <div class="t4-team-badge"><img src="images/magomani-all-zones-logo.png" alt="Magomani All Zones FC" style="width:52px;height:52px;object-fit:contain;" /></div>
-  <p class="t4-team-name">Magomani All Zones FC</p>
+  <div class="t4-team-badge"><img src="images/madridtas-fc-logo.png" alt="Madritas" style="width:52px;height:52px;object-fit:contain;" /></div>
+  <p class="t4-team-name">Madritas</p>
   <span class="t4-team-status">Confirmed</span>
  </div>
+ <!-- 12 Mbodi Pull Together - Confirmed -->
  <div class="t4-team-card">
-  <div class="t4-team-badge"><img src="images/mashamba-soccer-academy-logo.png" alt="Mashamba Soccer Academy" style="width:52px;height:52px;object-fit:contain;" /></div>
-  <p class="t4-team-name">Mashamba Soccer Academy</p>
+  <div class="t4-team-badge"><img src="images/mbodi-pull-together-logo.png" alt="Mbodi Pull Together" style="width:52px;height:52px;object-fit:contain;" /></div>
+  <p class="t4-team-name">Mbodi Pull Together</p>
   <span class="t4-team-status">Confirmed</span>
  </div>
- <div class="t4-team-card">
-  <div class="t4-team-badge"><img src="images/mukula-young-santos-logo.png" alt="Mukula Young Santos FC" style="width:52px;height:52px;object-fit:contain;" /></div>
-  <p class="t4-team-name">Mukula Young Santos FC</p>
-  <span class="t4-team-status">Confirmed</span>
+ <!-- 13 Thengwe Flying Peace - Invited -->
+ <div class="t4-team-card t4-team-invited">
+  <div class="t4-team-badge">?</div>
+  <p class="t4-team-name">Thengwe Flying Peace</p>
+  <span class="t4-team-status">Invited</span>
  </div>
- <div class="t4-team-card">
-  <div class="t4-team-badge"><img src="images/mbodi-pull-together-logo.png" alt="Mbodi Pull Together FC" style="width:52px;height:52px;object-fit:contain;" /></div>
-  <p class="t4-team-name">Mbodi Pull Together FC</p>
-  <span class="t4-team-status">Confirmed</span>
- </div>
+ <!-- 14 Mulodi Freedom Birds - Confirmed -->
  <div class="t4-team-card">
   <div class="t4-team-badge"><img src="images/mulodi-freedom-birds-logo.png" alt="Mulodi Freedom Birds" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">Mulodi Freedom Birds</p>
   <span class="t4-team-status">Confirmed</span>
  </div>
+ <!-- 15 Thohoyandou Manchester - Confirmed -->
  <div class="t4-team-card">
-  <div class="t4-team-badge"><img src="images/chavani-shinning-stars-logo.png" alt="Chavani Shinning Stars FC" style="width:52px;height:52px;object-fit:contain;" /></div>
-  <p class="t4-team-name">Chavani Shinning Stars</p>
+  <div class="t4-team-badge"><img src="images/manchester-flying-stars-logo.png" alt="Thohoyandou Manchester" style="width:52px;height:52px;object-fit:contain;" /></div>
+  <p class="t4-team-name">Thohoyandou Manchester</p>
   <span class="t4-team-status">Confirmed</span>
  </div>
+ <!-- 16 Mukula Young Santos - Confirmed -->
  <div class="t4-team-card">
-  <div class="t4-team-badge"><img src="images/madridtas-fc-logo.png" alt="Madridtas FC" style="width:52px;height:52px;object-fit:contain;" /></div>
-  <p class="t4-team-name">Madridtas FC</p>
+  <div class="t4-team-badge"><img src="images/mukula-young-santos-logo.png" alt="Mukula Young Santos" style="width:52px;height:52px;object-fit:contain;" /></div>
+  <p class="t4-team-name">Mukula Young Santos</p>
   <span class="t4-team-status">Confirmed</span>
  </div>
+ <!-- 17 Tshitavha Brave Lions - Confirmed -->
+ <div class="t4-team-card">
+  <div class="t4-team-badge"><img src="images/tshitavha-brave-lions-logo.png" alt="Tshitavha Brave Lions" style="width:52px;height:52px;object-fit:contain;" /></div>
+  <p class="t4-team-name">Tshitavha Brave Lions</p>
+  <span class="t4-team-status">Confirmed</span>
+ </div>
+ <!-- 18 Tshimuthe - Invited -->
+ <div class="t4-team-card t4-team-invited">
+  <div class="t4-team-badge">?</div>
+  <p class="t4-team-name">Tshimuthe</p>
+  <span class="t4-team-status">Invited</span>
+ </div>
+ <!-- 19 Chelamoya - Invited -->
+ <div class="t4-team-card t4-team-invited">
+  <div class="t4-team-badge">?</div>
+  <p class="t4-team-name">Chelamoya</p>
+  <span class="t4-team-status">Invited</span>
+ </div>
+ <!-- 20 Magomani All Zones FC - Confirmed -->
+ <div class="t4-team-card">
+  <div class="t4-team-badge"><img src="images/magomani-all-zones-logo.png" alt="Magomani All Zones FC" style="width:52px;height:52px;object-fit:contain;" /></div>
+  <p class="t4-team-name">Magomani All Zones FC</p>
+  <span class="t4-team-status">Confirmed</span>
+ </div>
+ <!-- 21 Mahagala Young Stars FC - Confirmed -->
+ <div class="t4-team-card">
+  <div class="t4-team-badge"><img src="images/mahagala-young-stars-logo.png" alt="Mahagala Young Stars FC" style="width:52px;height:52px;object-fit:contain;" /></div>
+  <p class="t4-team-name">Mahagala Young Stars</p>
+  <span class="t4-team-status">Confirmed</span>
+ </div>
+ <!-- 22 Ngwenani Young Chiefs FC - Invited -->
+ <div class="t4-team-card t4-team-invited">
+  <div class="t4-team-badge">?</div>
+  <p class="t4-team-name">Ngwenani Young Chiefs FC</p>
+  <span class="t4-team-status">Invited</span>
+ </div>
+ <!-- 23 Vhembe Tron FC - Confirmed -->
+ <div class="t4-team-card">
+  <div class="t4-team-badge"><img src="images/vhembe-tron-fc-logo.png" alt="Vhembe Tron FC" style="width:52px;height:52px;object-fit:contain;" /></div>
+  <p class="t4-team-name">Vhembe Tron FC</p>
+  <span class="t4-team-status">Confirmed</span>
+ </div>
+ <!-- 24 Tshishivhe Tigers Boys - Invited -->
+ <div class="t4-team-card t4-team-invited">
+  <div class="t4-team-badge">?</div>
+  <p class="t4-team-name">Tshishivhe Tigers Boys</p>
+  <span class="t4-team-status">Invited</span>
+ </div>
+ <!-- 25 Mashamba Soccer Academy - Confirmed -->
+ <div class="t4-team-card">
+  <div class="t4-team-badge"><img src="images/mashamba-soccer-academy-logo.png" alt="Mashamba Soccer Academy" style="width:52px;height:52px;object-fit:contain;" /></div>
+  <p class="t4-team-name">Mashamba Soccer Academy</p>
+  <span class="t4-team-status">Confirmed</span>
+ </div>
+ <!-- 26 Chavani Shining Stars - Confirmed -->
+ <div class="t4-team-card">
+  <div class="t4-team-badge"><img src="images/chavani-shinning-stars-logo.png" alt="Chavani Shining Stars" style="width:52px;height:52px;object-fit:contain;" /></div>
+  <p class="t4-team-name">Chavani Shining Stars</p>
+  <span class="t4-team-status">Confirmed</span>
+ </div>
+ <!-- 27 Makuya Big Cat FC - Confirmed -->
  <div class="t4-team-card">
   <div class="t4-team-badge"><img src="images/makuya-big-cat-fc-logo.png" alt="Makuya Big Cat FC" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">Makuya Big Cat FC</p>
   <span class="t4-team-status">Confirmed</span>
  </div>
- <!-- TBC slots -->
- <div class="t4-team-card t4-team-tbd"><div class="t4-team-badge">?</div><p class="t4-team-name">Club 24</p><span class="t4-team-status">TBC</span></div>
- <div class="t4-team-card t4-team-tbd"><div class="t4-team-badge">?</div><p class="t4-team-name">Club 25</p><span class="t4-team-status">TBC</span></div>
- <div class="t4-team-card t4-team-tbd"><div class="t4-team-badge">?</div><p class="t4-team-name">Club 19</p><span class="t4-team-status">TBC</span></div>
- <div class="t4-team-card t4-team-tbd"><div class="t4-team-badge">?</div><p class="t4-team-name">Club 20</p><span class="t4-team-status">TBC</span></div>
- <div class="t4-team-card t4-team-tbd"><div class="t4-team-badge">?</div><p class="t4-team-name">Club 21</p><span class="t4-team-status">TBC</span></div>
- <div class="t4-team-card t4-team-tbd"><div class="t4-team-badge">?</div><p class="t4-team-name">Club 22</p><span class="t4-team-status">TBC</span></div>
- <div class="t4-team-card t4-team-tbd"><div class="t4-team-badge">?</div><p class="t4-team-name">Club 23</p><span class="t4-team-status">TBC</span></div>
- <div class="t4-team-card t4-team-tbd"><div class="t4-team-badge">?</div><p class="t4-team-name">Club 24</p><span class="t4-team-status">TBC</span></div>
- <div class="t4-team-card t4-team-tbd"><div class="t4-team-badge">?</div><p class="t4-team-name">Club 25</p><span class="t4-team-status">TBC</span></div>
- <div class="t4-team-card t4-team-tbd"><div class="t4-team-badge">?</div><p class="t4-team-name">Club 26</p><span class="t4-team-status">TBC</span></div>
- <div class="t4-team-card t4-team-tbd"><div class="t4-team-badge">?</div><p class="t4-team-name">Club 27</p><span class="t4-team-status">TBC</span></div>
- <div class="t4-team-card t4-team-tbd"><div class="t4-team-badge">?</div><p class="t4-team-name">Club 28</p><span class="t4-team-status">TBC</span></div>
- <div class="t4-team-card t4-team-tbd"><div class="t4-team-badge">?</div><p class="t4-team-name">Club 29</p><span class="t4-team-status">TBC</span></div>
- <div class="t4-team-card t4-team-tbd"><div class="t4-team-badge">?</div><p class="t4-team-name">Club 30</p><span class="t4-team-status">TBC</span></div>
- <div class="t4-team-card t4-team-tbd"><div class="t4-team-badge">?</div><p class="t4-team-name">Club 31</p><span class="t4-team-status">TBC</span></div>
- <div class="t4-team-card t4-team-tbd"><div class="t4-team-badge">?</div><p class="t4-team-name">Club 32</p><span class="t4-team-status">TBC</span></div>
+ <!-- 28 Tshamutilikwa Fire Boys FC - Confirmed -->
+ <div class="t4-team-card">
+  <div class="t4-team-badge"><img src="images/tshamutilikwa-b-logo.png" alt="Tshamutilikwa Fire Boys FC" style="width:52px;height:52px;object-fit:contain;" /></div>
+  <p class="t4-team-name">Tshamutilikwa Fire Boys</p>
+  <span class="t4-team-status">Confirmed</span>
+ </div>
+ <!-- 29 Sambandou United P - Invited -->
+ <div class="t4-team-card t4-team-invited">
+  <div class="t4-team-badge">?</div>
+  <p class="t4-team-name">Sambandou United P</p>
+  <span class="t4-team-status">Invited</span>
+ </div>
+ <!-- 30 Makonde FC - Invited -->
+ <div class="t4-team-card t4-team-invited">
+  <div class="t4-team-badge">?</div>
+  <p class="t4-team-name">Makonde FC</p>
+  <span class="t4-team-status">Invited</span>
+ </div>
+ <!-- 31 SMSA FC - Confirmed -->
+ <div class="t4-team-card">
+  <div class="t4-team-badge"><img src="images/smsa-fc-logo.png" alt="SMSA FC" style="width:52px;height:52px;object-fit:contain;" /></div>
+  <p class="t4-team-name">SMSA FC</p>
+  <span class="t4-team-status">Confirmed</span>
+ </div>
+ <!-- 32 Malale Black Cat FC - Confirmed -->
+ <div class="t4-team-card">
+  <div class="t4-team-badge"><img src="images/malale-black-cat-fc-logo.png" alt="Malale Black Cat FC" style="width:52px;height:52px;object-fit:contain;" /></div>
+  <p class="t4-team-name">Malale Black Cat FC</p>
+  <span class="t4-team-status">Confirmed</span>
+ </div>
  </div>
 
  <div class="t4-teams-cta">

@@ -138,11 +138,10 @@ function isFutureOrToday(dateStr) {
 }
 
 // Fallback static fixtures (used when Inqaku is unreachable)
-// Always filtered by isFutureOrToday at runtime so past dates are never shown.
-const FALLBACK_FIXTURES = [
-  { date: 'Sun 21 Jun', opponent: 'Lurangwe FC',              isHome: false, venue: 'Away — TBC',       time: '15:30', type: 'AWAY' },
-  { date: 'Sat 27 Jun', opponent: 'Lukau Hot Aces',           isHome: true,  venue: 'Makonde Stadium',  time: '15:30', type: 'HOME' },
-  { date: 'Sun 28 Jun', opponent: 'Makuya Big Cat FC',        isHome: false, venue: 'Away — TBC',       time: '15:30', type: 'AWAY' },
+// Filtered by isFutureOrToday at runtime so past dates are never shown.
+const FALLBACK_FIXTURES_RAW = [
+  { date: 'Sat 12 Jul 2026', opponent: 'TBC',           isHome: true,  venue: 'Makonde Stadium',  time: '15:30', type: 'HOME' },
+  { date: 'Sat 19 Jul 2026', opponent: 'TBC',           isHome: false, venue: 'Away — TBC',       time: '15:30', type: 'AWAY' },
 ];
 
 module.exports = async function handler(req, res) {
@@ -168,19 +167,21 @@ module.exports = async function handler(req, res) {
     }
 
     // Parser returned nothing — fall back to static data
+    const fallback = FALLBACK_FIXTURES_RAW.filter(f => isFutureOrToday(f.date));
     return res.status(200).json({
       source: 'fallback',
       fetchedAt: new Date().toISOString(),
       note: 'Inqaku returned no parseable fixture data — showing cached fixtures.',
-      fixtures: FALLBACK_FIXTURES,
+      fixtures: fallback,
     });
   } catch (err) {
     console.error('[api/fixtures] Error:', err.message);
+    const fallback = FALLBACK_FIXTURES_RAW.filter(f => isFutureOrToday(f.date));
     return res.status(200).json({
       source: 'fallback',
       fetchedAt: new Date().toISOString(),
       note: 'Could not reach Inqaku — showing cached fixtures.',
-      fixtures: FALLBACK_FIXTURES,
+      fixtures: fallback,
     });
   }
 };
