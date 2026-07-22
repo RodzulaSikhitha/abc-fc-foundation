@@ -152,10 +152,10 @@ function isFutureOrToday(dateStr) {
 // Fallback static fixtures (used when Inqaku is unreachable)
 // Filtered by isFutureOrToday at runtime so past dates are never shown.
 const FALLBACK_FIXTURES_RAW = [
-  { date: 'Sat 25 Jul 2026', opponent: 'MJM Hotspurs / Nhlahla Northern Bucs', isHome: false, venue: 'Malamulele Stadium', time: '08:00', type: 'AWAY' },
-  { date: 'Sat 25 Jul 2026', opponent: 'Moganyaka Mighty Blues',                isHome: false, venue: 'Malamulele Stadium', time: '12:00', type: 'AWAY' },
-  { date: 'Sun 26 Jul 2026', opponent: 'Phinnet City',                          isHome: false, venue: 'Malamulele Stadium', time: '08:00', type: 'AWAY' },
-  { date: 'Sun 26 Jul 2026', opponent: 'Sun Rise Lite',                         isHome: false, venue: 'Malamulele Stadium', time: '12:00', type: 'AWAY' },
+  { date: 'Sat 01 Aug 2026', opponent: 'MJM Hotspurs / Nhlahla Northern Bucs', isHome: false, venue: 'Malamulele Stadium', time: '08:00', type: 'AWAY' },
+  { date: 'Sat 01 Aug 2026', opponent: 'Moganyaka Mighty Blues',                isHome: false, venue: 'Malamulele Stadium', time: '12:00', type: 'AWAY' },
+  { date: 'Sun 02 Aug 2026', opponent: 'Phinnet City',                          isHome: false, venue: 'Malamulele Stadium', time: '08:00', type: 'AWAY' },
+  { date: 'Sun 02 Aug 2026', opponent: 'Sun Rise Lite',                         isHome: false, venue: 'Malamulele Stadium', time: '12:00', type: 'AWAY' },
 ];
 
 module.exports = async function handler(req, res) {
