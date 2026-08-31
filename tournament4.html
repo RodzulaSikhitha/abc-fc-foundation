@@ -4,19 +4,19 @@
  <meta charset="UTF-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
  <title>4th Annual ABC Foundation Tournament 2026 | ABC FC</title>
- <meta name="description" content="The 4th Annual ABC Foundation Tournament 2026 32 clubs, Makonde Stadium, Mutale, Vhembe. August–September 2026. Register your club now." />
+ <meta name="description" content="The 4th Annual ABC Foundation Tournament 2026 is under way at Makonde Stadium, Mutale, Vhembe. Live Last 32 results, the 32 participating clubs and tournament sponsors." />
  <meta name="robots" content="index, follow" />
  <link rel="canonical" href="https://www.abcfc.co.za/tournament4" />
  <meta property="og:type" content="website" />
  <meta property="og:site_name" content="ABC FC | Lion of the North" />
  <meta property="og:title" content="4th Annual ABC Foundation Tournament 2026" />
- <meta property="og:description" content="32 clubs. One ground. One community. Makonde Stadium, Mutale, Vhembe. August–September 2026." />
+ <meta property="og:description" content="Tournament is live. Last 32 results from Makonde Stadium, Mutale, Vhembe. 32 clubs. One ground. One community." />
  <meta property="og:image" content="https://www.abcfc.co.za/images/og-image.png" />
  <meta property="og:url" content="https://www.abcfc.co.za/tournament4" />
  <meta property="og:locale" content="en_ZA" />
  <meta name="twitter:card" content="summary_large_image" />
  <meta name="twitter:title" content="4th Annual ABC Foundation Tournament 2026" />
- <meta name="twitter:description" content="32 clubs · Makonde Stadium, Mutale · August–September 2026" />
+ <meta name="twitter:description" content="Last 32 results · 32 clubs · Makonde Stadium, Mutale · August–September 2026" />
  <meta name="twitter:image" content="https://www.abcfc.co.za/images/og-image.png" />
  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
  <link rel="icon" type="image/png" sizes="32x32" href="images/icon-32.png" />
@@ -29,7 +29,7 @@
  "@context": "https://schema.org",
  "@type": "SportsEvent",
  "name": "4th Annual ABC Foundation Tournament 2026",
- "description": "The 4th Annual ABC Foundation Tournament TOP 32 knockout format. 32 clubs battle at Makonde Stadium, Mutale, Vhembe.",
+ "description": "The 4th Annual ABC Foundation Tournament TOP 32 knockout format. 32 clubs battle at Makonde Stadium, Mutale, Vhembe. Last 32 under way.",
  "url": "https://www.abcfc.co.za/tournament4",
  "sport": "Soccer",
  "startDate": "2026-08-01",
@@ -39,6 +39,7 @@
  "name": "Makonde Stadium",
  "address": { "@type": "PostalAddress", "addressLocality": "Mutale", "addressRegion": "Limpopo", "addressCountry": "ZA" }
  },
+ "eventStatus": "https://schema.org/EventScheduled",
  "organizer": { "@type": "Organization", "name": "ABC FC Foundation", "url": "https://www.abcfc.co.za" }
  }
  </script>
@@ -421,6 +422,138 @@
  }
 
  /* ═══════════════════════════════════════════════════
+ RESULTS  (Last 32 and later rounds)
+ ═══════════════════════════════════════════════════ */
+ .t4-results-section { background: #0a0a0a; }
+ .t4-round-head {
+ display: flex; align-items: center; flex-wrap: wrap;
+ gap: 12px; margin: 34px 0 16px;
+ }
+ .t4-round-head::after {
+ content: ''; flex: 1 1 60px; height: 1px;
+ background: var(--t4-border);
+ }
+ .t4-round-tag {
+ font-family: 'Barlow Condensed', sans-serif;
+ font-size: 12px; font-weight: 900;
+ letter-spacing: .18em; text-transform: uppercase;
+ color: #000; background: var(--t4-gold);
+ padding: 6px 14px; border-radius: 4px;
+ }
+ .t4-round-meta {
+ font-family: 'Barlow Condensed', sans-serif;
+ font-size: 13px; font-weight: 600;
+ letter-spacing: .1em; text-transform: uppercase;
+ color: rgba(255,255,255,0.42);
+ }
+
+ .t4-results-list { display: flex; flex-direction: column; gap: 12px; }
+
+ .t4-result {
+ background: var(--t4-dark);
+ border: 1px solid rgba(245,168,0,0.28);
+ border-radius: 10px;
+ padding: 18px clamp(12px,3vw,22px);
+ }
+ .t4-result-row {
+ display: grid;
+ grid-template-columns: minmax(0,1fr) auto minmax(0,1fr);
+ align-items: center;
+ gap: clamp(6px,2.5vw,20px);
+ }
+ .t4-result-side {
+ display: flex; align-items: center; gap: 10px; min-width: 0;
+ }
+ .t4-result-side--home { justify-content: flex-end; }
+ .t4-result-side--away { justify-content: flex-start; }
+ .t4-result-side .t4-result-team {
+ flex: 1 1 auto; min-width: 0; margin: 0;
+ text-align: center; overflow-wrap: break-word;
+ }
+ .t4-result-crest {
+ width: 34px; height: 34px; flex-shrink: 0;
+ display: flex; align-items: center; justify-content: center;
+ }
+ .t4-result-crest img, .t4-result-crest svg {
+ width: 34px; height: 34px; object-fit: contain;
+ }
+ .t4-result-team {
+ font-family: 'Barlow Condensed', sans-serif;
+ font-size: clamp(14px, 2.6vw, 19px);
+ font-weight: 700; line-height: 1.15;
+ letter-spacing: .02em; text-transform: uppercase;
+ color: rgba(255,255,255,0.55);
+ }
+ .t4-result-side--won .t4-result-team { color: #fff; font-weight: 800; }
+
+ .t4-score { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+ .t4-score-box {
+ font-family: 'Bebas Neue', sans-serif;
+ font-size: clamp(21px, 5vw, 30px); line-height: 1;
+ color: #000; background: var(--t4-gold);
+ min-width: clamp(30px, 7vw, 42px);
+ padding: 9px 4px 6px; border-radius: 4px;
+ text-align: center;
+ }
+ .t4-score-box--pens {
+ font-size: clamp(13px, 3vw, 18px);
+ min-width: clamp(24px, 5.5vw, 32px);
+ color: var(--t4-gold);
+ background: rgba(245,168,0,0.16);
+ border: 1px solid rgba(245,168,0,0.3);
+ padding: 7px 3px 5px;
+ }
+ .t4-score-dash {
+ font-family: 'Bebas Neue', sans-serif;
+ font-size: clamp(18px, 4vw, 26px);
+ color: rgba(255,255,255,0.35);
+ padding: 0 2px;
+ }
+
+ .t4-result-note {
+ font-family: 'Barlow Condensed', sans-serif;
+ font-size: 12px; font-weight: 700;
+ letter-spacing: .14em; text-transform: uppercase;
+ color: var(--t4-gold);
+ text-align: center; margin: 14px 0 0;
+ padding-top: 12px;
+ border-top: 1px solid var(--t4-border);
+ }
+
+ /* Poster + progress helpers */
+ .t4-results-progress {
+ display: flex; align-items: center; gap: 12px;
+ flex-wrap: wrap; margin: 0 0 4px;
+ }
+ .t4-progress-bar {
+ flex: 1 1 160px; height: 6px; border-radius: 3px;
+ background: var(--t4-border); overflow: hidden;
+ }
+ .t4-progress-fill {
+ display: block; height: 100%; border-radius: 3px;
+ background: var(--t4-gold);
+ }
+ .t4-progress-text {
+ font-family: 'Barlow Condensed', sans-serif;
+ font-size: 13px; font-weight: 700;
+ letter-spacing: .12em; text-transform: uppercase;
+ color: rgba(255,255,255,0.5);
+ }
+ .t4-poster {
+ margin: 30px 0 0; text-align: center;
+ }
+ .t4-poster img {
+ display: block; width: 100%; max-width: 420px;
+ height: auto; margin: 0 auto;
+ border: 1px solid var(--t4-border); border-radius: 10px;
+ }
+ .t4-poster figcaption {
+ font-family: 'Inter', sans-serif;
+ font-size: 12px; color: rgba(255,255,255,0.35);
+ margin-top: 10px;
+ }
+
+ /* ═══════════════════════════════════════════════════
  RESPONSIVE
  ═══════════════════════════════════════════════════ */
  @media (max-width: 700px) {
@@ -428,6 +561,17 @@
  .t4-stats-grid { grid-template-columns: repeat(2, 1fr); }
  .t4-stat:nth-child(2) { border-right: none; }
  .t4-stat:nth-child(3) { border-top: 1px solid var(--t4-border); }
+ }
+ @media (max-width: 560px) {
+ /* Stack the tie: home team / score / away team */
+ .t4-result { padding: 16px 12px; }
+ .t4-result-row { grid-template-columns: 1fr; justify-items: center; gap: 10px; }
+ .t4-result-side { width: 100%; justify-content: center; gap: 8px; }
+ .t4-result-side--home { flex-direction: row-reverse; }
+ .t4-result-side .t4-result-team { flex: 0 1 auto; font-size: 16px; }
+ .t4-result-crest, .t4-result-crest img, .t4-result-crest svg { width: 28px; height: 28px; }
+ .t4-score-box { font-size: 26px; min-width: 38px; }
+ .t4-score-box--pens { font-size: 15px; min-width: 28px; }
  }
  @media (max-width: 420px) {
  .t4-teams-grid { grid-template-columns: repeat(3, 1fr); }
@@ -456,14 +600,18 @@
  </div>
  <div class="ticker-track">
  <div class="ticker-content">
- <span>4th Annual ABC Foundation Tournament 2026 Kick Start: August–September 2026</span>
- <span>32 clubs · TOP 32 Knockout · Makonde Stadium, Mutale, Vhembe</span>
+ <span>TOURNAMENT IS LIVE Last 32 under way at Makonde Stadium, Mutale</span>
+ <span>LAST 32 Madridtas FC 1–1 Vuwa Brave Lions FC (Madridtas win 5–4 on pens)</span>
+ <span>LAST 32 Saudi FC 1–0 Phadzima Young Stars FC</span>
+ <span>LAST 32 Mahagala Young Stars FC 2–1 Mulodi Freedom Birds FC</span>
+ <span>LAST 32 Makonde FC 1–1 Tshimuthe FC (Tshimuthe win 4–3 on pens)</span>
  <span>STREAM I CHAMPIONS 2025/26 Lion of the North! #Ndi_Team_Ya_Lucas</span>
- <span>Sponsors confirmed Old Mutual · Mutupo Legal · Vuwa College · Giraffe Sports &amp; more</span>
- <span>4th Annual ABC Foundation Tournament 2026 Kick Start: August–September 2026</span>
- <span>32 clubs · TOP 32 Knockout · Makonde Stadium, Mutale, Vhembe</span>
+ <span>TOURNAMENT IS LIVE Last 32 under way at Makonde Stadium, Mutale</span>
+ <span>LAST 32 Madridtas FC 1–1 Vuwa Brave Lions FC (Madridtas win 5–4 on pens)</span>
+ <span>LAST 32 Saudi FC 1–0 Phadzima Young Stars FC</span>
+ <span>LAST 32 Mahagala Young Stars FC 2–1 Mulodi Freedom Birds FC</span>
+ <span>LAST 32 Makonde FC 1–1 Tshimuthe FC (Tshimuthe win 4–3 on pens)</span>
  <span>STREAM I CHAMPIONS 2025/26 Lion of the North! #Ndi_Team_Ya_Lucas</span>
- <span>Sponsors confirmed Old Mutual · Mutupo Legal · Vuwa College · Giraffe Sports &amp; more</span>
  </div>
  </div>
  </div>
@@ -527,10 +675,10 @@
  <p class="t4-hero-eyebrow">ABC Foundation &middot; 4th Annual Tournament</p>
  <h1 class="t4-hero-title">
  Tournament
- <span>Is Loading</span>
+ <span>Is Live</span>
  2026
  </h1>
- <p class="t4-hero-sub">32 Clubs &middot; One Ground &middot; One Community</p>
+ <p class="t4-hero-sub">Last 32 Underway &middot; 32 Clubs &middot; One Ground</p>
  <p class="t4-hero-tagline">Unity. Passion. Purpose. Legacy.</p>
 
  <div class="t4-chips">
@@ -553,6 +701,7 @@
  target="_blank" rel="noopener noreferrer" class="t4-btn-gold">
  Register Your Club
  </a>
+ <a href="#results" class="t4-btn-outline">Latest Results</a>
  <a href="tournament-sponsors" class="t4-btn-outline">Our Sponsors</a>
  </div>
  </section>
@@ -575,11 +724,137 @@
  <span class="t4-stat-lbl">Ground</span>
  </div>
  <div class="t4-stat">
- <span class="t4-stat-num">12+</span>
- <span class="t4-stat-lbl">Sponsors</span>
+ <span class="t4-stat-num">4</span>
+ <span class="t4-stat-lbl">Ties Played</span>
  </div>
  </div>
  </div>
+
+ <!-- ════════════════════════════════════════════════
+ RESULTS
+ Add a new .t4-result block per completed tie.
+ Winning side gets .t4-result-side--won.
+ Penalty ties: big .t4-score-box = shootout score,
+ .t4-score-box--pens = score after normal time.
+ ════════════════════════════════════════════════ -->
+ <hr class="t4-divider" />
+ <section class="t4-section t4-results-section" id="results">
+ <div class="t4-inner">
+ <p class="t4-eyebrow">Tournament Underway</p>
+ <h2 class="t4-h2">Results</h2>
+ <p class="t4-lead">The 4th Annual ABC Foundation Tournament is live at Makonde Stadium. Scores are posted here as each tie is played.</p>
+
+ <div class="t4-results-progress">
+ <span class="t4-progress-text">Last 32 &middot; 4 of 16 ties played</span>
+ <span class="t4-progress-bar"><span class="t4-progress-fill" style="width:25%;"></span></span>
+ </div>
+
+ <div class="t4-round-head">
+ <span class="t4-round-tag">Last 32</span>
+ <span class="t4-round-meta">Makonde Stadium, Mutale</span>
+ </div>
+
+ <div class="t4-results-list">
+
+ <!-- Madridtas FC 1-1 Vuwa Brave Lions FC (Madridtas win 5-4 on pens) -->
+ <article class="t4-result">
+ <div class="t4-result-row">
+ <div class="t4-result-side t4-result-side--home t4-result-side--won">
+ <p class="t4-result-team">Madridtas FC</p>
+ <span class="t4-result-crest"><img src="images/madridtas-fc-logo.png" alt="Madridtas FC crest" /></span>
+ </div>
+ <div class="t4-score">
+ <span class="t4-score-box">5</span>
+ <span class="t4-score-box t4-score-box--pens">(1)</span>
+ <span class="t4-score-dash">&ndash;</span>
+ <span class="t4-score-box t4-score-box--pens">(1)</span>
+ <span class="t4-score-box">4</span>
+ </div>
+ <div class="t4-result-side t4-result-side--away">
+ <span class="t4-result-crest">
+ <svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg>
+ </span>
+ <p class="t4-result-team">Vuwa Brave Lions FC</p>
+ </div>
+ </div>
+ <p class="t4-result-note">1&ndash;1 after normal time &middot; Madridtas FC win 5&ndash;4 on penalties</p>
+ </article>
+
+ <!-- Saudi FC 1-0 Phadzima Young Stars FC -->
+ <article class="t4-result">
+ <div class="t4-result-row">
+ <div class="t4-result-side t4-result-side--home t4-result-side--won">
+ <p class="t4-result-team">Saudi FC</p>
+ <span class="t4-result-crest"><img src="images/saudi-fc-logo.png" alt="Saudi FC crest" /></span>
+ </div>
+ <div class="t4-score">
+ <span class="t4-score-box">1</span>
+ <span class="t4-score-dash">&ndash;</span>
+ <span class="t4-score-box">0</span>
+ </div>
+ <div class="t4-result-side t4-result-side--away">
+ <span class="t4-result-crest">
+ <svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg>
+ </span>
+ <p class="t4-result-team">Phadzima Young Stars FC</p>
+ </div>
+ </div>
+ </article>
+
+ <!-- Mahagala Young Stars FC 2-1 Mulodi Freedom Birds FC -->
+ <article class="t4-result">
+ <div class="t4-result-row">
+ <div class="t4-result-side t4-result-side--home t4-result-side--won">
+ <p class="t4-result-team">Mahagala Young Stars FC</p>
+ <span class="t4-result-crest"><img src="images/mahagala-young-stars-logo.png" alt="Mahagala Young Stars FC crest" /></span>
+ </div>
+ <div class="t4-score">
+ <span class="t4-score-box">2</span>
+ <span class="t4-score-dash">&ndash;</span>
+ <span class="t4-score-box">1</span>
+ </div>
+ <div class="t4-result-side t4-result-side--away">
+ <span class="t4-result-crest"><img src="images/mulodi-freedom-birds-logo.png" alt="Mulodi Freedom Birds FC crest" /></span>
+ <p class="t4-result-team">Mulodi Freedom Birds FC</p>
+ </div>
+ </div>
+ </article>
+
+ <!-- Makonde FC 1-1 Tshimuthe FC (Tshimuthe win 4-3 on pens) -->
+ <article class="t4-result">
+ <div class="t4-result-row">
+ <div class="t4-result-side t4-result-side--home">
+ <p class="t4-result-team">Makonde FC</p>
+ <span class="t4-result-crest">
+ <svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg>
+ </span>
+ </div>
+ <div class="t4-score">
+ <span class="t4-score-box">3</span>
+ <span class="t4-score-box t4-score-box--pens">(1)</span>
+ <span class="t4-score-dash">&ndash;</span>
+ <span class="t4-score-box t4-score-box--pens">(1)</span>
+ <span class="t4-score-box">4</span>
+ </div>
+ <div class="t4-result-side t4-result-side--away t4-result-side--won">
+ <span class="t4-result-crest">
+ <svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg>
+ </span>
+ <p class="t4-result-team">Tshimuthe FC</p>
+ </div>
+ </div>
+ <p class="t4-result-note">1&ndash;1 after normal time &middot; Tshimuthe FC win 4&ndash;3 on penalties</p>
+ </article>
+
+ </div>
+
+ <figure class="t4-poster">
+ <img src="images/tournament/last32-results-r1.jpg"
+ alt="ABC Foundation 4th Annual Soccer Tournament 2026 Last 32 results poster" loading="lazy" />
+ <figcaption>Official Last 32 results release &mdash; ABC Foundation</figcaption>
+ </figure>
+ </div>
+ </section>
 
  <!-- ════════════════════════════════════════════════
  SPONSORS TEASER
@@ -726,11 +1001,11 @@
   <p class="t4-team-name">Tshitavha Brave Lions</p>
   <span class="t4-team-status">Confirmed</span>
  </div>
- <!-- 18 Tshimuthe - Invited -->
- <div class="t4-team-card t4-team-invited">
+ <!-- 18 Tshimuthe - Confirmed (played Last 32) -->
+ <div class="t4-team-card">
   <div class="t4-team-badge">?</div>
   <p class="t4-team-name">Tshimuthe</p>
-  <span class="t4-team-status">Invited</span>
+  <span class="t4-team-status">Confirmed</span>
  </div>
  <!-- 19 Chelamoya - Invited -->
  <div class="t4-team-card t4-team-invited">
@@ -798,11 +1073,11 @@
   <p class="t4-team-name">Sambandou United P</p>
   <span class="t4-team-status">Invited</span>
  </div>
- <!-- 30 Makonde FC - Invited -->
- <div class="t4-team-card t4-team-invited">
+ <!-- 30 Makonde FC - Confirmed (played Last 32) -->
+ <div class="t4-team-card">
   <div class="t4-team-badge">?</div>
   <p class="t4-team-name">Makonde FC</p>
-  <span class="t4-team-status">Invited</span>
+  <span class="t4-team-status">Confirmed</span>
  </div>
  <!-- 31 SMSA FC - Confirmed -->
  <div class="t4-team-card">
