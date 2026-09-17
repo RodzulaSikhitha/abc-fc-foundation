@@ -4,19 +4,19 @@
  <meta charset="UTF-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
  <title>4th Annual ABC Foundation Tournament 2026 | ABC FC</title>
- <meta name="description" content="The 4th Annual ABC Foundation Tournament 2026 is under way at Makonde Stadium, Mutale, Vhembe. All 16 Last 32 fixtures, live results, the 32 participating clubs and tournament sponsors." />
+ <meta name="description" content="The 4th Annual ABC Foundation Tournament 2026 is down to the Last 8. Full bracket, every Last 32 and Last 16 result, the Last 8 fixtures for Saturday 19 September at Makonde Stadium, Mutale, and the 32 participating clubs." />
  <meta name="robots" content="index, follow" />
  <link rel="canonical" href="https://www.abcfc.co.za/tournament4" />
  <meta property="og:type" content="website" />
  <meta property="og:site_name" content="ABC FC | Lion of the North" />
  <meta property="og:title" content="4th Annual ABC Foundation Tournament 2026" />
- <meta property="og:description" content="Tournament is live. All 16 Last 32 fixtures and results from Makonde Stadium, Mutale, Vhembe. 32 clubs. One ground. One community." />
+ <meta property="og:description" content="Down to the Last 8. Full tournament bracket, all 24 results so far and the quarter-final fixtures for Saturday 19 September at Makonde Stadium, Mutale." />
  <meta property="og:image" content="https://www.abcfc.co.za/images/og-image.png" />
  <meta property="og:url" content="https://www.abcfc.co.za/tournament4" />
  <meta property="og:locale" content="en_ZA" />
  <meta name="twitter:card" content="summary_large_image" />
  <meta name="twitter:title" content="4th Annual ABC Foundation Tournament 2026" />
- <meta name="twitter:description" content="Last 32 fixtures &amp; results · 32 clubs · Makonde Stadium, Mutale · August–September 2026" />
+ <meta name="twitter:description" content="Last 8 · Sat 19 Sep · Full bracket &amp; every result · Makonde Stadium, Mutale · August–September 2026" />
  <meta name="twitter:image" content="https://www.abcfc.co.za/images/og-image.png" />
  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
  <link rel="icon" type="image/png" sizes="32x32" href="images/icon-32.png" />
@@ -29,7 +29,7 @@
  "@context": "https://schema.org",
  "@type": "SportsEvent",
  "name": "4th Annual ABC Foundation Tournament 2026",
- "description": "The 4th Annual ABC Foundation Tournament TOP 32 knockout format. 32 clubs battle at Makonde Stadium, Mutale, Vhembe. Last 32 under way.",
+ "description": "The 4th Annual ABC Foundation Tournament TOP 32 knockout format. 32 clubs battle at Makonde Stadium, Mutale, Vhembe. Last 32 and Last 16 complete; the Last 8 is played on 19 September 2026.",
  "url": "https://www.abcfc.co.za/tournament4",
  "sport": "Soccer",
  "startDate": "2026-08-01",
@@ -546,6 +546,11 @@
  border: 1px solid rgba(245,168,0,0.3);
  padding: 7px 3px 5px;
  }
+ .t4-score-box--na {
+ color: rgba(255,255,255,0.4);
+ background: rgba(255,255,255,0.05);
+ border: 1px dashed rgba(255,255,255,0.18);
+ }
  .t4-score-dash {
  font-family: 'Bebas Neue', sans-serif;
  font-size: clamp(18px, 4vw, 26px);
@@ -652,6 +657,166 @@
  .t4-teams-grid { grid-template-columns: repeat(3, 1fr); }
  .t4-chip { font-size: 12px; padding: 9px 14px; }
  }
+ /* ═══════════════════════════════════════════════════
+ BRACKET  (tournament overview diagram)
+ ═══════════════════════════════════════════════════ */
+ .t4-bracket-section { background: #0a0a0a; }
+ .t4-bracket-legend {
+ display: flex; flex-wrap: wrap; gap: 8px 18px;
+ margin: 0 0 20px;
+ }
+ .bk-key {
+ display: inline-flex; align-items: center; gap: 7px;
+ font-family: 'Barlow Condensed', sans-serif;
+ font-size: 12px; font-weight: 700;
+ letter-spacing: .1em; text-transform: uppercase;
+ color: rgba(255,255,255,0.42);
+ }
+ .bk-key-dot {
+ width: 9px; height: 9px; border-radius: 2px;
+ background: rgba(255,255,255,0.18);
+ }
+ .bk-key-dot--won { background: var(--t4-gold); }
+ .bk-key-dot--next { background: rgba(245,168,0,0.32); border: 1px solid var(--t4-gold); }
+ .bk-key-pen {
+ font-family: 'Bebas Neue', sans-serif; font-style: normal;
+ font-size: 11px; line-height: 1; color: var(--t4-gold);
+ background: rgba(245,168,0,0.14); border: 1px solid rgba(245,168,0,0.3);
+ border-radius: 3px; padding: 3px 5px 2px;
+ }
+
+ .t4-bracket-scroll {
+ overflow-x: auto; overflow-y: hidden;
+ -webkit-overflow-scrolling: touch;
+ padding: 4px 0 14px;
+ scrollbar-width: thin;
+ scrollbar-color: rgba(245,168,0,0.4) rgba(255,255,255,0.06);
+ }
+ .t4-bracket-scroll::-webkit-scrollbar { height: 8px; }
+ .t4-bracket-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 4px; }
+ .t4-bracket-scroll::-webkit-scrollbar-thumb { background: rgba(245,168,0,0.4); border-radius: 4px; }
+
+ .t4-bracket {
+ --bk-w: 190px;
+ --bk-gap: 30px;
+ --bk-half: 15px;
+ --bk-line: rgba(245,168,0,0.25);
+ display: grid;
+ grid-template-columns: repeat(5, var(--bk-w));
+ column-gap: var(--bk-gap);
+ min-width: calc(5 * var(--bk-w) + 4 * var(--bk-gap));
+ min-height: 1180px;
+ }
+ .bk-col { display: flex; flex-direction: column; min-width: 0; }
+ .bk-col-head {
+ font-family: 'Barlow Condensed', sans-serif;
+ font-size: 11px; font-weight: 900;
+ letter-spacing: .16em; text-transform: uppercase;
+ color: #000; background: var(--t4-gold);
+ text-align: center; border-radius: 4px;
+ padding: 6px 4px 5px; margin: 0 0 14px;
+ }
+ .bk-col--future .bk-col-head {
+ color: var(--t4-gold); background: rgba(245,168,0,0.12);
+ border: 1px solid rgba(245,168,0,0.32);
+ padding: 5px 3px 4px;
+ }
+ .bk-round {
+ flex: 1;
+ display: flex; flex-direction: column;
+ justify-content: space-around;
+ }
+ .bk-round--single { justify-content: center; }
+ .bk-pair {
+ flex: 1; position: relative;
+ display: flex; flex-direction: column;
+ justify-content: space-around;
+ }
+ .bk-match {
+ position: relative;
+ background: var(--t4-dark);
+ border: 1px solid var(--t4-border);
+ border-radius: 7px;
+ }
+ .bk-match--next { border-color: rgba(245,168,0,0.45); }
+ .bk-match--final { border-color: rgba(245,168,0,0.6); background: rgba(245,168,0,0.05); }
+
+ /* connector lines */
+ .bk-col:not(.bk-col--final) .bk-pair::after {
+ content: ''; position: absolute;
+ left: calc(100% + var(--bk-half)); top: 25%;
+ width: 1px; height: 50%;
+ background: var(--bk-line);
+ }
+ .bk-col:not(.bk-col--final) .bk-match::after {
+ content: ''; position: absolute;
+ left: 100%; top: 50%;
+ width: var(--bk-half); height: 1px;
+ background: var(--bk-line);
+ }
+ .bk-col:not(:first-child) .bk-match::before {
+ content: ''; position: absolute;
+ right: 100%; top: 50%;
+ width: var(--bk-half); height: 1px;
+ background: var(--bk-line);
+ }
+
+ .bk-team {
+ display: flex; align-items: center; gap: 6px;
+ height: 27px; box-sizing: border-box;
+ padding: 0 8px;
+ }
+ .bk-team:first-child { border-radius: 6px 6px 0 0; }
+ .bk-match .bk-team + .bk-team { border-top: 1px solid var(--t4-border); border-radius: 0 0 6px 6px; }
+ .bk-name {
+ flex: 1 1 auto; min-width: 0;
+ font-family: 'Barlow Condensed', sans-serif;
+ font-size: 11.5px; font-weight: 700;
+ letter-spacing: .02em; text-transform: uppercase;
+ color: rgba(255,255,255,0.45);
+ white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+ }
+ .bk-sc {
+ flex-shrink: 0;
+ font-family: 'Bebas Neue', sans-serif;
+ font-size: 13px; line-height: 1;
+ color: rgba(255,255,255,0.32);
+ }
+ .bk-pen {
+ font-family: 'Bebas Neue', sans-serif;
+ font-size: 10px; line-height: 1;
+ color: var(--t4-gold);
+ background: rgba(245,168,0,0.14);
+ border: 1px solid rgba(245,168,0,0.28);
+ border-radius: 3px;
+ padding: 2px 4px 1px; margin-left: 4px;
+ }
+ .bk-team--won { background: rgba(245,168,0,0.08); box-shadow: inset 2px 0 0 var(--t4-gold); }
+ .bk-team--won .bk-name { color: #fff; font-weight: 800; }
+ .bk-team--won .bk-sc { color: var(--t4-gold); }
+ .bk-team--pending .bk-name { color: rgba(255,255,255,0.82); }
+ .bk-team--tbc .bk-name { color: rgba(255,255,255,0.26); font-weight: 600; }
+ .bk-ko {
+ font-family: 'Barlow Condensed', sans-serif;
+ font-size: 10px; font-weight: 800;
+ letter-spacing: .14em; text-transform: uppercase;
+ color: var(--t4-gold); text-align: center;
+ height: 18px; line-height: 18px;
+ border-top: 1px solid rgba(245,168,0,0.2);
+ background: rgba(245,168,0,0.06);
+ border-radius: 0 0 6px 6px;
+ }
+ .t4-source-note {
+ font-family: 'Inter', sans-serif;
+ font-size: 12.5px; line-height: 1.6;
+ color: rgba(255,255,255,0.35);
+ margin: 22px 0 0;
+ }
+ @media (max-width: 640px) {
+ .t4-bracket { --bk-w: 176px; --bk-gap: 26px; --bk-half: 13px; min-height: 1080px; }
+ .bk-name { font-size: 10.5px; }
+ }
+
  </style>
 
  <!-- Facebook SDK -->
@@ -755,7 +920,7 @@
  <span>Is Live</span>
  2026
  </h1>
- <p class="t4-hero-sub">Last 32 Underway &middot; 32 Clubs &middot; One Ground</p>
+ <p class="t4-hero-sub">Last 8 &middot; Saturday 19 September &middot; Makonde Stadium</p>
  <p class="t4-hero-tagline">Unity. Passion. Purpose. Legacy.</p>
 
  <div class="t4-chips">
@@ -778,7 +943,8 @@
  target="_blank" rel="noopener noreferrer" class="t4-btn-gold">
  Register Your Club
  </a>
- <a href="#matches" class="t4-btn-outline">Last 32 Matches</a>
+ <a href="#bracket" class="t4-btn-outline">Tournament Bracket</a>
+ <a href="#matches" class="t4-btn-outline">Results &amp; Fixtures</a>
  <a href="tournament-sponsors" class="t4-btn-outline">Our Sponsors</a>
  </div>
  </section>
@@ -797,322 +963,832 @@
  <span class="t4-stat-lbl">Edition</span>
  </div>
  <div class="t4-stat">
- <span class="t4-stat-num">1</span>
- <span class="t4-stat-lbl">Ground</span>
+ <span class="t4-stat-num">8</span>
+ <span class="t4-stat-lbl">Clubs Left</span>
  </div>
  <div class="t4-stat">
- <span class="t4-stat-num">4/16</span>
+ <span class="t4-stat-num">24/31</span>
  <span class="t4-stat-lbl">Ties Played</span>
  </div>
  </div>
  </div>
 
- <!-- ════════════════════════════════════════════════
- LAST 32 MATCHES  (results + fixtures)
+        <!-- ════════════════════════════════════════════════
+ BRACKET  (tournament overview diagram)
+ Pure CSS/flex bracket: each .bk-col holds .bk-pair wrappers of two
+ .bk-match boxes; the connector lines are pseudo-elements on
+ .bk-pair (vertical) and .bk-match (horizontal stubs), so the rows
+ stay joined at any width. Keep every .bk-match the same height
+ inside a column or the lines stop lining up.
+ ════════════════════════════════════════════════ -->
+ <hr class="t4-divider" />
+ <section class="t4-section t4-bracket-section" id="bracket">
+ <div class="t4-inner">
+ <p class="t4-eyebrow">Road to the Final</p>
+ <h2 class="t4-h2">Tournament Bracket</h2>
+ <p class="t4-lead">All 32 clubs, every round, one picture. Gold marks the club that went through. Swipe or scroll sideways to follow a club&rsquo;s run.</p>
+
+ <div class="t4-bracket-legend">
+ <span class="bk-key"><i class="bk-key-dot bk-key-dot--won"></i>Through</span>
+ <span class="bk-key"><i class="bk-key-dot"></i>Eliminated</span>
+ <span class="bk-key"><i class="bk-key-dot bk-key-dot--next"></i>Still to play</span>
+ <span class="bk-key"><i class="bk-key-pen">4</i>Penalty shootout score</span>
+ <span class="bk-key"><i class="bk-key-pen">P</i>Won on penalties, shootout score not published</span>
+ <span class="bk-key"><i class="bk-key-pen">&ndash;</i>Score not published</span>
+ </div>
+
+ <div class="t4-bracket-scroll">
+  <div class="t4-bracket">
+   <div class="bk-col">
+    <p class="bk-col-head">Last 32</p>
+    <div class="bk-round">
+     <div class="bk-pair">
+      <div class="bk-match">
+       <div class="bk-team"><span class="bk-name" title="Vhembe Tron">Vhembe Tron</span><span class="bk-sc">1<span class="bk-pen">3</span></span></div>
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Lukau Tshishivhe Tiger Boys">Lukau Tshishivhe Tiger Boys</span><span class="bk-sc">1<span class="bk-pen">4</span></span></div>
+      </div>
+      <div class="bk-match">
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Ndiitwani Shooting Stars">Ndiitwani Shooting Stars</span><span class="bk-sc">2</span></div>
+       <div class="bk-team"><span class="bk-name" title="Makuya Big Cat">Makuya Big Cat</span><span class="bk-sc">0</span></div>
+      </div>
+     </div>
+     <div class="bk-pair">
+      <div class="bk-match">
+       <div class="bk-team"><span class="bk-name" title="Dzwerani United Brothers">Dzwerani United Brothers</span><span class="bk-sc">&ndash;</span></div>
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Musasenda Big V">Musasenda Big V</span><span class="bk-sc">&ndash;</span></div>
+      </div>
+      <div class="bk-match">
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Tshamutilikwa Fire Boys">Tshamutilikwa Fire Boys</span><span class="bk-sc">&ndash;</span></div>
+       <div class="bk-team"><span class="bk-name" title="Kwena FC">Kwena FC</span><span class="bk-sc">&ndash;</span></div>
+      </div>
+     </div>
+     <div class="bk-pair">
+      <div class="bk-match">
+       <div class="bk-team"><span class="bk-name" title="Shilumani Training Academy">Shilumani Training Academy</span><span class="bk-sc">0<span class="bk-pen">2</span></span></div>
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Supro FC">Supro FC</span><span class="bk-sc">0<span class="bk-pen">4</span></span></div>
+      </div>
+      <div class="bk-match">
+       <div class="bk-team"><span class="bk-name" title="Makonde FC">Makonde FC</span><span class="bk-sc">1<span class="bk-pen">3</span></span></div>
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Tshimuthe FC">Tshimuthe FC</span><span class="bk-sc">1<span class="bk-pen">4</span></span></div>
+      </div>
+     </div>
+     <div class="bk-pair">
+      <div class="bk-match">
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Tsemi FC">Tsemi FC</span><span class="bk-sc">0<span class="bk-pen">P</span></span></div>
+       <div class="bk-team"><span class="bk-name" title="Maheni Devoted Vultures">Maheni Devoted Vultures</span><span class="bk-sc">0</span></div>
+      </div>
+      <div class="bk-match">
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Mahagala Young Stars">Mahagala Young Stars</span><span class="bk-sc">2</span></div>
+       <div class="bk-team"><span class="bk-name" title="Mulodi Freedom Birds">Mulodi Freedom Birds</span><span class="bk-sc">1</span></div>
+      </div>
+     </div>
+     <div class="bk-pair">
+      <div class="bk-match">
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Chavani Shining Stars">Chavani Shining Stars</span><span class="bk-sc">1</span></div>
+       <div class="bk-team"><span class="bk-name" title="Makonde Home Defenders">Makonde Home Defenders</span><span class="bk-sc">0</span></div>
+      </div>
+      <div class="bk-match">
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Saudi FC">Saudi FC</span><span class="bk-sc">1</span></div>
+       <div class="bk-team"><span class="bk-name" title="Phadzima Young Stars FC">Phadzima Young Stars FC</span><span class="bk-sc">0</span></div>
+      </div>
+     </div>
+     <div class="bk-pair">
+      <div class="bk-match">
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Mukondeni Royal FC">Mukondeni Royal FC</span><span class="bk-sc">&ndash;</span></div>
+       <div class="bk-team"><span class="bk-name" title="Mbodi Pull Together">Mbodi Pull Together</span><span class="bk-sc">&ndash;</span></div>
+      </div>
+      <div class="bk-match">
+       <div class="bk-team"><span class="bk-name" title="Thengwe Flying Peace">Thengwe Flying Peace</span><span class="bk-sc">2</span></div>
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Matanda Rockers FC">Matanda Rockers FC</span><span class="bk-sc">3</span></div>
+      </div>
+     </div>
+     <div class="bk-pair">
+      <div class="bk-match">
+       <div class="bk-team"><span class="bk-name" title="SMSA FC">SMSA FC</span><span class="bk-sc">0</span></div>
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Malale Black Cat FC">Malale Black Cat FC</span><span class="bk-sc">2</span></div>
+      </div>
+      <div class="bk-match">
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Madridtas FC">Madridtas FC</span><span class="bk-sc">1<span class="bk-pen">5</span></span></div>
+       <div class="bk-team"><span class="bk-name" title="Vuwa Brave Lions FC">Vuwa Brave Lions FC</span><span class="bk-sc">1<span class="bk-pen">4</span></span></div>
+      </div>
+     </div>
+     <div class="bk-pair">
+      <div class="bk-match">
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Maelula United Brothers">Maelula United Brothers</span><span class="bk-sc">2</span></div>
+       <div class="bk-team"><span class="bk-name" title="Mukula Young Santos">Mukula Young Santos</span><span class="bk-sc">0</span></div>
+      </div>
+      <div class="bk-match">
+       <div class="bk-team"><span class="bk-name" title="Ngwenani Young Chiefs">Ngwenani Young Chiefs</span><span class="bk-sc">0</span></div>
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Chelamoya FC">Chelamoya FC</span><span class="bk-sc">3</span></div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="bk-col">
+    <p class="bk-col-head">Last 16</p>
+    <div class="bk-round">
+     <div class="bk-pair">
+      <div class="bk-match">
+       <div class="bk-team"><span class="bk-name" title="Lukau Tshishivhe Tiger Boys">Lukau Tshishivhe Tiger Boys</span><span class="bk-sc">&ndash;</span></div>
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Ndiitwani Shooting Stars">Ndiitwani Shooting Stars</span><span class="bk-sc">&ndash;</span></div>
+      </div>
+      <div class="bk-match">
+       <div class="bk-team"><span class="bk-name" title="Musasenda Big V">Musasenda Big V</span><span class="bk-sc">0</span></div>
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Tshamutilikwa Fire Boys">Tshamutilikwa Fire Boys</span><span class="bk-sc">1</span></div>
+      </div>
+     </div>
+     <div class="bk-pair">
+      <div class="bk-match">
+       <div class="bk-team"><span class="bk-name" title="Supro FC">Supro FC</span><span class="bk-sc">&ndash;</span></div>
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Tshimuthe FC">Tshimuthe FC</span><span class="bk-sc">&ndash;</span></div>
+      </div>
+      <div class="bk-match">
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Tsemi FC">Tsemi FC</span><span class="bk-sc">2</span></div>
+       <div class="bk-team"><span class="bk-name" title="Mahagala Young Stars">Mahagala Young Stars</span><span class="bk-sc">1</span></div>
+      </div>
+     </div>
+     <div class="bk-pair">
+      <div class="bk-match">
+       <div class="bk-team"><span class="bk-name" title="Chavani Shining Stars">Chavani Shining Stars</span><span class="bk-sc">&ndash;</span></div>
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Saudi FC">Saudi FC</span><span class="bk-sc">&ndash;</span></div>
+      </div>
+      <div class="bk-match">
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Mukondeni Royal FC">Mukondeni Royal FC</span><span class="bk-sc">&ndash;</span></div>
+       <div class="bk-team"><span class="bk-name" title="Matanda Rockers FC">Matanda Rockers FC</span><span class="bk-sc">&ndash;</span></div>
+      </div>
+     </div>
+     <div class="bk-pair">
+      <div class="bk-match">
+       <div class="bk-team"><span class="bk-name" title="Malale Black Cat FC">Malale Black Cat FC</span><span class="bk-sc">&ndash;</span></div>
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Madridtas FC">Madridtas FC</span><span class="bk-sc">&ndash;</span></div>
+      </div>
+      <div class="bk-match">
+       <div class="bk-team bk-team--won"><span class="bk-name" title="Maelula United Brothers">Maelula United Brothers</span><span class="bk-sc">4</span></div>
+       <div class="bk-team"><span class="bk-name" title="Chelamoya FC">Chelamoya FC</span><span class="bk-sc">2</span></div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="bk-col bk-col--future">
+    <p class="bk-col-head">Last 8 &middot; 19 Sep</p>
+    <div class="bk-round">
+     <div class="bk-pair">
+      <div class="bk-match bk-match--next">
+       <div class="bk-team bk-team--pending"><span class="bk-name" title="Ndiitwani Shooting Stars">Ndiitwani Shooting Stars</span></div>
+       <div class="bk-team bk-team--pending"><span class="bk-name" title="Tshamutilikwa Fire Boys">Tshamutilikwa Fire Boys</span></div>
+       <div class="bk-ko">09h00</div>
+      </div>
+      <div class="bk-match bk-match--next">
+       <div class="bk-team bk-team--pending"><span class="bk-name" title="Tshimuthe FC">Tshimuthe FC</span></div>
+       <div class="bk-team bk-team--pending"><span class="bk-name" title="Tsemi FC">Tsemi FC</span></div>
+       <div class="bk-ko">11h00</div>
+      </div>
+     </div>
+     <div class="bk-pair">
+      <div class="bk-match bk-match--next">
+       <div class="bk-team bk-team--pending"><span class="bk-name" title="Saudi FC">Saudi FC</span></div>
+       <div class="bk-team bk-team--pending"><span class="bk-name" title="Mukondeni Royal FC">Mukondeni Royal FC</span></div>
+       <div class="bk-ko">13h00</div>
+      </div>
+      <div class="bk-match bk-match--next">
+       <div class="bk-team bk-team--pending"><span class="bk-name" title="Madridtas FC">Madridtas FC</span></div>
+       <div class="bk-team bk-team--pending"><span class="bk-name" title="Maelula United Brothers">Maelula United Brothers</span></div>
+       <div class="bk-ko">15h00</div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="bk-col bk-col--future">
+    <p class="bk-col-head">Semi-Finals</p>
+    <div class="bk-round">
+     <div class="bk-pair">
+      <div class="bk-match">
+       <div class="bk-team bk-team--tbc"><span class="bk-name" title="Winner Last 8">Winner Last 8</span></div>
+       <div class="bk-team bk-team--tbc"><span class="bk-name" title="Winner Last 8">Winner Last 8</span></div>
+      </div>
+      <div class="bk-match">
+       <div class="bk-team bk-team--tbc"><span class="bk-name" title="Winner Last 8">Winner Last 8</span></div>
+       <div class="bk-team bk-team--tbc"><span class="bk-name" title="Winner Last 8">Winner Last 8</span></div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="bk-col bk-col--future bk-col--final">
+    <p class="bk-col-head">Final</p>
+    <div class="bk-round bk-round--single">
+      <div class="bk-match bk-match--final">
+       <div class="bk-team bk-team--tbc"><span class="bk-name" title="Winner Semi-Final">Winner Semi-Final</span></div>
+       <div class="bk-team bk-team--tbc"><span class="bk-name" title="Winner Semi-Final">Winner Semi-Final</span></div>
+      </div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <p class="t4-source-note">The ABC Foundation runs an open draw before every round, so the Last 8 winners are re-drawn into the semi-finals rather than following a fixed path &mdash; the semi-final and final slots stay blank until that draw is made. Prize money: R60 000 to the winners, R25 000 runners-up, R10 000 third, R8 000 fourth, R2 000 each for fifth to eighth.</p>
+ </div>
+ </section>
+
+         <!-- ════════════════════════════════════════════════
+ MATCHES  (Last 8 fixtures + Last 16 & Last 32 results)
+ Source: official ABC Foundation tournament WhatsApp group.
  NOTE: do not give this section id="results" or id="fixtures" —
  js/main.js renders ABC FC's LEAGUE results/fixtures into those ids.
- When a tie is played, move it from the fixtures list to the results
- list: swap <article class="t4-fixture"> for <article class="t4-result">
- (tie head + score boxes, .t4-result-side--won on the winner), then
- update the counts and the .t4-progress-fill width.
+ When a tie is played, move it from the Still To Play list into the
+ round's results list: drop .t4-result--upcoming, swap the VS for
+ .t4-score boxes and add .t4-result-side--won on the winner, then
+ update the counts, the .t4-progress-fill width and the bracket above.
  Penalties: big .t4-score-box = shootout, .t4-score-box--pens = score
  after normal time, plus a .t4-result-note spelling it out.
+ A tie whose score management never published uses
+ .t4-score-box--na dashes plus a note naming the club that went through.
  ════════════════════════════════════════════════ -->
  <hr class="t4-divider" />
  <section class="t4-section t4-results-section" id="matches">
  <div class="t4-inner">
  <p class="t4-eyebrow">Tournament Underway</p>
- <h2 class="t4-h2">Last 32 Matches</h2>
- <p class="t4-lead">Every tie in the 4th Annual ABC Foundation Tournament 2026, played at Makonde Stadium, Mutale. Scores go up here as each match is completed.</p>
+ <h2 class="t4-h2">Results &amp; Fixtures</h2>
+ <p class="t4-lead">Every tie in the 4th Annual ABC Foundation Tournament 2026, as reported by tournament management. The Last 32 and Last 16 are complete &mdash; eight clubs remain.</p>
 
  <div class="t4-results-progress">
- <span class="t4-progress-text">4 of 16 ties played</span>
- <span class="t4-progress-bar"><span class="t4-progress-fill" style="width:25%;"></span></span>
+ <span class="t4-progress-text">24 of 31 ties played</span>
+ <span class="t4-progress-bar"><span class="t4-progress-fill" style="width:77%;"></span></span>
  </div>
 
  <div class="t4-round-head">
- <span class="t4-round-tag">Results</span>
- <span class="t4-round-meta">4 ties played</span>
+ <span class="t4-round-tag">Last 8 &middot; Next Up</span>
+ <span class="t4-round-meta">Sat 19 Sep 2026 &middot; Makonde Stadium, Mutale</span>
  </div>
 
  <div class="t4-results-list">
 
- <!-- Tie 10 Saudi FC vs Phadzima Young Stars FC -->
- <article class="t4-result" id="tie-10">
- <div class="t4-tie-head">
- <span class="t4-tie-no">10</span>
- <span class="t4-tie-state">Full time</span>
- </div>
- <div class="t4-result-row">
- <div class="t4-result-side t4-result-side--home t4-result-side--won">
- <p class="t4-result-team">Saudi FC</p>
- <span class="t4-result-crest"><img src="images/saudi-fc-logo.png" alt="Saudi FC crest" loading="lazy" /></span>
- </div>
- <div class="t4-score">
- <span class="t4-score-box">1</span>
- <span class="t4-score-dash">&ndash;</span>
- <span class="t4-score-box">0</span>
- </div>
- <div class="t4-result-side t4-result-side--away">
- <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
- <p class="t4-result-team">Phadzima Young Stars FC</p>
- </div>
- </div>
- </article>
+        <!-- Ndiitwani Shooting Stars vs Tshamutilikwa Fire Boys -->
+        <article class="t4-result t4-result--upcoming" id="qf-1">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">1</span>
+          <span class="t4-tie-state">Sat 19 Sep &middot; 09h00</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home">
+           <p class="t4-result-team">Ndiitwani Shooting Stars</p>
+           <span class="t4-result-crest"><img src="images/ndiitwani-shooting-stars-logo.png" alt="Ndiitwani Shooting Stars crest" loading="lazy" /></span>
+          </div>
+          <span class="t4-vs">VS</span>
+          <div class="t4-result-side t4-result-side--away">
+           <span class="t4-result-crest"><img src="images/tshamutilikwa-b-logo.png" alt="Tshamutilikwa Fire Boys crest" loading="lazy" /></span>
+           <p class="t4-result-team">Tshamutilikwa Fire Boys</p>
+          </div>
+         </div>
+        </article>
 
- <!-- Tie 12 Makonde FC vs Tshimuthe FC -->
- <article class="t4-result" id="tie-12">
- <div class="t4-tie-head">
- <span class="t4-tie-no">12</span>
- <span class="t4-tie-state">Full time</span>
- </div>
- <div class="t4-result-row">
- <div class="t4-result-side t4-result-side--home">
- <p class="t4-result-team">Makonde FC</p>
- <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
- </div>
- <div class="t4-score">
- <span class="t4-score-box">3</span>
- <span class="t4-score-box t4-score-box--pens">(1)</span>
- <span class="t4-score-dash">&ndash;</span>
- <span class="t4-score-box t4-score-box--pens">(1)</span>
- <span class="t4-score-box">4</span>
- </div>
- <div class="t4-result-side t4-result-side--away t4-result-side--won">
- <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
- <p class="t4-result-team">Tshimuthe FC</p>
- </div>
- </div>
- <p class="t4-result-note">1&ndash;1 after normal time &middot; Tshimuthe FC win 4&ndash;3 on penalties</p>
- </article>
+        <!-- Tshimuthe FC vs Tsemi FC -->
+        <article class="t4-result t4-result--upcoming" id="qf-2">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">2</span>
+          <span class="t4-tie-state">Sat 19 Sep &middot; 11h00</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home">
+           <p class="t4-result-team">Tshimuthe FC</p>
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+          </div>
+          <span class="t4-vs">VS</span>
+          <div class="t4-result-side t4-result-side--away">
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+           <p class="t4-result-team">Tsemi FC</p>
+          </div>
+         </div>
+        </article>
 
- <!-- Tie 13 Mahagala Young Stars vs Mulodi Freedom Birds -->
- <article class="t4-result" id="tie-13">
- <div class="t4-tie-head">
- <span class="t4-tie-no">13</span>
- <span class="t4-tie-state">Full time</span>
- </div>
- <div class="t4-result-row">
- <div class="t4-result-side t4-result-side--home t4-result-side--won">
- <p class="t4-result-team">Mahagala Young Stars</p>
- <span class="t4-result-crest"><img src="images/mahagala-young-stars-logo.png" alt="Mahagala Young Stars crest" loading="lazy" /></span>
- </div>
- <div class="t4-score">
- <span class="t4-score-box">2</span>
- <span class="t4-score-dash">&ndash;</span>
- <span class="t4-score-box">1</span>
- </div>
- <div class="t4-result-side t4-result-side--away">
- <span class="t4-result-crest"><img src="images/mulodi-freedom-birds-logo.png" alt="Mulodi Freedom Birds crest" loading="lazy" /></span>
- <p class="t4-result-team">Mulodi Freedom Birds</p>
- </div>
- </div>
- </article>
+        <!-- Saudi FC vs Mukondeni Royal FC -->
+        <article class="t4-result t4-result--upcoming" id="qf-3">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">3</span>
+          <span class="t4-tie-state">Sat 19 Sep &middot; 13h00</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home">
+           <p class="t4-result-team">Saudi FC</p>
+           <span class="t4-result-crest"><img src="images/saudi-fc-logo.png" alt="Saudi FC crest" loading="lazy" /></span>
+          </div>
+          <span class="t4-vs">VS</span>
+          <div class="t4-result-side t4-result-side--away">
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+           <p class="t4-result-team">Mukondeni Royal FC</p>
+          </div>
+         </div>
+        </article>
 
- <!-- Tie 16 Madridtas FC vs Vuwa Brave Lions FC -->
- <article class="t4-result" id="tie-16">
- <div class="t4-tie-head">
- <span class="t4-tie-no">16</span>
- <span class="t4-tie-state">Full time</span>
- </div>
- <div class="t4-result-row">
- <div class="t4-result-side t4-result-side--home t4-result-side--won">
- <p class="t4-result-team">Madridtas FC</p>
- <span class="t4-result-crest"><img src="images/madridtas-fc-logo.png" alt="Madridtas FC crest" loading="lazy" /></span>
- </div>
- <div class="t4-score">
- <span class="t4-score-box">5</span>
- <span class="t4-score-box t4-score-box--pens">(1)</span>
- <span class="t4-score-dash">&ndash;</span>
- <span class="t4-score-box t4-score-box--pens">(1)</span>
- <span class="t4-score-box">4</span>
- </div>
- <div class="t4-result-side t4-result-side--away">
- <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
- <p class="t4-result-team">Vuwa Brave Lions FC</p>
- </div>
- </div>
- <p class="t4-result-note">1&ndash;1 after normal time &middot; Madridtas FC win 5&ndash;4 on penalties</p>
- </article>
+        <!-- Madridtas FC vs Maelula United Brothers -->
+        <article class="t4-result t4-result--upcoming" id="qf-4">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">4</span>
+          <span class="t4-tie-state">Sat 19 Sep &middot; 15h00</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home">
+           <p class="t4-result-team">Madridtas FC</p>
+           <span class="t4-result-crest"><img src="images/madridtas-fc-logo.png" alt="Madridtas FC crest" loading="lazy" /></span>
+          </div>
+          <span class="t4-vs">VS</span>
+          <div class="t4-result-side t4-result-side--away">
+           <span class="t4-result-crest"><img src="images/maelula-united-brothers-logo.png" alt="Maelula United Brothers crest" loading="lazy" /></span>
+           <p class="t4-result-team">Maelula United Brothers</p>
+          </div>
+         </div>
+        </article>
 
  </div>
 
  <div class="t4-round-head">
- <span class="t4-round-tag">Still To Play</span>
- <span class="t4-round-meta">12 ties &middot; Makonde Stadium, Mutale</span>
+ <span class="t4-round-tag">Last 16 &middot; Results</span>
+ <span class="t4-round-meta">12&ndash;13 Sep 2026 &middot; 8 ties played</span>
  </div>
 
- <div class="t4-fixtures-list">
+ <div class="t4-results-list">
 
- <!-- Tie 01 Nditwani Shooting Stars vs Makuya Big Cat -->
- <article class="t4-fixture" id="tie-1">
- <span class="t4-tie-no">1</span>
- <div class="t4-fixture-side t4-fixture-side--home">
- <p class="t4-result-team">Nditwani Shooting Stars</p>
- <span class="t4-result-crest"><img src="images/ndiitwani-shooting-stars-logo.png" alt="Nditwani Shooting Stars crest" loading="lazy" /></span>
- </div>
- <span class="t4-vs">VS</span>
- <div class="t4-fixture-side t4-fixture-side--away">
- <span class="t4-result-crest"><img src="images/makuya-big-cat-fc-logo.png" alt="Makuya Big Cat crest" loading="lazy" /></span>
- <p class="t4-result-team">Makuya Big Cat</p>
- </div>
- </article>
+        <!-- Tie 1 Lukau Tshishivhe Tiger Boys vs Ndiitwani Shooting Stars -->
+        <article class="t4-result" id="l16-1">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">1</span>
+          <span class="t4-tie-state">Through</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home">
+           <p class="t4-result-team">Lukau Tshishivhe Tiger Boys</p>
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box t4-score-box--na">&ndash;</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box t4-score-box--na">&ndash;</span></div>
+          <div class="t4-result-side t4-result-side--away t4-result-side--won">
+           <span class="t4-result-crest"><img src="images/ndiitwani-shooting-stars-logo.png" alt="Ndiitwani Shooting Stars crest" loading="lazy" /></span>
+           <p class="t4-result-team">Ndiitwani Shooting Stars</p>
+          </div>
+         </div>
+         <p class="t4-result-note">Score not published by tournament management &middot; Ndiitwani Shooting Stars through</p>
+        </article>
 
- <!-- Tie 02 Tshamutilikwa Fire Boys vs Kwena FC -->
- <article class="t4-fixture" id="tie-2">
- <span class="t4-tie-no">2</span>
- <div class="t4-fixture-side t4-fixture-side--home">
- <p class="t4-result-team">Tshamutilikwa Fire Boys</p>
- <span class="t4-result-crest"><img src="images/tshamutilikwa-b-logo.png" alt="Tshamutilikwa Fire Boys crest" loading="lazy" /></span>
- </div>
- <span class="t4-vs">VS</span>
- <div class="t4-fixture-side t4-fixture-side--away">
- <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
- <p class="t4-result-team">Kwena FC</p>
- </div>
- </article>
+        <!-- Tie 2 Maelula United Brothers vs Chelamoya FC -->
+        <article class="t4-result" id="l16-2">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">2</span>
+          <span class="t4-tie-state">Full time</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home t4-result-side--won">
+           <p class="t4-result-team">Maelula United Brothers</p>
+           <span class="t4-result-crest"><img src="images/maelula-united-brothers-logo.png" alt="Maelula United Brothers crest" loading="lazy" /></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box">4</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box">2</span></div>
+          <div class="t4-result-side t4-result-side--away">
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+           <p class="t4-result-team">Chelamoya FC</p>
+          </div>
+         </div>
+        </article>
 
- <!-- Tie 03 Ngwenani Young Chiefs vs Chelamoya FC -->
- <article class="t4-fixture" id="tie-3">
- <span class="t4-tie-no">3</span>
- <div class="t4-fixture-side t4-fixture-side--home">
- <p class="t4-result-team">Ngwenani Young Chiefs</p>
- <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
- </div>
- <span class="t4-vs">VS</span>
- <div class="t4-fixture-side t4-fixture-side--away">
- <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
- <p class="t4-result-team">Chelamoya FC</p>
- </div>
- </article>
+        <!-- Tie 3 Tsemi FC vs Mahagala Young Stars -->
+        <article class="t4-result" id="l16-3">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">3</span>
+          <span class="t4-tie-state">Full time</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home t4-result-side--won">
+           <p class="t4-result-team">Tsemi FC</p>
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box">2</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box">1</span></div>
+          <div class="t4-result-side t4-result-side--away">
+           <span class="t4-result-crest"><img src="images/mahagala-young-stars-logo.png" alt="Mahagala Young Stars crest" loading="lazy" /></span>
+           <p class="t4-result-team">Mahagala Young Stars</p>
+          </div>
+         </div>
+        </article>
 
- <!-- Tie 04 SMSA FC vs Malale Black Cat FC -->
- <article class="t4-fixture" id="tie-4">
- <span class="t4-tie-no">4</span>
- <div class="t4-fixture-side t4-fixture-side--home">
- <p class="t4-result-team">SMSA FC</p>
- <span class="t4-result-crest"><img src="images/smsa-fc-logo.png" alt="SMSA FC crest" loading="lazy" /></span>
- </div>
- <span class="t4-vs">VS</span>
- <div class="t4-fixture-side t4-fixture-side--away">
- <span class="t4-result-crest"><img src="images/malale-black-cat-fc-logo.png" alt="Malale Black Cat FC crest" loading="lazy" /></span>
- <p class="t4-result-team">Malale Black Cat FC</p>
- </div>
- </article>
+        <!-- Tie 4 Supro FC vs Tshimuthe FC -->
+        <article class="t4-result" id="l16-4">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">4</span>
+          <span class="t4-tie-state">Through</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home">
+           <p class="t4-result-team">Supro FC</p>
+           <span class="t4-result-crest"><img src="images/supro-logo.png" alt="Supro FC crest" loading="lazy" /></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box t4-score-box--na">&ndash;</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box t4-score-box--na">&ndash;</span></div>
+          <div class="t4-result-side t4-result-side--away t4-result-side--won">
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+           <p class="t4-result-team">Tshimuthe FC</p>
+          </div>
+         </div>
+         <p class="t4-result-note">1&ndash;1 at the last update &middot; final score not published &middot; Tshimuthe FC through</p>
+        </article>
 
- <!-- Tie 05 Mukondeni Royal FC vs Mbodi Pull Together -->
- <article class="t4-fixture" id="tie-5">
- <span class="t4-tie-no">5</span>
- <div class="t4-fixture-side t4-fixture-side--home">
- <p class="t4-result-team">Mukondeni Royal FC</p>
- <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
- </div>
- <span class="t4-vs">VS</span>
- <div class="t4-fixture-side t4-fixture-side--away">
- <span class="t4-result-crest"><img src="images/mbodi-pull-together-logo.png" alt="Mbodi Pull Together crest" loading="lazy" /></span>
- <p class="t4-result-team">Mbodi Pull Together</p>
- </div>
- </article>
+        <!-- Tie 5 Mukondeni Royal FC vs Matanda Rockers FC -->
+        <article class="t4-result" id="l16-5">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">5</span>
+          <span class="t4-tie-state">Through</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home t4-result-side--won">
+           <p class="t4-result-team">Mukondeni Royal FC</p>
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box t4-score-box--na">&ndash;</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box t4-score-box--na">&ndash;</span></div>
+          <div class="t4-result-side t4-result-side--away">
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+           <p class="t4-result-team">Matanda Rockers FC</p>
+          </div>
+         </div>
+         <p class="t4-result-note">Score not published by tournament management &middot; Mukondeni Royal FC through</p>
+        </article>
 
- <!-- Tie 06 Ramahantsha Black Pool vs Musasenda Big V -->
- <article class="t4-fixture" id="tie-6">
- <span class="t4-tie-no">6</span>
- <div class="t4-fixture-side t4-fixture-side--home">
- <p class="t4-result-team">Ramahantsha Black Pool</p>
- <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
- </div>
- <span class="t4-vs">VS</span>
- <div class="t4-fixture-side t4-fixture-side--away">
- <span class="t4-result-crest"><img src="images/musasenda-big-v-logo.png" alt="Musasenda Big V crest" loading="lazy" /></span>
- <p class="t4-result-team">Musasenda Big V</p>
- </div>
- </article>
+        <!-- Tie 6 Chavani Shining Stars vs Saudi FC -->
+        <article class="t4-result" id="l16-6">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">6</span>
+          <span class="t4-tie-state">Through</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home">
+           <p class="t4-result-team">Chavani Shining Stars</p>
+           <span class="t4-result-crest"><img src="images/chavani-shinning-stars-logo.png" alt="Chavani Shining Stars crest" loading="lazy" /></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box t4-score-box--na">&ndash;</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box t4-score-box--na">&ndash;</span></div>
+          <div class="t4-result-side t4-result-side--away t4-result-side--won">
+           <span class="t4-result-crest"><img src="images/saudi-fc-logo.png" alt="Saudi FC crest" loading="lazy" /></span>
+           <p class="t4-result-team">Saudi FC</p>
+          </div>
+         </div>
+         <p class="t4-result-note">Score not published by tournament management &middot; Saudi FC through</p>
+        </article>
 
- <!-- Tie 07 Vhembe Tron vs Tshishivhe Tiger Boys -->
- <article class="t4-fixture" id="tie-7">
- <span class="t4-tie-no">7</span>
- <div class="t4-fixture-side t4-fixture-side--home">
- <p class="t4-result-team">Vhembe Tron</p>
- <span class="t4-result-crest"><img src="images/vhembe-tron-fc-logo.png" alt="Vhembe Tron crest" loading="lazy" /></span>
- </div>
- <span class="t4-vs">VS</span>
- <div class="t4-fixture-side t4-fixture-side--away">
- <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
- <p class="t4-result-team">Tshishivhe Tiger Boys</p>
- </div>
- </article>
+        <!-- Tie 7 Malale Black Cat FC vs Madridtas FC -->
+        <article class="t4-result" id="l16-7">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">7</span>
+          <span class="t4-tie-state">Through</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home">
+           <p class="t4-result-team">Malale Black Cat FC</p>
+           <span class="t4-result-crest"><img src="images/malale-black-cat-fc-logo.png" alt="Malale Black Cat FC crest" loading="lazy" /></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box t4-score-box--na">&ndash;</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box t4-score-box--na">&ndash;</span></div>
+          <div class="t4-result-side t4-result-side--away t4-result-side--won">
+           <span class="t4-result-crest"><img src="images/madridtas-fc-logo.png" alt="Madridtas FC crest" loading="lazy" /></span>
+           <p class="t4-result-team">Madridtas FC</p>
+          </div>
+         </div>
+         <p class="t4-result-note">Score not published by tournament management &middot; Madridtas FC through</p>
+        </article>
 
- <!-- Tie 08 Matanda Rockers FC vs Thengwe Flying Peace -->
- <article class="t4-fixture" id="tie-8">
- <span class="t4-tie-no">8</span>
- <div class="t4-fixture-side t4-fixture-side--home">
- <p class="t4-result-team">Matanda Rockers FC</p>
- <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
- </div>
- <span class="t4-vs">VS</span>
- <div class="t4-fixture-side t4-fixture-side--away">
- <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
- <p class="t4-result-team">Thengwe Flying Peace</p>
- </div>
- </article>
-
- <!-- Tie 09 Shulumani Training Academy vs Supro FC -->
- <article class="t4-fixture" id="tie-9">
- <span class="t4-tie-no">9</span>
- <div class="t4-fixture-side t4-fixture-side--home">
- <p class="t4-result-team">Shulumani Training Academy</p>
- <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
- </div>
- <span class="t4-vs">VS</span>
- <div class="t4-fixture-side t4-fixture-side--away">
- <span class="t4-result-crest"><img src="images/supro-logo.png" alt="Supro FC crest" loading="lazy" /></span>
- <p class="t4-result-team">Supro FC</p>
- </div>
- </article>
-
- <!-- Tie 11 Tsemi FC vs Maheni Devoted Vultures -->
- <article class="t4-fixture" id="tie-11">
- <span class="t4-tie-no">11</span>
- <div class="t4-fixture-side t4-fixture-side--home">
- <p class="t4-result-team">Tsemi FC</p>
- <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
- </div>
- <span class="t4-vs">VS</span>
- <div class="t4-fixture-side t4-fixture-side--away">
- <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
- <p class="t4-result-team">Maheni Devoted Vultures</p>
- </div>
- </article>
-
- <!-- Tie 14 Maelula United Brothers vs Mukula Young Santos -->
- <article class="t4-fixture" id="tie-14">
- <span class="t4-tie-no">14</span>
- <div class="t4-fixture-side t4-fixture-side--home">
- <p class="t4-result-team">Maelula United Brothers</p>
- <span class="t4-result-crest"><img src="images/maelula-united-brothers-logo.png" alt="Maelula United Brothers crest" loading="lazy" /></span>
- </div>
- <span class="t4-vs">VS</span>
- <div class="t4-fixture-side t4-fixture-side--away">
- <span class="t4-result-crest"><img src="images/mukula-young-santos-logo.png" alt="Mukula Young Santos crest" loading="lazy" /></span>
- <p class="t4-result-team">Mukula Young Santos</p>
- </div>
- </article>
-
- <!-- Tie 15 Chavani Shining Stars vs Makonde Home Defenders -->
- <article class="t4-fixture" id="tie-15">
- <span class="t4-tie-no">15</span>
- <div class="t4-fixture-side t4-fixture-side--home">
- <p class="t4-result-team">Chavani Shining Stars</p>
- <span class="t4-result-crest"><img src="images/chavani-shinning-stars-logo.png" alt="Chavani Shining Stars crest" loading="lazy" /></span>
- </div>
- <span class="t4-vs">VS</span>
- <div class="t4-fixture-side t4-fixture-side--away">
- <span class="t4-result-crest"><img src="images/makonde-home-defenders-logo.png" alt="Makonde Home Defenders crest" loading="lazy" /></span>
- <p class="t4-result-team">Makonde Home Defenders</p>
- </div>
- </article>
+        <!-- Tie 8 Musasenda Big V vs Tshamutilikwa Fire Boys -->
+        <article class="t4-result" id="l16-8">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">8</span>
+          <span class="t4-tie-state">Full time</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home">
+           <p class="t4-result-team">Musasenda Big V</p>
+           <span class="t4-result-crest"><img src="images/musasenda-big-v-logo.png" alt="Musasenda Big V crest" loading="lazy" /></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box">0</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box">1</span></div>
+          <div class="t4-result-side t4-result-side--away t4-result-side--won">
+           <span class="t4-result-crest"><img src="images/tshamutilikwa-b-logo.png" alt="Tshamutilikwa Fire Boys crest" loading="lazy" /></span>
+           <p class="t4-result-team">Tshamutilikwa Fire Boys</p>
+          </div>
+         </div>
+         <p class="t4-result-note">Replay, 16 Sep &middot; original tie on 13 Sep finished 1&ndash;1 and was called off with the shootout level at 6&ndash;6</p>
+        </article>
 
  </div>
+
+ <div class="t4-round-head">
+ <span class="t4-round-tag">Last 32 &middot; Results</span>
+ <span class="t4-round-meta">30 Aug &ndash; 6 Sep 2026 &middot; 16 ties played</span>
+ </div>
+
+ <div class="t4-results-list">
+
+        <!-- Tie 1 Ndiitwani Shooting Stars vs Makuya Big Cat -->
+        <article class="t4-result" id="tie-1">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">1</span>
+          <span class="t4-tie-state">Full time</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home t4-result-side--won">
+           <p class="t4-result-team">Ndiitwani Shooting Stars</p>
+           <span class="t4-result-crest"><img src="images/ndiitwani-shooting-stars-logo.png" alt="Ndiitwani Shooting Stars crest" loading="lazy" /></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box">2</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box">0</span></div>
+          <div class="t4-result-side t4-result-side--away">
+           <span class="t4-result-crest"><img src="images/makuya-big-cat-fc-logo.png" alt="Makuya Big Cat crest" loading="lazy" /></span>
+           <p class="t4-result-team">Makuya Big Cat</p>
+          </div>
+         </div>
+        </article>
+
+        <!-- Tie 2 Tshamutilikwa Fire Boys vs Kwena FC -->
+        <article class="t4-result" id="tie-2">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">2</span>
+          <span class="t4-tie-state">Through</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home t4-result-side--won">
+           <p class="t4-result-team">Tshamutilikwa Fire Boys</p>
+           <span class="t4-result-crest"><img src="images/tshamutilikwa-b-logo.png" alt="Tshamutilikwa Fire Boys crest" loading="lazy" /></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box t4-score-box--na">&ndash;</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box t4-score-box--na">&ndash;</span></div>
+          <div class="t4-result-side t4-result-side--away">
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+           <p class="t4-result-team">Kwena FC</p>
+          </div>
+         </div>
+         <p class="t4-result-note">Score not published by tournament management &middot; Tshamutilikwa Fire Boys through</p>
+        </article>
+
+        <!-- Tie 3 Ngwenani Young Chiefs vs Chelamoya FC -->
+        <article class="t4-result" id="tie-3">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">3</span>
+          <span class="t4-tie-state">Full time</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home">
+           <p class="t4-result-team">Ngwenani Young Chiefs</p>
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box">0</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box">3</span></div>
+          <div class="t4-result-side t4-result-side--away t4-result-side--won">
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+           <p class="t4-result-team">Chelamoya FC</p>
+          </div>
+         </div>
+        </article>
+
+        <!-- Tie 4 SMSA FC vs Malale Black Cat FC -->
+        <article class="t4-result" id="tie-4">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">4</span>
+          <span class="t4-tie-state">Full time</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home">
+           <p class="t4-result-team">SMSA FC</p>
+           <span class="t4-result-crest"><img src="images/smsa-fc-logo.png" alt="SMSA FC crest" loading="lazy" /></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box">0</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box">2</span></div>
+          <div class="t4-result-side t4-result-side--away t4-result-side--won">
+           <span class="t4-result-crest"><img src="images/malale-black-cat-fc-logo.png" alt="Malale Black Cat FC crest" loading="lazy" /></span>
+           <p class="t4-result-team">Malale Black Cat FC</p>
+          </div>
+         </div>
+        </article>
+
+        <!-- Tie 5 Mukondeni Royal FC vs Mbodi Pull Together -->
+        <article class="t4-result" id="tie-5">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">5</span>
+          <span class="t4-tie-state">Through</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home t4-result-side--won">
+           <p class="t4-result-team">Mukondeni Royal FC</p>
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box t4-score-box--na">&ndash;</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box t4-score-box--na">&ndash;</span></div>
+          <div class="t4-result-side t4-result-side--away">
+           <span class="t4-result-crest"><img src="images/mbodi-pull-together-logo.png" alt="Mbodi Pull Together crest" loading="lazy" /></span>
+           <p class="t4-result-team">Mbodi Pull Together</p>
+          </div>
+         </div>
+         <p class="t4-result-note">Score not published by tournament management &middot; Mukondeni Royal FC through</p>
+        </article>
+
+        <!-- Tie 6 Dzwerani United Brothers vs Musasenda Big V -->
+        <article class="t4-result" id="tie-6">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">6</span>
+          <span class="t4-tie-state">Through</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home">
+           <p class="t4-result-team">Dzwerani United Brothers</p>
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box t4-score-box--na">&ndash;</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box t4-score-box--na">&ndash;</span></div>
+          <div class="t4-result-side t4-result-side--away t4-result-side--won">
+           <span class="t4-result-crest"><img src="images/musasenda-big-v-logo.png" alt="Musasenda Big V crest" loading="lazy" /></span>
+           <p class="t4-result-team">Musasenda Big V</p>
+          </div>
+         </div>
+         <p class="t4-result-note">Replayed at Makonde Post Office Ground &middot; score not published &middot; Musasenda Big V through</p>
+        </article>
+
+        <!-- Tie 7 Vhembe Tron vs Lukau Tshishivhe Tiger Boys -->
+        <article class="t4-result" id="tie-7">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">7</span>
+          <span class="t4-tie-state">Penalties</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home">
+           <p class="t4-result-team">Vhembe Tron</p>
+           <span class="t4-result-crest"><img src="images/vhembe-tron-fc-logo.png" alt="Vhembe Tron crest" loading="lazy" /></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box">3</span><span class="t4-score-box t4-score-box--pens">(1)</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box t4-score-box--pens">(1)</span><span class="t4-score-box">4</span></div>
+          <div class="t4-result-side t4-result-side--away t4-result-side--won">
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+           <p class="t4-result-team">Lukau Tshishivhe Tiger Boys</p>
+          </div>
+         </div>
+         <p class="t4-result-note">1&ndash;1 after normal time &middot; Lukau Tshishivhe Tiger Boys win 4&ndash;3 on penalties</p>
+        </article>
+
+        <!-- Tie 8 Thengwe Flying Peace vs Matanda Rockers FC -->
+        <article class="t4-result" id="tie-8">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">8</span>
+          <span class="t4-tie-state">Full time</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home">
+           <p class="t4-result-team">Thengwe Flying Peace</p>
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box">2</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box">3</span></div>
+          <div class="t4-result-side t4-result-side--away t4-result-side--won">
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+           <p class="t4-result-team">Matanda Rockers FC</p>
+          </div>
+         </div>
+        </article>
+
+        <!-- Tie 9 Shilumani Training Academy vs Supro FC -->
+        <article class="t4-result" id="tie-9">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">9</span>
+          <span class="t4-tie-state">Penalties</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home">
+           <p class="t4-result-team">Shilumani Training Academy</p>
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box">2</span><span class="t4-score-box t4-score-box--pens">(0)</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box t4-score-box--pens">(0)</span><span class="t4-score-box">4</span></div>
+          <div class="t4-result-side t4-result-side--away t4-result-side--won">
+           <span class="t4-result-crest"><img src="images/supro-logo.png" alt="Supro FC crest" loading="lazy" /></span>
+           <p class="t4-result-team">Supro FC</p>
+          </div>
+         </div>
+         <p class="t4-result-note">0&ndash;0 after normal time &middot; Supro FC win 4&ndash;2 on penalties</p>
+        </article>
+
+        <!-- Tie 10 Saudi FC vs Phadzima Young Stars FC -->
+        <article class="t4-result" id="tie-10">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">10</span>
+          <span class="t4-tie-state">Full time</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home t4-result-side--won">
+           <p class="t4-result-team">Saudi FC</p>
+           <span class="t4-result-crest"><img src="images/saudi-fc-logo.png" alt="Saudi FC crest" loading="lazy" /></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box">1</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box">0</span></div>
+          <div class="t4-result-side t4-result-side--away">
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+           <p class="t4-result-team">Phadzima Young Stars FC</p>
+          </div>
+         </div>
+        </article>
+
+        <!-- Tie 11 Tsemi FC vs Maheni Devoted Vultures -->
+        <article class="t4-result" id="tie-11">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">11</span>
+          <span class="t4-tie-state">Penalties</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home t4-result-side--won">
+           <p class="t4-result-team">Tsemi FC</p>
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box">0</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box">0</span></div>
+          <div class="t4-result-side t4-result-side--away">
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+           <p class="t4-result-team">Maheni Devoted Vultures</p>
+          </div>
+         </div>
+         <p class="t4-result-note">0&ndash;0 after normal time &middot; Tsemi FC win on penalties &middot; shootout score not published</p>
+        </article>
+
+        <!-- Tie 12 Makonde FC vs Tshimuthe FC -->
+        <article class="t4-result" id="tie-12">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">12</span>
+          <span class="t4-tie-state">Penalties</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home">
+           <p class="t4-result-team">Makonde FC</p>
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box">3</span><span class="t4-score-box t4-score-box--pens">(1)</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box t4-score-box--pens">(1)</span><span class="t4-score-box">4</span></div>
+          <div class="t4-result-side t4-result-side--away t4-result-side--won">
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+           <p class="t4-result-team">Tshimuthe FC</p>
+          </div>
+         </div>
+         <p class="t4-result-note">1&ndash;1 after normal time &middot; Tshimuthe FC win 4&ndash;3 on penalties</p>
+        </article>
+
+        <!-- Tie 13 Mahagala Young Stars vs Mulodi Freedom Birds -->
+        <article class="t4-result" id="tie-13">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">13</span>
+          <span class="t4-tie-state">Full time</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home t4-result-side--won">
+           <p class="t4-result-team">Mahagala Young Stars</p>
+           <span class="t4-result-crest"><img src="images/mahagala-young-stars-logo.png" alt="Mahagala Young Stars crest" loading="lazy" /></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box">2</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box">1</span></div>
+          <div class="t4-result-side t4-result-side--away">
+           <span class="t4-result-crest"><img src="images/mulodi-freedom-birds-logo.png" alt="Mulodi Freedom Birds crest" loading="lazy" /></span>
+           <p class="t4-result-team">Mulodi Freedom Birds</p>
+          </div>
+         </div>
+        </article>
+
+        <!-- Tie 14 Maelula United Brothers vs Mukula Young Santos -->
+        <article class="t4-result" id="tie-14">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">14</span>
+          <span class="t4-tie-state">Full time</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home t4-result-side--won">
+           <p class="t4-result-team">Maelula United Brothers</p>
+           <span class="t4-result-crest"><img src="images/maelula-united-brothers-logo.png" alt="Maelula United Brothers crest" loading="lazy" /></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box">2</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box">0</span></div>
+          <div class="t4-result-side t4-result-side--away">
+           <span class="t4-result-crest"><img src="images/mukula-young-santos-logo.png" alt="Mukula Young Santos crest" loading="lazy" /></span>
+           <p class="t4-result-team">Mukula Young Santos</p>
+          </div>
+         </div>
+        </article>
+
+        <!-- Tie 15 Chavani Shining Stars vs Makonde Home Defenders -->
+        <article class="t4-result" id="tie-15">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">15</span>
+          <span class="t4-tie-state">Full time</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home t4-result-side--won">
+           <p class="t4-result-team">Chavani Shining Stars</p>
+           <span class="t4-result-crest"><img src="images/chavani-shinning-stars-logo.png" alt="Chavani Shining Stars crest" loading="lazy" /></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box">1</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box">0</span></div>
+          <div class="t4-result-side t4-result-side--away">
+           <span class="t4-result-crest"><img src="images/makonde-home-defenders-logo.png" alt="Makonde Home Defenders crest" loading="lazy" /></span>
+           <p class="t4-result-team">Makonde Home Defenders</p>
+          </div>
+         </div>
+        </article>
+
+        <!-- Tie 16 Madridtas FC vs Vuwa Brave Lions FC -->
+        <article class="t4-result" id="tie-16">
+         <div class="t4-tie-head">
+          <span class="t4-tie-no">16</span>
+          <span class="t4-tie-state">Penalties</span>
+         </div>
+         <div class="t4-result-row">
+          <div class="t4-result-side t4-result-side--home t4-result-side--won">
+           <p class="t4-result-team">Madridtas FC</p>
+           <span class="t4-result-crest"><img src="images/madridtas-fc-logo.png" alt="Madridtas FC crest" loading="lazy" /></span>
+          </div>
+          <div class="t4-score"><span class="t4-score-box">5</span><span class="t4-score-box t4-score-box--pens">(1)</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box t4-score-box--pens">(1)</span><span class="t4-score-box">4</span></div>
+          <div class="t4-result-side t4-result-side--away">
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+           <p class="t4-result-team">Vuwa Brave Lions FC</p>
+          </div>
+         </div>
+         <p class="t4-result-note">1&ndash;1 after normal time &middot; Madridtas FC win 5&ndash;4 on penalties</p>
+        </article>
+
+ </div>
+
+ <p class="t4-source-note">Scores as announced in the official tournament group. A handful of ties were never given a published score &mdash; those cards name the club that went through, confirmed by the following round&rsquo;s draw. Dzwerani United Brothers FC replaced Ramahantsha Black Pool FC in the Last 32 after Ramahantsha acquired ABC Motsepe status.</p>
  </div>
  </section>
 
@@ -1154,202 +1830,202 @@
  <div class="t4-inner">
  <p class="t4-eyebrow">Participating Clubs</p>
  <h2 class="t4-h2">The Final 32</h2>
- <p class="t4-lead">Every club in the 4th Annual ABC Foundation Tournament 2026, listed in Last 32 draw order. Hosted by ABC FC Foundation at Makonde Stadium, Mutale.</p>
+ <p class="t4-lead">Every club in the 4th Annual ABC Foundation Tournament 2026, listed in Last 32 draw order, with how far each one went. Hosted by ABC FC Foundation at Makonde Stadium, Mutale.</p>
 
- <p class="t4-invite-notice">The Last 32 draw has been made &mdash; see the full fixture list above.</p>
+ <p class="t4-invite-notice">Last 32 and Last 16 complete &mdash; 8 clubs remain &middot; Last 8 on Saturday 19 September</p>
 
  <div class="t4-teams-grid">
- <!-- 01 Nditwani Shooting Stars Confirmed -->
- <div class="t4-team-card">
-  <div class="t4-team-badge"><img src="images/ndiitwani-shooting-stars-logo.png" alt="Nditwani Shooting Stars" style="width:52px;height:52px;object-fit:contain;" /></div>
-  <p class="t4-team-name">Nditwani Shooting Stars</p>
-  <span class="t4-team-status">Confirmed</span>
+ <!-- 01 Ndiitwani Shooting Stars Into Last 8 -->
+ <div class="t4-team-card t4-team-card--through">
+  <div class="t4-team-badge"><img src="images/ndiitwani-shooting-stars-logo.png" alt="Ndiitwani Shooting Stars" style="width:52px;height:52px;object-fit:contain;" /></div>
+  <p class="t4-team-name">Ndiitwani Shooting Stars</p>
+  <span class="t4-team-status">Into Last 8</span>
  </div>
- <!-- 02 Makuya Big Cat Confirmed -->
- <div class="t4-team-card">
+ <!-- 02 Makuya Big Cat Out - Last 32 -->
+ <div class="t4-team-card t4-team-card--out">
   <div class="t4-team-badge"><img src="images/makuya-big-cat-fc-logo.png" alt="Makuya Big Cat" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">Makuya Big Cat</p>
-  <span class="t4-team-status">Confirmed</span>
+  <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
- <!-- 03 Tshamutilikwa Fire Boys Confirmed -->
- <div class="t4-team-card">
+ <!-- 03 Tshamutilikwa Fire Boys Into Last 8 -->
+ <div class="t4-team-card t4-team-card--through">
   <div class="t4-team-badge"><img src="images/tshamutilikwa-b-logo.png" alt="Tshamutilikwa Fire Boys" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">Tshamutilikwa Fire Boys</p>
-  <span class="t4-team-status">Confirmed</span>
+  <span class="t4-team-status">Into Last 8</span>
  </div>
- <!-- 04 Kwena FC Confirmed -->
- <div class="t4-team-card t4-team-nologo">
+ <!-- 04 Kwena FC Out - Last 32 -->
+ <div class="t4-team-card t4-team-card--out t4-team-nologo">
   <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
   <p class="t4-team-name">Kwena FC</p>
-  <span class="t4-team-status">Confirmed</span>
+  <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
- <!-- 05 Ngwenani Young Chiefs Confirmed -->
- <div class="t4-team-card t4-team-nologo">
+ <!-- 05 Ngwenani Young Chiefs Out - Last 32 -->
+ <div class="t4-team-card t4-team-card--out t4-team-nologo">
   <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
   <p class="t4-team-name">Ngwenani Young Chiefs</p>
-  <span class="t4-team-status">Confirmed</span>
+  <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
- <!-- 06 Chelamoya FC Confirmed -->
- <div class="t4-team-card t4-team-nologo">
+ <!-- 06 Chelamoya FC Out - Last 16 -->
+ <div class="t4-team-card t4-team-card--out t4-team-nologo">
   <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
   <p class="t4-team-name">Chelamoya FC</p>
-  <span class="t4-team-status">Confirmed</span>
+  <span class="t4-team-status">Out &middot; Last 16</span>
  </div>
- <!-- 07 SMSA FC Confirmed -->
- <div class="t4-team-card">
+ <!-- 07 SMSA FC Out - Last 32 -->
+ <div class="t4-team-card t4-team-card--out">
   <div class="t4-team-badge"><img src="images/smsa-fc-logo.png" alt="SMSA FC" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">SMSA FC</p>
-  <span class="t4-team-status">Confirmed</span>
+  <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
- <!-- 08 Malale Black Cat FC Confirmed -->
- <div class="t4-team-card">
+ <!-- 08 Malale Black Cat FC Out - Last 16 -->
+ <div class="t4-team-card t4-team-card--out">
   <div class="t4-team-badge"><img src="images/malale-black-cat-fc-logo.png" alt="Malale Black Cat FC" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">Malale Black Cat FC</p>
-  <span class="t4-team-status">Confirmed</span>
+  <span class="t4-team-status">Out &middot; Last 16</span>
  </div>
- <!-- 09 Mukondeni Royal FC Confirmed -->
- <div class="t4-team-card t4-team-nologo">
+ <!-- 09 Mukondeni Royal FC Into Last 8 -->
+ <div class="t4-team-card t4-team-card--through t4-team-nologo">
   <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
   <p class="t4-team-name">Mukondeni Royal FC</p>
-  <span class="t4-team-status">Confirmed</span>
+  <span class="t4-team-status">Into Last 8</span>
  </div>
- <!-- 10 Mbodi Pull Together Confirmed -->
- <div class="t4-team-card">
+ <!-- 10 Mbodi Pull Together Out - Last 32 -->
+ <div class="t4-team-card t4-team-card--out">
   <div class="t4-team-badge"><img src="images/mbodi-pull-together-logo.png" alt="Mbodi Pull Together" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">Mbodi Pull Together</p>
-  <span class="t4-team-status">Confirmed</span>
+  <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
- <!-- 11 Ramahantsha Black Pool Confirmed -->
- <div class="t4-team-card t4-team-nologo">
+ <!-- 11 Dzwerani United Brothers Out - Last 32 -->
+ <div class="t4-team-card t4-team-card--out t4-team-nologo">
   <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
-  <p class="t4-team-name">Ramahantsha Black Pool</p>
-  <span class="t4-team-status">Confirmed</span>
+  <p class="t4-team-name">Dzwerani United Brothers</p>
+  <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
- <!-- 12 Musasenda Big V Confirmed -->
- <div class="t4-team-card">
+ <!-- 12 Musasenda Big V Out - Last 16 -->
+ <div class="t4-team-card t4-team-card--out">
   <div class="t4-team-badge"><img src="images/musasenda-big-v-logo.png" alt="Musasenda Big V" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">Musasenda Big V</p>
-  <span class="t4-team-status">Confirmed</span>
+  <span class="t4-team-status">Out &middot; Last 16</span>
  </div>
- <!-- 13 Vhembe Tron Confirmed -->
- <div class="t4-team-card">
+ <!-- 13 Vhembe Tron Out - Last 32 -->
+ <div class="t4-team-card t4-team-card--out">
   <div class="t4-team-badge"><img src="images/vhembe-tron-fc-logo.png" alt="Vhembe Tron" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">Vhembe Tron</p>
-  <span class="t4-team-status">Confirmed</span>
+  <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
- <!-- 14 Tshishivhe Tiger Boys Confirmed -->
- <div class="t4-team-card t4-team-nologo">
+ <!-- 14 Lukau Tshishivhe Tiger Boys Out - Last 16 -->
+ <div class="t4-team-card t4-team-card--out t4-team-nologo">
   <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
-  <p class="t4-team-name">Tshishivhe Tiger Boys</p>
-  <span class="t4-team-status">Confirmed</span>
+  <p class="t4-team-name">Lukau Tshishivhe Tiger Boys</p>
+  <span class="t4-team-status">Out &middot; Last 16</span>
  </div>
- <!-- 15 Matanda Rockers FC Confirmed -->
- <div class="t4-team-card t4-team-nologo">
+ <!-- 15 Matanda Rockers FC Out - Last 16 -->
+ <div class="t4-team-card t4-team-card--out t4-team-nologo">
   <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
   <p class="t4-team-name">Matanda Rockers FC</p>
-  <span class="t4-team-status">Confirmed</span>
+  <span class="t4-team-status">Out &middot; Last 16</span>
  </div>
- <!-- 16 Thengwe Flying Peace Confirmed -->
- <div class="t4-team-card t4-team-nologo">
+ <!-- 16 Thengwe Flying Peace Out - Last 32 -->
+ <div class="t4-team-card t4-team-card--out t4-team-nologo">
   <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
   <p class="t4-team-name">Thengwe Flying Peace</p>
-  <span class="t4-team-status">Confirmed</span>
+  <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
- <!-- 17 Shulumani Training Academy Confirmed -->
- <div class="t4-team-card t4-team-nologo">
+ <!-- 17 Shilumani Training Academy Out - Last 32 -->
+ <div class="t4-team-card t4-team-card--out t4-team-nologo">
   <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
-  <p class="t4-team-name">Shulumani Training Academy</p>
-  <span class="t4-team-status">Confirmed</span>
+  <p class="t4-team-name">Shilumani Training Academy</p>
+  <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
- <!-- 18 Supro FC Confirmed -->
- <div class="t4-team-card">
+ <!-- 18 Supro FC Out - Last 16 -->
+ <div class="t4-team-card t4-team-card--out">
   <div class="t4-team-badge"><img src="images/supro-logo.png" alt="Supro FC" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">Supro FC</p>
-  <span class="t4-team-status">Confirmed</span>
+  <span class="t4-team-status">Out &middot; Last 16</span>
  </div>
- <!-- 19 Saudi FC Into Last 16 -->
+ <!-- 19 Saudi FC Into Last 8 -->
  <div class="t4-team-card t4-team-card--through">
   <div class="t4-team-badge"><img src="images/saudi-fc-logo.png" alt="Saudi FC" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">Saudi FC</p>
-  <span class="t4-team-status">Into Last 16</span>
+  <span class="t4-team-status">Into Last 8</span>
  </div>
- <!-- 20 Phadzima Young Stars FC Eliminated -->
+ <!-- 20 Phadzima Young Stars FC Out - Last 32 -->
  <div class="t4-team-card t4-team-card--out t4-team-nologo">
   <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
   <p class="t4-team-name">Phadzima Young Stars FC</p>
-  <span class="t4-team-status">Eliminated</span>
+  <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
- <!-- 21 Tsemi FC Confirmed -->
- <div class="t4-team-card t4-team-nologo">
+ <!-- 21 Tsemi FC Into Last 8 -->
+ <div class="t4-team-card t4-team-card--through t4-team-nologo">
   <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
   <p class="t4-team-name">Tsemi FC</p>
-  <span class="t4-team-status">Confirmed</span>
+  <span class="t4-team-status">Into Last 8</span>
  </div>
- <!-- 22 Maheni Devoted Vultures Confirmed -->
- <div class="t4-team-card t4-team-nologo">
+ <!-- 22 Maheni Devoted Vultures Out - Last 32 -->
+ <div class="t4-team-card t4-team-card--out t4-team-nologo">
   <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
   <p class="t4-team-name">Maheni Devoted Vultures</p>
-  <span class="t4-team-status">Confirmed</span>
+  <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
- <!-- 23 Makonde FC Eliminated -->
+ <!-- 23 Makonde FC Out - Last 32 -->
  <div class="t4-team-card t4-team-card--out t4-team-nologo">
   <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
   <p class="t4-team-name">Makonde FC</p>
-  <span class="t4-team-status">Eliminated</span>
+  <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
- <!-- 24 Tshimuthe FC Into Last 16 -->
+ <!-- 24 Tshimuthe FC Into Last 8 -->
  <div class="t4-team-card t4-team-card--through t4-team-nologo">
   <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
   <p class="t4-team-name">Tshimuthe FC</p>
-  <span class="t4-team-status">Into Last 16</span>
+  <span class="t4-team-status">Into Last 8</span>
  </div>
- <!-- 25 Mahagala Young Stars Into Last 16 -->
- <div class="t4-team-card t4-team-card--through">
+ <!-- 25 Mahagala Young Stars Out - Last 16 -->
+ <div class="t4-team-card t4-team-card--out">
   <div class="t4-team-badge"><img src="images/mahagala-young-stars-logo.png" alt="Mahagala Young Stars" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">Mahagala Young Stars</p>
-  <span class="t4-team-status">Into Last 16</span>
+  <span class="t4-team-status">Out &middot; Last 16</span>
  </div>
- <!-- 26 Mulodi Freedom Birds Eliminated -->
+ <!-- 26 Mulodi Freedom Birds Out - Last 32 -->
  <div class="t4-team-card t4-team-card--out">
   <div class="t4-team-badge"><img src="images/mulodi-freedom-birds-logo.png" alt="Mulodi Freedom Birds" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">Mulodi Freedom Birds</p>
-  <span class="t4-team-status">Eliminated</span>
+  <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
- <!-- 27 Maelula United Brothers Confirmed -->
- <div class="t4-team-card">
+ <!-- 27 Maelula United Brothers Into Last 8 -->
+ <div class="t4-team-card t4-team-card--through">
   <div class="t4-team-badge"><img src="images/maelula-united-brothers-logo.png" alt="Maelula United Brothers" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">Maelula United Brothers</p>
-  <span class="t4-team-status">Confirmed</span>
+  <span class="t4-team-status">Into Last 8</span>
  </div>
- <!-- 28 Mukula Young Santos Confirmed -->
- <div class="t4-team-card">
+ <!-- 28 Mukula Young Santos Out - Last 32 -->
+ <div class="t4-team-card t4-team-card--out">
   <div class="t4-team-badge"><img src="images/mukula-young-santos-logo.png" alt="Mukula Young Santos" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">Mukula Young Santos</p>
-  <span class="t4-team-status">Confirmed</span>
+  <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
- <!-- 29 Chavani Shining Stars Confirmed -->
- <div class="t4-team-card">
+ <!-- 29 Chavani Shining Stars Out - Last 16 -->
+ <div class="t4-team-card t4-team-card--out">
   <div class="t4-team-badge"><img src="images/chavani-shinning-stars-logo.png" alt="Chavani Shining Stars" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">Chavani Shining Stars</p>
-  <span class="t4-team-status">Confirmed</span>
+  <span class="t4-team-status">Out &middot; Last 16</span>
  </div>
- <!-- 30 Makonde Home Defenders Confirmed -->
- <div class="t4-team-card">
+ <!-- 30 Makonde Home Defenders Out - Last 32 -->
+ <div class="t4-team-card t4-team-card--out">
   <div class="t4-team-badge"><img src="images/makonde-home-defenders-logo.png" alt="Makonde Home Defenders" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">Makonde Home Defenders</p>
-  <span class="t4-team-status">Confirmed</span>
+  <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
- <!-- 31 Madridtas FC Into Last 16 -->
+ <!-- 31 Madridtas FC Into Last 8 -->
  <div class="t4-team-card t4-team-card--through">
   <div class="t4-team-badge"><img src="images/madridtas-fc-logo.png" alt="Madridtas FC" style="width:52px;height:52px;object-fit:contain;" /></div>
   <p class="t4-team-name">Madridtas FC</p>
-  <span class="t4-team-status">Into Last 16</span>
+  <span class="t4-team-status">Into Last 8</span>
  </div>
- <!-- 32 Vuwa Brave Lions FC Eliminated -->
+ <!-- 32 Vuwa Brave Lions FC Out - Last 32 -->
  <div class="t4-team-card t4-team-card--out t4-team-nologo">
   <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
   <p class="t4-team-name">Vuwa Brave Lions FC</p>
-  <span class="t4-team-status">Eliminated</span>
+  <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
  </div>
 
