@@ -61,7 +61,7 @@ export default async function handler(req, res) {
 
   const callButton = replyTelLink
     ? `<td width="50%" align="center" style="padding-left:6px;">
-         <a href="${replyTelLink}" style="display:block; background-color:#111111; color:#F5A800; font-size:13px; font-weight:bold; text-decoration:none; padding:13px 0; border-radius:6px; font-family:Arial, Helvetica, sans-serif;">📞 Call ${safeName}</a>
+         <a href="${replyTelLink}" style="display:block; background-color:#111111; color:#F5A800; font-size:13px; font-weight:bold; text-decoration:none; padding:13px 0; border-radius:6px; font-family:Arial, Helvetica, sans-serif;">Call ${safeName}</a>
        </td>`
     : '';
 
@@ -107,7 +107,7 @@ export default async function handler(req, res) {
           <!-- ALERT BANNER -->
           <tr>
             <td style="padding:28px 28px 8px 28px;">
-              <p style="margin:0 0 6px 0; color:#F5A800; font-size:13px; font-weight:bold; letter-spacing:1px; text-transform:uppercase; font-family:Arial, Helvetica, sans-serif;">📩 New Website Enquiry</p>
+              <p style="margin:0 0 6px 0; color:#F5A800; font-size:13px; font-weight:bold; letter-spacing:1px; text-transform:uppercase; font-family:Arial, Helvetica, sans-serif;">New Website Enquiry</p>
               <h1 style="margin:0 0 6px 0; color:#111111; font-size:22px; font-family:Arial, Helvetica, sans-serif;">${safeName} reached out via abcfc.co.za</h1>
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:8px;">
                 <tr>
@@ -130,13 +130,13 @@ export default async function handler(req, res) {
                 <tr>
                   <td style="padding:16px 18px; border-bottom:1px solid #F0E2BF;">
                     <span style="display:block; color:#9A8159; font-size:10px; font-weight:bold; text-transform:uppercase; letter-spacing:0.5px; font-family:Arial, Helvetica, sans-serif;">Phone Number</span>
-                    <span style="display:block; color:#111111; font-size:14px; font-weight:bold; font-family:Arial, Helvetica, sans-serif;">📞 ${safePhone}</span>
+                    <span style="display:block; color:#111111; font-size:14px; font-weight:bold; font-family:Arial, Helvetica, sans-serif;">${safePhone}</span>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding:16px 18px;">
                     <span style="display:block; color:#9A8159; font-size:10px; font-weight:bold; text-transform:uppercase; letter-spacing:0.5px; font-family:Arial, Helvetica, sans-serif;">Email Address</span>
-                    <span style="display:block; color:#111111; font-size:14px; font-weight:bold; font-family:Arial, Helvetica, sans-serif;">✉️ ${safeEmail}</span>
+                    <span style="display:block; color:#111111; font-size:14px; font-weight:bold; font-family:Arial, Helvetica, sans-serif;">${safeEmail}</span>
                   </td>
                 </tr>
               </table>
@@ -164,7 +164,7 @@ export default async function handler(req, res) {
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td width="${callButton ? '50%' : '100%'}" align="center" style="padding-right:${callButton ? '6px' : '0'};">
-                    <a href="${replyMailtoLink}" style="display:block; background-color:#F5A800; color:#111111; font-size:13px; font-weight:bold; text-decoration:none; padding:13px 0; border-radius:6px; font-family:Arial, Helvetica, sans-serif;">✉️ Reply by Email</a>
+                    <a href="${replyMailtoLink}" style="display:block; background-color:#F5A800; color:#111111; font-size:13px; font-weight:bold; text-decoration:none; padding:13px 0; border-radius:6px; font-family:Arial, Helvetica, sans-serif;">Reply by Email</a>
                   </td>
                   ${callButton}
                 </tr>
