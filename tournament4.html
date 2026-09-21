@@ -4,7 +4,7 @@
  <meta charset="UTF-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
  <title>4th Annual ABC Foundation Tournament 2026 Champions | ABC FC</title>
- <meta name="description" content="Maelula United Brothers FC are the 4th Annual ABC Foundation Tournament 2026 champions, beating Tshimuthe FC 4-2 on penalties at Makonde Stadium, Mutale. Full bracket, all 31 results and the 32 participating clubs." />
+ <meta name="description" content="Maelula United Brothers FC are the 4th Annual ABC Foundation Tournament 2026 champions, beating Tshimuthe FC 4-2 on penalties at Makonde Stadium, Mutale. Full bracket, all 31 results, the individual awards and the 32 participating clubs." />
  <meta name="robots" content="index, follow" />
  <link rel="canonical" href="https://www.abcfc.co.za/tournament4" />
  <meta property="og:type" content="website" />
@@ -893,6 +893,67 @@
  border-top: none; font-weight: 900; letter-spacing: .2em;
  }
 
+ /* ═══════════════════════════════════════════════════
+ INDIVIDUAL AWARDS
+ ═══════════════════════════════════════════════════ */
+ .t4-awards-section { background: #0a0a0a; }
+ .t4-awards-grid {
+ display: grid; gap: 10px;
+ grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+ }
+ .t4-award {
+ display: flex; align-items: center; gap: 14px;
+ background: var(--t4-dark);
+ border: 1px solid var(--t4-border);
+ border-radius: 10px;
+ padding: 16px 18px;
+ transition: border-color .2s, transform .2s;
+ }
+ .t4-award:hover { border-color: rgba(245,168,0,0.4); transform: translateY(-2px); }
+ .t4-award-icon {
+ flex-shrink: 0;
+ width: 44px; height: 44px; border-radius: 50%;
+ display: flex; align-items: center; justify-content: center;
+ color: var(--t4-gold);
+ background: rgba(245,168,0,0.1);
+ border: 1px solid rgba(245,168,0,0.3);
+ }
+ .t4-award-icon svg { width: 22px; height: 22px; }
+ .t4-award-body { display: flex; flex-direction: column; min-width: 0; }
+ .t4-award-title {
+ font-family: 'Barlow Condensed', sans-serif;
+ font-size: 11px; font-weight: 800;
+ letter-spacing: .16em; text-transform: uppercase;
+ color: var(--t4-gold);
+ }
+ .t4-award-name {
+ font-family: 'Bebas Neue', sans-serif;
+ font-size: 1.5rem; line-height: 1.1; color: #fff;
+ letter-spacing: .02em;
+ }
+ .t4-award-club {
+ font-family: 'Inter', sans-serif;
+ font-size: 12px; color: rgba(255,255,255,0.38);
+ }
+ .t4-award-posters {
+ display: grid; gap: 12px; margin-top: 22px;
+ grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+ }
+ .t4-award-poster { margin: 0; }
+ .t4-award-poster img {
+ width: 100%; height: auto; display: block;
+ border-radius: 10px;
+ border: 1px solid var(--t4-border);
+ background: #111;
+ }
+ .t4-award-poster figcaption {
+ font-family: 'Barlow Condensed', sans-serif;
+ font-size: 12px; font-weight: 700;
+ letter-spacing: .1em; text-transform: uppercase;
+ color: rgba(255,255,255,0.42);
+ margin-top: 8px; text-align: center;
+ }
+
  </style>
 
  <!-- Facebook SDK -->
@@ -1017,6 +1078,7 @@
  <div class="t4-cta-row">
  <a href="#bracket" class="t4-btn-gold">Tournament Bracket</a>
  <a href="#matches" class="t4-btn-outline">Full Results</a>
+ <a href="#awards" class="t4-btn-outline">Awards</a>
  <a href="tournament-sponsors" class="t4-btn-outline">Our Sponsors</a>
  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfz8bF6DPoh1QgdXWjCL3JFmCquCzEqWMiNN9C-NpmpeEABNA/viewform"
  target="_blank" rel="noopener noreferrer" class="t4-btn-outline">
@@ -1076,6 +1138,85 @@
  <span class="t4-podium-club">Tshamutilikwa Fire Boys FC &middot; Saudi FC</span>
  <span class="t4-podium-prize">R10 000 &amp; R8 000 &middot; third and fourth place not published</span>
  </div>
+ </div>
+ </div>
+ </section>
+
+
+ <!-- ════════════════════════════════════════════════
+ INDIVIDUAL AWARDS
+ ════════════════════════════════════════════════ -->
+ <hr class="t4-divider" />
+ <section class="t4-section t4-awards-section" id="awards">
+ <div class="t4-inner">
+ <p class="t4-eyebrow">Handed Out at Makonde Stadium</p>
+ <h2 class="t4-h2">Individual Awards</h2>
+ <p class="t4-lead">The individual honours of the 4th Annual ABC Foundation Tournament 2026, every one of them going to a Maelula United Brothers player or coach.</p>
+
+ <div class="t4-awards-grid">
+  <div class="t4-award">
+   <span class="t4-award-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><polyline points="8.2 13.5 7 22 12 19 17 22 15.8 13.5"/></svg></span>
+   <div class="t4-award-body">
+    <span class="t4-award-title">Player of the Tournament</span>
+    <span class="t4-award-name">General</span>
+    <span class="t4-award-club">Maelula United Brothers FC</span>
+   </div>
+  </div>
+  <div class="t4-award">
+   <span class="t4-award-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h6l3.5 3.5a5 5 0 0 0 3.5 1.5H19a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 16h18"/><path d="M8 8V5"/><path d="M11.5 8.6V6"/></svg></span>
+   <div class="t4-award-body">
+    <span class="t4-award-title">Top Goalscorer</span>
+    <span class="t4-award-name">Ferrari</span>
+    <span class="t4-award-club">Maelula United Brothers FC</span>
+   </div>
+  </div>
+  <div class="t4-award">
+   <span class="t4-award-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 21.5v-9.2a2.4 2.4 0 0 1 4.8 0V9a2.4 2.4 0 0 1 4.8 0v10.5a2 2 0 0 1-2 2z"/><path d="M7.5 13.6 5.8 15.2a2.3 2.3 0 0 0 0 3.3l1.7 1.6"/></svg></span>
+   <div class="t4-award-body">
+    <span class="t4-award-title">Goalkeeper of the Tournament</span>
+    <span class="t4-award-name">Milo</span>
+    <span class="t4-award-club">Maelula United Brothers FC</span>
+   </div>
+  </div>
+  <div class="t4-award">
+   <span class="t4-award-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><line x1="21" y1="3" x2="13.5" y2="10.5"/><polyline points="9 21 3 21 3 15"/><line x1="3" y1="21" x2="10.5" y2="13.5"/><polyline points="21 15 21 21 15 21"/><line x1="14" y1="14" x2="21" y2="21"/><line x1="3" y1="3" x2="10" y2="10"/></svg></span>
+   <div class="t4-award-body">
+    <span class="t4-award-title">Top Midfielder</span>
+    <span class="t4-award-name">General</span>
+    <span class="t4-award-club">Maelula United Brothers FC</span>
+   </div>
+  </div>
+  <div class="t4-award">
+   <span class="t4-award-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg></span>
+   <div class="t4-award-body">
+    <span class="t4-award-title">Best Coach</span>
+    <span class="t4-award-name">Mr Raphalalani</span>
+    <span class="t4-award-club">Maelula United Brothers FC</span>
+   </div>
+  </div>
+ </div>
+
+ <div class="t4-award-posters">
+  <figure class="t4-award-poster">
+   <img src="images/tournament/award-player-of-the-tournament.jpg" alt="Player of the Tournament 2026: General of Maelula United Brothers FC" loading="lazy" width="1254" height="1254" />
+   <figcaption>Player of the Tournament &middot; General</figcaption>
+  </figure>
+  <figure class="t4-award-poster">
+   <img src="images/tournament/award-top-goalscorer.jpg" alt="Top Goalscorer 2026: Ferrari of Maelula United Brothers FC" loading="lazy" width="1254" height="1254" />
+   <figcaption>Top Goalscorer &middot; Ferrari</figcaption>
+  </figure>
+  <figure class="t4-award-poster">
+   <img src="images/tournament/award-goalkeeper.jpg" alt="Goalkeeper of the Tournament 2026: Milo of Maelula United Brothers FC" loading="lazy" width="1254" height="1254" />
+   <figcaption>Goalkeeper of the Tournament &middot; Milo</figcaption>
+  </figure>
+  <figure class="t4-award-poster">
+   <img src="images/tournament/award-top-midfielder.jpg" alt="Top Midfielder 2026: General of Maelula United Brothers FC" loading="lazy" width="1254" height="1254" />
+   <figcaption>Top Midfielder &middot; General</figcaption>
+  </figure>
+  <figure class="t4-award-poster">
+   <img src="images/tournament/award-best-coach.jpg" alt="Best Coach 2026: Mr Raphalalani of Maelula United Brothers FC" loading="lazy" width="1254" height="1254" />
+   <figcaption>Best Coach &middot; Mr Raphalalani</figcaption>
+  </figure>
  </div>
  </div>
  </section>
