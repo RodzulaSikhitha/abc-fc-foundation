@@ -1159,21 +1159,30 @@ p, li { text-wrap: pretty; }
 .fx-ground-dot svg { width: 100%; height: 100%; }
 .fx-comp  { font-size: 0.6rem; color: var(--text-faint); display: none; }
 
-/* Phones: two-row tile. Badge, kick-off and venue on top; the two teams
-   stacked underneath at full width (home side first) so names fit on one line. */
+/* Phones: badge with kick-off time on the right, the two teams stacked
+   at full width (home side first), then the venue as a footer line. */
 @media (max-width: 600px) {
   .fx-row {
     grid-template-columns: 44px 1fr auto;
     grid-template-areas:
-      "date badge meta"
-      "date teams teams";
+      "date badge time"
+      "date teams teams"
+      "date venue venue";
     column-gap: 0.75rem;
     row-gap: 0.55rem;
     padding: 0.8rem 0.9rem;
   }
   .fx-date-col  { grid-area: date; align-self: center; }
   .fx-badge-col { grid-area: badge; }
-  .fx-meta-col  { grid-area: meta; display: flex; flex-direction: row; align-items: center; gap: 0.6rem; }
+  .fx-meta-col  { display: contents; }
+  .fx-time      { grid-area: time; justify-self: end; }
+  .fx-venue     {
+    grid-area: venue;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .fx-teams-col { grid-area: teams; flex-direction: column; align-items: stretch; gap: 0.4rem; }
   .fx-team, .fx-team-right { flex-direction: row; text-align: left; }
   .fx-away .fx-team-right { order: -1; }
@@ -1189,8 +1198,8 @@ p, li { text-wrap: pretty; }
   .fx-dd { font-size: 1.5rem; }
   .fx-ko { width: 16px; height: 16px; }
   .fx-ground-dot { width: 12px; height: 12px; }
-  .fx-time { font-size: 0.8rem; }
-  .fx-venue { font-size: 0.68rem; white-space: nowrap; }
+  .fx-time { font-size: 0.95rem; }
+  .fx-venue { font-size: 0.72rem; white-space: nowrap; }
 }
 
 /* ── 360px / very small phones ── */
@@ -1201,13 +1210,12 @@ p, li { text-wrap: pretty; }
     --bottom-nav-h: 58px;
   }
   .fx-row { grid-template-columns: 38px 1fr auto; column-gap: 0.6rem; padding: 0.7rem 0.7rem; }
-  .fx-meta-col { gap: 0.45rem; }
   .fx-tname { font-size: 0.84rem; }
   .fx-dd { font-size: 1.3rem; }
   .fx-ko { width: 14px; height: 14px; }
   .fx-ground-dot { width: 11px; height: 11px; }
-  .fx-time { font-size: 0.74rem; gap: 3px; }
-  .fx-venue { font-size: 0.62rem; }
+  .fx-time { font-size: 0.88rem; gap: 3px; }
+  .fx-venue { font-size: 0.68rem; }
   .fx-type { font-size: 0.55rem; padding: 2px 6px; }
   .bqn-item { font-size: 7px; padding: 5px 6px; }
   .bqn-center { width: 42px; height: 42px; }
