@@ -519,7 +519,7 @@ function fxRowHTML(f) {
       <div class="fx-meta-col">
         <span class="fx-time"><span class="fx-ko">${SVG_CLOCK}</span> ${f.time || 'TBC'}</span>
         <span class="fx-venue"><span class="fx-ground-dot">${SVG_PITCH}</span> ${f.venue || 'TBC'}</span>
-        <span class="fx-comp">${f.competition || 'Hollywoodbets Regional League'}</span>
+        <span class="fx-comp">${f.competition || 'ABC Motsepe League'}</span>
       </div>
     </div>`;
 }
