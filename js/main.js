@@ -693,15 +693,50 @@ function renderFullTable(container, teams) {
     </table>`;
 }
 
+// ── ABC FC LEAGUE POSITION (position card + hero stat) ────
+function ordinalSuffix(n) {
+  const v = n % 100;
+  if (v >= 11 && v <= 13) return 'TH';
+  return ({ 1: 'ST', 2: 'ND', 3: 'RD' })[n % 10] || 'TH';
+}
+
+function fetchAndRenderPosition() {
+  const targets = document.querySelectorAll('[data-pos]');
+  if (!targets.length) return;
+
+  fetch(`${API_BASE}/api/table`)
+    .then(r => r.json())
+    .then(data => {
+      const abc = (data.table || []).find(t => t.team.toLowerCase().includes('abc'));
+      if (!abc) return;
+      // Before a ball is kicked Inqaku lists teams alphabetically, so the position means nothing yet
+      const started = abc.played > 0;
+      const gd = abc.gd > 0 ? `+${abc.gd}` : String(abc.gd);
+      const values = {
+        number: started ? String(abc.pos) : '–',
+        suffix: started ? ordinalSuffix(abc.pos) : '',
+        hero:   started ? `#${abc.pos}` : '–',
+        pts: abc.pts, won: abc.won, drawn: abc.drawn, lost: abc.lost, gd,
+      };
+      targets.forEach(el => {
+        const key = el.getAttribute('data-pos');
+        if (key in values) el.textContent = values[key];
+      });
+    })
+    .catch(() => {});
+}
+
 // ── Initial load + 5-minute auto-refresh ──────────────────
 fetchAndRenderFixtures();
 fetchAndRenderResults();
 fetchAndRenderTable();
+fetchAndRenderPosition();
 
 setInterval(() => {
   fetchAndRenderFixtures();
   fetchAndRenderResults();
   fetchAndRenderTable();
+  fetchAndRenderPosition();
 }, REFRESH_MS);
 
 // Dynamic copyright year
