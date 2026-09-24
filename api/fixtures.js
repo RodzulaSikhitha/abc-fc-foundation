@@ -6,7 +6,7 @@ const https = require('https');
 const http = require('http');
 
 const INQAKU_URL =
-  'https://inqaku.com/team/view?season_id=15244&logteam_id=146222&tab=fixtures';
+  'https://inqaku.com/team/view?season_id=17737&logteam_id=176424&tab=fixtures';
 
 function fetchHTML(url) {
   return new Promise((resolve, reject) => {
@@ -38,11 +38,70 @@ function fetchHTML(url) {
 }
 
 /**
+ * Parse fixtures from Inqaku's card layout (2026/27 onwards).
+ * Each match is a date heading followed by a card:
+ *   <div ...>Sat, 3 Oct 2026</div><div class="card cardfr">...
+ *   <a class="nav-link" ...>Home Team</a> ... <a class="nav-link" ...>Away Team</a> ... <td ...>15:00</td>
+ */
+function parseCardFixtures(html) {
+  const fixtures = [];
+  const blockRegex =
+    /<div[^>]*>\s*((?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)[a-z]*,?\s+\d{1,2}\s+[A-Za-z]{3,9}\s+\d{4})\s*<\/div>\s*<div class="card[^"]*"([\s\S]*?)<\/table>/gi;
+  const abcNames = ['abc fc', 'abc football', 'african by choice'];
+
+  let m;
+  while ((m = blockRegex.exec(html)) !== null) {
+    const date = m[1].replace(',', '').trim();
+    const cardHTML = m[2];
+
+    const teams = [];
+    const teamRegex = /<a class="nav-link"[^>]*>([^<]+)<\/a>/gi;
+    let t;
+    while ((t = teamRegex.exec(cardHTML)) !== null) {
+      const name = decode(t[1]).trim();
+      if (name) teams.push(name);
+    }
+    if (teams.length < 2) continue;
+
+    const [homeTeam, awayTeam] = teams;
+    const isHome = abcNames.some(n => homeTeam.toLowerCase().includes(n));
+    const isAway = abcNames.some(n => awayTeam.toLowerCase().includes(n));
+    if (!isHome && !isAway) continue;
+
+    const timeMatch = cardHTML.match(/>\s*(\d{1,2}:\d{2})\s*</);
+
+    fixtures.push({
+      date,
+      opponent: (isHome ? awayTeam : homeTeam) || 'TBC',
+      isHome,
+      venue: isHome ? 'Makonde Stadium' : 'Away — TBC',
+      time: timeMatch ? timeMatch[1] : '15:00',
+      type: isHome ? 'HOME' : 'AWAY',
+    });
+  }
+
+  return fixtures.filter(f => isFutureOrToday(f.date));
+}
+
+function decode(text) {
+  return text
+    .replace(/&amp;/g, '&')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&#39;/g, "'")
+    .replace(/&quot;/g, '"');
+}
+
+/**
  * Parse fixture rows from Inqaku HTML.
  * Inqaku renders a <table> with columns: Date | Home | Score | Away | Venue | Time
  * We identify ABC FC as home or away and build a normalised fixture object.
  */
 function parseFixtures(html) {
+  const cardFixtures = parseCardFixtures(html);
+  if (cardFixtures.length > 0) return cardFixtures;
+
   const fixtures = [];
 
   // Extract all table rows (tr) containing fixture data

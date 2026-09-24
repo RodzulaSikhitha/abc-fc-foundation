@@ -6,7 +6,7 @@ const https = require('https');
 const http = require('http');
 
 const INQAKU_URL =
-  'https://inqaku.com/team/view?season_id=15244&logteam_id=146222';
+  'https://inqaku.com/team/view?season_id=17737&logteam_id=176424';
 
 function fetchHTML(url) {
   return new Promise((resolve, reject) => {
