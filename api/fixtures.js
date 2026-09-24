@@ -70,6 +70,10 @@ function parseCardFixtures(html) {
 
     const timeMatch = cardHTML.match(/>\s*(\d{1,2}:\d{2})\s*</);
 
+    // Crests appear in team order: home first, away second
+    const logos = [...cardHTML.matchAll(/<img class="logo" src="(https:\/\/[^"]+)"/gi)].map(l => l[1]);
+    const opponentLogo = (isHome ? logos[1] : logos[0]) || null;
+
     fixtures.push({
       date,
       opponent: (isHome ? awayTeam : homeTeam) || 'TBC',
@@ -77,6 +81,7 @@ function parseCardFixtures(html) {
       venue: isHome ? 'Makonde Stadium' : 'Away — TBC',
       time: timeMatch ? timeMatch[1] : '15:00',
       type: isHome ? 'HOME' : 'AWAY',
+      opponentLogo,
     });
   }
 

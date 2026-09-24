@@ -427,6 +427,35 @@ function renderNextMatch(container, f) {
 }
 
 const TEAM_CRESTS = {
+  // 2026/27 ABC Motsepe League opponents (crests from Inqaku)
+  'selwana white vultures': 'images/selwana-white-vultures-logo.png',
+  'selwana': 'images/selwana-white-vultures-logo.png',
+  'vondwe xi bullets': 'images/vondwe-xi-bullets-logo.png',
+  'vondwe': 'images/vondwe-xi-bullets-logo.png',
+  'tzaneen united fc': 'images/tzaneen-united-fc-logo.png',
+  'tzaneen united': 'images/tzaneen-united-fc-logo.png',
+  'tzaneen': 'images/tzaneen-united-fc-logo.png',
+  'ramahantsha blackpool fc': 'images/ramahantsha-blackpool-fc-logo.png',
+  'ramahantsha blackpool': 'images/ramahantsha-blackpool-fc-logo.png',
+  'ramahantsha': 'images/ramahantsha-blackpool-fc-logo.png',
+  'nkowankowa continental': 'images/nkowankowa-continental-logo.png',
+  'nkowankowa': 'images/nkowankowa-continental-logo.png',
+  'phalaborwa united fc': 'images/phalaborwa-united-fc-logo.png',
+  'phalaborwa united': 'images/phalaborwa-united-fc-logo.png',
+  'phalaborwa': 'images/phalaborwa-united-fc-logo.png',
+  'musina united': 'images/musina-united-logo.png',
+  'musina united fc': 'images/musina-united-logo.png',
+  'musina': 'images/musina-united-logo.png',
+  'mukondeni young chiefs fc': 'images/mukondeni-young-chiefs-fc-logo.png',
+  'mukondeni young chiefs': 'images/mukondeni-young-chiefs-fc-logo.png',
+  'mpheni defenders': 'images/mpheni-defenders-logo.png',
+  'mpheni defenders fc': 'images/mpheni-defenders-logo.png',
+  'mpheni': 'images/mpheni-defenders-logo.png',
+  'goue seuns cf': 'images/goue-seuns-cf-logo.png',
+  'goue seuns': 'images/goue-seuns-cf-logo.png',
+  'baduzah celtics fc': 'images/baduzah-celtics-fc-logo.png',
+  'baduzah celtics': 'images/baduzah-celtics-fc-logo.png',
+  'baduzah': 'images/baduzah-celtics-fc-logo.png',
   'smsa fc': 'images/smsa-fc-logo.jpeg',
   'smsa': 'images/smsa-fc-logo.jpeg',
   'saudi fc': 'images/saudi-fc-logo.png',
@@ -484,17 +513,18 @@ const TEAM_CRESTS = {
   'makuya': 'images/makuya-big-cat-fc-logo.png',
 };
 
-function getOpponentCrest(opponent) {
+// Local crest first, then the crest Inqaku lists for the team, then a generic shield
+function getOpponentCrest(opponent, logoUrl) {
   const key = (opponent || '').toLowerCase().trim();
-  const src = TEAM_CRESTS[key];
-  if (src) return `<img src="${src}" alt="${opponent}" class="fx-crest" />`;
+  const src = TEAM_CRESTS[key] || logoUrl;
+  if (src) return `<img src="${src}" alt="${opponent}" class="fx-crest" loading="lazy" />`;
   return `<svg class="fx-crest fx-crest-generic" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg>`;
 }
 
 function fxRowHTML(f) {
   const { dayName, dd, mon } = parseDateParts(f.date);
   const isHome = f.isHome;
-  const opponentCrest = getOpponentCrest(f.opponent);
+  const opponentCrest = getOpponentCrest(f.opponent, f.opponentLogo);
   return `
     <div class="fx-row ${isHome ? 'fx-home' : 'fx-away'}">
       <div class="fx-date-col">
