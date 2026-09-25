@@ -804,6 +804,10 @@ document.addEventListener('visibilitychange', () => {
           <img src="${p.thumb || p.src}" alt="${escapeHTML(p.caption || 'ABC FC players in training')}" loading="lazy" />
         </button>`).join('');
       box.classList.toggle('single', photos.length === 1);
+      // Desktop grid: one row up to 7 photos, then even rows of at most 7
+      const n = photos.length;
+      const rows = Math.ceil(n / 7);
+      strip.style.setProperty('--training-cols', Math.ceil(n / rows));
       section.hidden = false;
     })
     .catch(() => {});

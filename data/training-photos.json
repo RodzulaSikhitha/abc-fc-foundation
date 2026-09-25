@@ -5,6 +5,16 @@
     "caption": "Sprint work at training"
   },
   {
+    "src": "images/training/training-hurdles.jpg",
+    "thumb": "images/training/training-hurdles-thumb.jpg",
+    "caption": "Hurdle jumps"
+  },
+  {
+    "src": "images/training/training-tuck-jump.jpg",
+    "thumb": "images/training/training-tuck-jump-thumb.jpg",
+    "caption": "Tuck jumps over the hurdles"
+  },
+  {
     "src": "images/training/training-shot.jpg",
     "thumb": "images/training/training-shot-thumb.jpg",
     "caption": "Striking the ball in a shooting drill"
@@ -13,6 +23,11 @@
     "src": "images/training/training-strike.jpg",
     "thumb": "images/training/training-strike-thumb.jpg",
     "caption": "Getting a shot away under pressure"
+  },
+  {
+    "src": "images/training/training-keeper.jpg",
+    "thumb": "images/training/training-keeper-thumb.jpg",
+    "caption": "Goalkeeper claiming a high ball"
   },
   {
     "src": "images/training/training-control.jpg",
@@ -33,6 +48,11 @@
     "src": "images/training/training-smiles.jpg",
     "thumb": "images/training/training-smiles-thumb.jpg",
     "caption": "All smiles at training"
+  },
+  {
+    "src": "images/training/training-keeper-coach.jpg",
+    "thumb": "images/training/training-keeper-coach-thumb.jpg",
+    "caption": "Goalkeeper coach running the session"
   },
   {
     "src": "images/training/training-coaches.jpg",
