@@ -80,6 +80,11 @@
     "caption": "All smiles at training"
   },
   {
+    "src": "images/training/training-instruction.jpg",
+    "thumb": "images/training/training-instruction-thumb.jpg",
+    "caption": "A word from the coach"
+  },
+  {
     "src": "images/training/training-keeper-coach.jpg",
     "thumb": "images/training/training-keeper-coach-thumb.jpg",
     "caption": "Goalkeeper coach running the session"
