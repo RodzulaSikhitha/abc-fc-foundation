@@ -10,14 +10,14 @@
     "caption": "Hurdle jumps"
   },
   {
-    "src": "images/training/training-tuck-jump.jpg",
-    "thumb": "images/training/training-tuck-jump-thumb.jpg",
-    "caption": "Tuck jumps over the hurdles"
-  },
-  {
     "src": "images/training/training-shot.jpg",
     "thumb": "images/training/training-shot-thumb.jpg",
     "caption": "Striking the ball in a shooting drill"
+  },
+  {
+    "src": "images/training/training-tuck-jump.jpg",
+    "thumb": "images/training/training-tuck-jump-thumb.jpg",
+    "caption": "Tuck jumps over the hurdles"
   },
   {
     "src": "images/training/training-strike.jpg",
@@ -25,14 +25,29 @@
     "caption": "Getting a shot away under pressure"
   },
   {
+    "src": "images/training/training-hurdle-hop.jpg",
+    "thumb": "images/training/training-hurdle-hop-thumb.jpg",
+    "caption": "Hopping the hurdles"
+  },
+  {
     "src": "images/training/training-keeper.jpg",
     "thumb": "images/training/training-keeper-thumb.jpg",
     "caption": "Goalkeeper claiming a high ball"
   },
   {
+    "src": "images/training/training-jump-squat.jpg",
+    "thumb": "images/training/training-jump-squat-thumb.jpg",
+    "caption": "Explosive jumps in the fitness circuit"
+  },
+  {
     "src": "images/training/training-control.jpg",
     "thumb": "images/training/training-control-thumb.jpg",
     "caption": "Chest control in a close-quarters drill"
+  },
+  {
+    "src": "images/training/training-high-knees.jpg",
+    "thumb": "images/training/training-high-knees-thumb.jpg",
+    "caption": "High knees over the hurdles"
   },
   {
     "src": "images/training/training-passing.jpg",
