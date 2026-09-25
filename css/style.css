@@ -2417,6 +2417,16 @@ p, li { text-wrap: pretty; }
 .lb-next  { right: 14px; top: 50%; transform: translateY(-50%); }
 .lightbox.single .lb-nav { display: none; }
 
+/* Desktop: an even grid rather than hiding photos off the edge */
+@media (min-width: 900px) {
+  .training-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    overflow-x: visible;
+  }
+  .training-tile { width: auto; }
+}
+
 @media (max-width: 600px) {
   .training-hint { display: none; }
   .lb-prev, .lb-next { top: auto; bottom: 14px; transform: none; }
