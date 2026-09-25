@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "src": "images/training/training-sprint.jpg",
+    "thumb": "images/training/training-sprint-thumb.jpg",
+    "caption": "Sprint work at training"
+  },
+  {
+    "src": "images/training/training-shot.jpg",
+    "thumb": "images/training/training-shot-thumb.jpg",
+    "caption": "Striking the ball in a shooting drill"
+  },
+  {
+    "src": "images/training/training-coaches.jpg",
+    "thumb": "images/training/training-coaches-thumb.jpg",
+    "caption": "Coaching staff watching on"
+  },
+  {
+    "src": "images/training/training-touchline.jpg",
+    "thumb": "images/training/training-touchline-thumb.jpg",
+    "caption": "Keeping an eye on the session from the touchline"
+  }
+]
