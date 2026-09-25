@@ -1,8 +1,9 @@
 // Vercel Serverless Function — /api/results
 // Fetches ABC FC recent results from Inqaku and returns structured JSON.
-// Cached at Vercel edge for 5 minutes (s-maxage=300).
+// Cached at Vercel edge for 1 minute (s-maxage=60).
 
 const https = require('https');
+const { venueFor } = require('./_venues');
 const http = require('http');
 
 const INQAKU_URL =
@@ -37,7 +38,71 @@ function fetchHTML(url) {
   });
 }
 
+/**
+ * Parse results from Inqaku's card layout (2026/27 onwards).
+ * Same card as a fixture, but the middle row holds the score instead of "VS":
+ *   <div ...>Sat, 27 Jun 2026</div><div class="card cardfr">...
+ *   <a class="nav-link" ...>Home Team</a> ... <a class="nav-link" ...>Away Team</a> ... <td ...>0&nbsp&nbsp&nbsp3</td>
+ */
+function parseCardResults(html) {
+  const results = [];
+  const abcNames = ['abc fc', 'abc football', 'african by choice'];
+  const blockRegex =
+    /<div[^>]*>\s*((?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)[a-z]*,?\s+\d{1,2}\s+[A-Za-z]{3,9}\s+\d{4})\s*<\/div>\s*<div class="card[^"]*"([\s\S]*?)<\/table>/gi;
+
+  let m;
+  while ((m = blockRegex.exec(html)) !== null) {
+    const date = m[1].replace(',', '').trim();
+    const cardHTML = m[2];
+
+    const teams = [...cardHTML.matchAll(/<a class="nav-link"[^>]*>([^<]+)<\/a>/gi)]
+      .map(t => decode(t[1]).trim())
+      .filter(Boolean);
+    if (teams.length < 2) continue;
+
+    const scoreMatch = cardHTML.match(/<td[^>]*>\s*(\d+)(?:\s|&nbsp;?)+(\d+)\s*<\/td>/i);
+    if (!scoreMatch) continue; // not played yet
+
+    const [homeTeam, awayTeam] = teams;
+    const isHome = abcNames.some(n => homeTeam.toLowerCase().includes(n));
+    const isAway = abcNames.some(n => awayTeam.toLowerCase().includes(n));
+    if (!isHome && !isAway) continue;
+
+    const homeGoals = parseInt(scoreMatch[1], 10);
+    const awayGoals = parseInt(scoreMatch[2], 10);
+    const abcG = isHome ? homeGoals : awayGoals;
+    const oppG = isHome ? awayGoals : homeGoals;
+
+    results.push({
+      date,
+      opponent: (isHome ? awayTeam : homeTeam) || 'TBC',
+      score: `${homeGoals} - ${awayGoals}`,
+      abcGoals: String(abcG),
+      oppGoals: String(oppG),
+      outcome: abcG > oppG ? 'W' : abcG === oppG ? 'D' : 'L',
+      isHome,
+      type: isHome ? 'HOME' : 'AWAY',
+      venue: venueFor(date, isHome),
+    });
+  }
+
+  return results;
+}
+
+function decode(text) {
+  return text
+    .replace(/&amp;/g, '&')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&#39;/g, "'")
+    .replace(/&quot;/g, '"');
+}
+
 function parseResults(html) {
+  const cardResults = parseCardResults(html);
+  if (cardResults.length > 0) return cardResults;
+
   const results = [];
   const abcNames = ['abc fc', 'abc football', 'african by choice'];
 
@@ -127,26 +192,16 @@ function parseResults(html) {
   return results;
 }
 
-// Fallback static results (last 10 results from the season)
-const FALLBACK_RESULTS = [
-  { date: 'Sun 8 Jun', opponent: 'Mukondeni Shoe Shine Boys FC', score: '3 - 0', abcGoals: '3', oppGoals: '0', outcome: 'W', isHome: false, type: 'AWAY' },
-  { date: 'Sat 7 Jun', opponent: 'Tshikundamalema Waterfall FC', score: '4 - 1', abcGoals: '4', oppGoals: '1', outcome: 'W', isHome: true, type: 'HOME' },
-  { date: 'Sun 1 Jun', opponent: 'Mahenic FC', score: '2 - 0', abcGoals: '2', oppGoals: '0', outcome: 'W', isHome: true, type: 'HOME' },
-  { date: 'Sat 31 May', opponent: 'Lurangwe FC', score: '5 - 0', abcGoals: '5', oppGoals: '0', outcome: 'W', isHome: true, type: 'HOME' },
-  { date: 'Sun 25 May', opponent: 'Makuya Big Cat FC', score: '3 - 1', abcGoals: '3', oppGoals: '1', outcome: 'W', isHome: true, type: 'HOME' },
-  { date: 'Sat 24 May', opponent: 'Lukau Tshishivhe Tigerboys', score: '2 - 0', abcGoals: '2', oppGoals: '0', outcome: 'W', isHome: false, type: 'AWAY' },
-  { date: 'Sun 18 May', opponent: 'Lukau Hot Aces', score: '4 - 0', abcGoals: '4', oppGoals: '0', outcome: 'W', isHome: false, type: 'AWAY' },
-  { date: 'Sat 17 May', opponent: 'Vhufuli FC', score: '1 - 1', abcGoals: '1', oppGoals: '1', outcome: 'D', isHome: true, type: 'HOME' },
-  { date: 'Sun 11 May', opponent: 'Tshiombo Royal Stars', score: '3 - 0', abcGoals: '3', oppGoals: '0', outcome: 'W', isHome: false, type: 'AWAY' },
-  { date: 'Sat 10 May', opponent: 'Mulenzhe SAPS FC', score: '2 - 0', abcGoals: '2', oppGoals: '0', outcome: 'W', isHome: true, type: 'HOME' },
-];
+// No static fallback: showing last season's results under the new season
+// would be misleading, so an empty list means "no results yet".
+const FALLBACK_RESULTS = [];
 
 module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
-  res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
+  res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=60');
   res.setHeader('Content-Type', 'application/json');
 
   try {
@@ -161,18 +216,18 @@ module.exports = async function handler(req, res) {
       });
     }
 
+    // Inqaku answered but lists no played matches yet (e.g. before kick-off)
     return res.status(200).json({
-      source: 'fallback',
+      source: 'inqaku',
       fetchedAt: new Date().toISOString(),
-      note: 'Inqaku returned no parseable results — showing cached data.',
-      results: FALLBACK_RESULTS,
+      results: [],
     });
   } catch (err) {
     console.error('[api/results] Error:', err.message);
     return res.status(200).json({
       source: 'fallback',
       fetchedAt: new Date().toISOString(),
-      note: 'Could not reach Inqaku — showing cached results.',
+      note: 'Could not reach Inqaku.',
       results: FALLBACK_RESULTS,
     });
   }

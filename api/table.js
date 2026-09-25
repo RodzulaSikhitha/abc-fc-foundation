@@ -1,6 +1,6 @@
 // Vercel Serverless Function — /api/table
 // Fetches the SAFA Vhembe league table from Inqaku and returns structured JSON.
-// Cached at Vercel edge for 5 minutes (s-maxage=300) — matches fixtures/results refresh rate.
+// Cached at Vercel edge for 1 minute (s-maxage=60) — matches fixtures/results refresh rate.
 
 const https = require('https');
 const http = require('http');
@@ -140,7 +140,7 @@ module.exports = async function handler(req, res) {
     return res.status(200).end();
   }
 
-  res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
+  res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=60');
   res.setHeader('Content-Type', 'application/json');
 
   try {

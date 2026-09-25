@@ -301,7 +301,7 @@ function closeMobileNav() {
    ============================================================ */
 
 const API_BASE = '';
-const REFRESH_MS = 5 * 60 * 1000; // 5 minutes
+const REFRESH_MS = 60 * 1000; // 1 minute, matching the API's edge cache
 
 // ── Skeleton loader helper ─────────────────────────────────
 function showSkeleton(container, rows = 3) {
@@ -604,7 +604,7 @@ function fetchAndRenderResults() {
     .then(r => r.json())
     .then(data => {
       if (!data.results || !data.results.length) {
-        grid.innerHTML = '<p style="color:var(--text-muted);font-size:14px;padding:20px 0;">No recent results found.</p>';
+        grid.innerHTML = '<p style="color:var(--text-muted);font-size:14px;padding:20px 0;">No results yet this season. Check back after the next match.</p>';
         return;
       }
       renderResults(grid, data.results);
@@ -624,9 +624,9 @@ function renderResults(container, results) {
       </div>
       <div style="flex:1;">
         <div style="font-family:var(--font-sub,sans-serif);font-size:15px;font-weight:800;letter-spacing:0.02em;color:var(--text);">
-          ${r.isHome ? '<strong>ABC FC</strong>' : r.opponent} ${r.abcGoals !== '' ? `<span style="font-size:18px;color:var(--gold,#F5A800);font-weight:900;">${r.abcGoals} – ${r.oppGoals}</span>` : r.score} ${r.isHome ? r.opponent : '<strong style="color:var(--gold,#F5A800);">ABC FC</strong>'}
+          ${r.isHome ? '<strong>ABC FC</strong>' : r.opponent} ${r.abcGoals !== '' ? `<span style="font-size:18px;color:var(--gold,#F5A800);font-weight:900;">${r.isHome ? r.abcGoals : r.oppGoals} – ${r.isHome ? r.oppGoals : r.abcGoals}</span>` : r.score} ${r.isHome ? r.opponent : '<strong style="color:var(--gold,#F5A800);">ABC FC</strong>'}
         </div>
-        <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">${r.type} · ${r.isHome ? 'Makonde Stadium' : 'Away'}</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">${r.type} · ${r.venue || (r.isHome ? 'Makonde Stadium' : 'Away')}</div>
       </div>
     </div>
   `).join('');
@@ -756,18 +756,27 @@ function fetchAndRenderPosition() {
     .catch(() => {});
 }
 
-// ── Initial load + 5-minute auto-refresh ──────────────────
+// ── Initial load + 1-minute auto-refresh ──────────────────
 fetchAndRenderFixtures();
 fetchAndRenderResults();
 fetchAndRenderTable();
 fetchAndRenderPosition();
 
-setInterval(() => {
+function refreshLiveData() {
   fetchAndRenderFixtures();
   fetchAndRenderResults();
   fetchAndRenderTable();
   fetchAndRenderPosition();
+}
+
+setInterval(() => {
+  if (!document.hidden) refreshLiveData();
 }, REFRESH_MS);
+
+// Catch up straight away when someone comes back to the tab (e.g. after a match)
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) refreshLiveData();
+});
 
 // Dynamic copyright year
 const fy = document.getElementById('footer-year'); if (fy) fy.textContent = new Date().getFullYear();

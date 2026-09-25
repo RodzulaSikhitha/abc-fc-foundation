@@ -1,6 +1,6 @@
 // Vercel Serverless Function — /api/fixtures
 // Fetches ABC FC upcoming fixtures from Inqaku and returns structured JSON.
-// Cached at Vercel edge for 5 minutes (s-maxage=300) to avoid hammering Inqaku.
+// Cached at Vercel edge for 1 minute (s-maxage=60) to avoid hammering Inqaku.
 
 const https = require('https');
 const http = require('http');
@@ -37,49 +37,7 @@ function fetchHTML(url) {
   });
 }
 
-// Venues from the club's official 2026/27 fixture list (Inqaku doesn't publish them).
-// Keyed by match date, as ABC FC plays once per matchday.
-const VENUES = {
-  // 1st round
-  '2026-10-03': 'Makonde Stadium',
-  '2026-10-10': 'Makonde Stadium',
-  '2026-10-17': 'Makonde Stadium',
-  '2026-10-24': 'Kutama Sinthumule Stadium',
-  '2026-10-31': 'Makonde Stadium',
-  '2026-11-07': 'Phalaborwa United Sports Ground',
-  '2026-11-14': 'Makonde Stadium',
-  '2026-11-21': 'Makhado Show Ground',
-  '2026-11-28': 'Makonde Stadium',
-  '2026-12-05': 'Rabali Stadium',
-  '2026-12-12': 'Makonde Stadium',
-  // 2nd round
-  '2027-01-16': 'Selwana Sports Complex',
-  '2027-01-23': 'Makonde Stadium',
-  '2027-01-30': 'Nkowankowa Stadium',
-  '2027-02-06': 'Makonde Stadium',
-  '2027-02-13': 'Nkowankowa Stadium',
-  '2027-02-20': 'Makonde Stadium',
-  '2027-02-27': 'Musina Rugby Stadium',
-  '2027-03-06': 'Makonde Stadium',
-  '2027-03-13': 'Mpheni Ground',
-  '2027-03-20': 'Makonde Stadium',
-  '2027-03-27': 'Lulekani Stadium',
-};
-
-const MONTHS = { jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11 };
-
-// "Sat 3 Oct 2026" -> "2026-10-03"
-function isoDate(dateStr) {
-  const m = (dateStr || '').match(/(\d{1,2})\s+([A-Za-z]{3})[a-z]*\s+(\d{4})/);
-  if (!m) return null;
-  const month = MONTHS[m[2].toLowerCase()];
-  if (month === undefined) return null;
-  return `${m[3]}-${String(month + 1).padStart(2, '0')}-${m[1].padStart(2, '0')}`;
-}
-
-function venueFor(dateStr, isHome) {
-  return VENUES[isoDate(dateStr)] || (isHome ? 'Makonde Stadium' : 'Away — TBC');
-}
+const { venueFor } = require('./_venues');
 
 /**
  * Parse fixtures from Inqaku's card layout (2026/27 onwards).
@@ -106,6 +64,9 @@ function parseCardFixtures(html) {
       if (name) teams.push(name);
     }
     if (teams.length < 2) continue;
+
+    // A score in place of "VS" means the match has been played — it belongs in results
+    if (/<td[^>]*>\s*\d+(?:\s|&nbsp;?)+\d+\s*<\/td>/i.test(cardHTML)) continue;
 
     const [homeTeam, awayTeam] = teams;
     const isHome = abcNames.some(n => homeTeam.toLowerCase().includes(n));
@@ -269,7 +230,7 @@ module.exports = async function handler(req, res) {
   }
 
   // Set Vercel Edge cache: serve cached response for 5 min, allow stale for 1 min while revalidating
-  res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
+  res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=60');
   res.setHeader('Content-Type', 'application/json');
 
   try {
