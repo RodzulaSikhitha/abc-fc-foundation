@@ -778,5 +778,97 @@ document.addEventListener('visibilitychange', () => {
   if (!document.hidden) refreshLiveData();
 });
 
+// ── IN TRAINING: floating photo strip + lightbox ──────────
+// Photos are listed in data/training-photos.json as
+//   [{ "src": "images/training/x.jpg", "thumb": "images/training/x-thumb.jpg", "caption": "..." }]
+// The section stays hidden while the list is empty.
+(function initTrainingGallery() {
+  const section = document.getElementById('training');
+  const strip = section && section.querySelector('[data-training-strip]');
+  const box = document.getElementById('lightbox');
+  if (!strip || !box) return;
+
+  const img = box.querySelector('.lb-img');
+  const caption = box.querySelector('.lb-caption');
+  let photos = [];
+  let current = 0;
+  let lastFocus = null;
+
+  fetch('data/training-photos.json', { cache: 'no-cache' })
+    .then(r => (r.ok ? r.json() : []))
+    .then(list => {
+      photos = (Array.isArray(list) ? list : []).filter(p => p && p.src);
+      if (!photos.length) return;
+      strip.innerHTML = photos.map((p, i) => `
+        <button type="button" class="training-tile" data-index="${i}" aria-label="Enlarge photo${p.caption ? ': ' + escapeHTML(p.caption) : ''}">
+          <img src="${p.thumb || p.src}" alt="${escapeHTML(p.caption || 'ABC FC players in training')}" loading="lazy" />
+        </button>`).join('');
+      box.classList.toggle('single', photos.length === 1);
+      section.hidden = false;
+    })
+    .catch(() => {});
+
+  strip.addEventListener('click', e => {
+    const tile = e.target.closest('.training-tile');
+    if (tile) open(+tile.dataset.index);
+  });
+
+  function show(i) {
+    current = (i + photos.length) % photos.length;
+    const p = photos[current];
+    img.src = p.src;
+    img.alt = p.caption || 'ABC FC players in training';
+    caption.textContent = p.caption || '';
+  }
+
+  function open(i) {
+    lastFocus = document.activeElement;
+    show(i);
+    box.hidden = false;
+    document.body.style.overflow = 'hidden';
+    box.querySelector('.lb-close').focus();
+  }
+
+  function close() {
+    box.hidden = true;
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+
+  box.querySelector('.lb-close').addEventListener('click', close);
+  box.querySelector('.lb-prev').addEventListener('click', () => show(current - 1));
+  box.querySelector('.lb-next').addEventListener('click', () => show(current + 1));
+  // Tap the dark backdrop to close
+  box.addEventListener('click', e => { if (e.target === box) close(); });
+
+  document.addEventListener('keydown', e => {
+    if (box.hidden) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') show(current - 1);
+    else if (e.key === 'ArrowRight') show(current + 1);
+    else if (e.key === 'Tab') {
+      // Keep keyboard focus inside the lightbox
+      const f = [...box.querySelectorAll('button')].filter(b => b.offsetParent !== null);
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  // Swipe left/right on phones
+  let touchX = null;
+  box.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener('touchend', e => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    touchX = null;
+    if (Math.abs(dx) > 40 && photos.length > 1) show(current + (dx < 0 ? 1 : -1));
+  });
+
+  function escapeHTML(s) {
+    return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+})();
+
 // Dynamic copyright year
 const fy = document.getElementById('footer-year'); if (fy) fy.textContent = new Date().getFullYear();
