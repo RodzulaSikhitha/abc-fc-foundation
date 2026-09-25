@@ -15,6 +15,11 @@
     "caption": "Striking the ball in a shooting drill"
   },
   {
+    "src": "images/training/training-keeper-dive.jpg",
+    "thumb": "images/training/training-keeper-dive-thumb.jpg",
+    "caption": "Full-stretch save in goalkeeper drills"
+  },
+  {
     "src": "images/training/training-tuck-jump.jpg",
     "thumb": "images/training/training-tuck-jump-thumb.jpg",
     "caption": "Tuck jumps over the hurdles"
@@ -60,6 +65,11 @@
     "caption": "Two-footed jumps over the hurdles"
   },
   {
+    "src": "images/training/training-focus.jpg",
+    "thumb": "images/training/training-focus-thumb.jpg",
+    "caption": "Taking it all in between drills"
+  },
+  {
     "src": "images/training/training-huddle.jpg",
     "thumb": "images/training/training-huddle-thumb.jpg",
     "caption": "Catching breath between drills"
@@ -78,6 +88,11 @@
     "src": "images/training/training-coaches.jpg",
     "thumb": "images/training/training-coaches-thumb.jpg",
     "caption": "Coaching staff watching on"
+  },
+  {
+    "src": "images/training/training-dugout.jpg",
+    "thumb": "images/training/training-dugout-thumb.jpg",
+    "caption": "Watching on from the dugout"
   },
   {
     "src": "images/training/training-touchline.jpg",
