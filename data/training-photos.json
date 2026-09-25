@@ -15,9 +15,24 @@
     "caption": "Getting a shot away under pressure"
   },
   {
+    "src": "images/training/training-control.jpg",
+    "thumb": "images/training/training-control-thumb.jpg",
+    "caption": "Chest control in a close-quarters drill"
+  },
+  {
     "src": "images/training/training-passing.jpg",
     "thumb": "images/training/training-passing-thumb.jpg",
     "caption": "Passing drills"
+  },
+  {
+    "src": "images/training/training-huddle.jpg",
+    "thumb": "images/training/training-huddle-thumb.jpg",
+    "caption": "Catching breath between drills"
+  },
+  {
+    "src": "images/training/training-smiles.jpg",
+    "thumb": "images/training/training-smiles-thumb.jpg",
+    "caption": "All smiles at training"
   },
   {
     "src": "images/training/training-coaches.jpg",
@@ -28,5 +43,10 @@
     "src": "images/training/training-touchline.jpg",
     "thumb": "images/training/training-touchline-thumb.jpg",
     "caption": "Keeping an eye on the session from the touchline"
+  },
+  {
+    "src": "images/training/training-handshake.jpg",
+    "thumb": "images/training/training-handshake-thumb.jpg",
+    "caption": "A handshake on the touchline"
   }
 ]
