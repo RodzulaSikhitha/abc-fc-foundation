@@ -518,7 +518,7 @@ function getOpponentCrest(opponent, logoUrl) {
   const key = (opponent || '').toLowerCase().trim();
   const src = TEAM_CRESTS[key] || logoUrl;
   if (src) return `<img src="${src}" alt="${opponent}" class="fx-crest" loading="lazy" />`;
-  return `<svg class="fx-crest fx-crest-generic" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg>`;
+  return `<svg class="fx-crest fx-crest-generic" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1e3a64"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#4d6a95" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#5d79a3" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#5d79a3"/></svg>`;
 }
 
 function fxRowHTML(f) {
@@ -560,7 +560,7 @@ function renderFixtures(container, fixtures) {
       <div style="min-width:80px;">
         <div style="font-family:var(--font-sub,sans-serif);font-size:11px;font-weight:700;letter-spacing:0.06em;color:var(--text-muted);text-transform:uppercase;">${f.date}</div>
         <div style="font-size:10px;margin-top:2px;">
-          <span style="display:inline-block;padding:2px 8px;border-radius:20px;font-family:var(--font-sub,sans-serif);font-size:10px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;background:${f.isHome ? 'var(--gold,#F5A800)' : '#333'};color:${f.isHome ? '#111' : '#fff'};">${f.type}</span>
+          <span style="display:inline-block;padding:2px 8px;border-radius:20px;font-family:var(--font-sub,sans-serif);font-size:10px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;background:${f.isHome ? 'var(--gold,#F5A800)' : '#1e3a64'};color:${f.isHome ? '#0d1f3c' : '#fff'};">${f.type}</span>
         </div>
       </div>
       <div style="flex:1;">
@@ -710,7 +710,7 @@ function renderFullTable(container, teams) {
   container.innerHTML = `
     <table style="width:100%;border-collapse:collapse;font-size:13px;">
       <thead>
-        <tr style="background:var(--gold,#F5A800);color:#111;">
+        <tr style="background:var(--gold,#F5A800);color:#0d1f3c;">
           <th style="padding:10px 12px;text-align:center;">#</th>
           <th style="padding:10px 12px;text-align:left;">Team</th>
           <th style="padding:10px 8px;text-align:center;">P</th>

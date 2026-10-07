@@ -53,13 +53,13 @@
  Dark-always, overrides light theme globally
  ═══════════════════════════════════════════════════ */
  [data-theme="light"] body,
- [data-theme="light"] .t4-page { background: #0d0d0d; }
+ [data-theme="light"] .t4-page { background: #0d1f3c; }
 
  :root {
  --t4-gold: #F5A800;
- --t4-black: #0d0d0d;
- --t4-dark: #111111;
- --t4-border: #1e1e1e;
+ --t4-black: #0d1f3c;
+ --t4-dark: #122849;
+ --t4-border: #26446f;
  --t4-muted: rgba(255,255,255,0.5);
  }
 
@@ -105,7 +105,7 @@
  ═══════════════════════════════════════════════════ */
  .t4-hero {
  position: relative; overflow: hidden; text-align: center;
- background: radial-gradient(ellipse at 50% 0%, #281d00 0%, #0d0d0d 65%);
+ background: radial-gradient(ellipse at 50% 0%, #1e3a64 0%, #0d1f3c 65%);
  padding: clamp(80px,16vw,140px) clamp(16px,5vw,48px) clamp(56px,10vw,88px);
  }
  .t4-hero::before {
@@ -167,13 +167,13 @@
  font-family: 'Barlow Condensed', sans-serif;
  font-size: 14px; font-weight: 900;
  letter-spacing: .12em; text-transform: uppercase;
- background: var(--t4-gold); color: #000;
+ background: var(--t4-gold); color: #0d1f3c;
  padding: 14px 32px; border-radius: 8px;
  text-decoration: none;
  box-shadow: 0 6px 28px rgba(245,168,0,0.4);
  transition: transform .2s, box-shadow .2s;
  }
- .t4-btn-gold:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(245,168,0,0.55); color:#000; }
+ .t4-btn-gold:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(245,168,0,0.55); color:#0d1f3c; }
  .t4-btn-outline {
  display: inline-flex; align-items: center;
  font-family: 'Barlow Condensed', sans-serif;
@@ -191,7 +191,7 @@
  STATS STRIP
  ═══════════════════════════════════════════════════ */
  .t4-stats-strip {
- background: #111; border-top: 1px solid var(--t4-border); border-bottom: 1px solid var(--t4-border);
+ background: #122849; border-top: 1px solid var(--t4-border); border-bottom: 1px solid var(--t4-border);
  }
  .t4-stats-grid {
  display: grid;
@@ -268,7 +268,7 @@
  .t4-team-card:hover { border-color: rgba(245,168,0,0.35); transform: translateY(-3px); }
  .t4-team-badge {
  width: 40px; height: 40px; border-radius: 50%;
- background: rgba(20,20,20,0.85);
+ background: rgba(13,31,60,0.85);
  border: 1.5px solid rgba(245,168,0,0.28);
  display: flex; align-items: center; justify-content: center;
  margin: 0 auto 8px;
@@ -322,7 +322,7 @@
  REGISTER CTA BAND
  ═══════════════════════════════════════════════════ */
  .t4-register-band {
- background: linear-gradient(135deg, #1c1400 0%, #0d0d0d 50%, #1c1400 100%);
+ background: linear-gradient(135deg, #173056 0%, #0d1f3c 50%, #173056 100%);
  border-top: 2px solid rgba(245,168,0,0.18);
  border-bottom: 2px solid rgba(245,168,0,0.18);
  text-align: center;
@@ -413,10 +413,10 @@
  border-color: rgba(245,168,0,0.5);
  }
  .t4-select { color: rgba(255,255,255,0.7); appearance: none; cursor: pointer; }
- .t4-select option { background: #111; color: #fff; }
+ .t4-select option { background: #122849; color: #fff; }
  .t4-textarea { resize: vertical; min-height: 110px; }
  .t4-submit {
- background: var(--t4-gold); color: #000; border: none;
+ background: var(--t4-gold); color: #0d1f3c; border: none;
  font-family: 'Barlow Condensed', sans-serif;
  font-size: 15px; font-weight: 900;
  letter-spacing: .1em; text-transform: uppercase;
@@ -435,7 +435,7 @@
  /* ═══════════════════════════════════════════════════
  RESULTS  (Last 32 and later rounds)
  ═══════════════════════════════════════════════════ */
- .t4-results-section { background: #0a0a0a; }
+ .t4-results-section { background: #0a1832; }
  .t4-round-head {
  display: flex; align-items: center; flex-wrap: wrap;
  gap: 12px; margin: 34px 0 16px;
@@ -448,7 +448,7 @@
  font-family: 'Barlow Condensed', sans-serif;
  font-size: 12px; font-weight: 900;
  letter-spacing: .18em; text-transform: uppercase;
- color: #000; background: var(--t4-gold);
+ color: #0d1f3c; background: var(--t4-gold);
  padding: 6px 14px; border-radius: 4px;
  }
  .t4-round-meta {
@@ -468,7 +468,7 @@
  .t4-tie-no {
  font-family: 'Bebas Neue', sans-serif;
  font-size: 15px; line-height: 1;
- color: #000; background: var(--t4-gold);
+ color: #0d1f3c; background: var(--t4-gold);
  min-width: 26px; text-align: center;
  padding: 6px 6px 4px; border-radius: 4px;
  }
@@ -535,7 +535,7 @@
  .t4-score-box {
  font-family: 'Bebas Neue', sans-serif;
  font-size: clamp(21px, 5vw, 30px); line-height: 1;
- color: #000; background: var(--t4-gold);
+ color: #0d1f3c; background: var(--t4-gold);
  min-width: clamp(30px, 7vw, 42px);
  padding: 9px 4px 6px; border-radius: 4px;
  text-align: center;
@@ -662,7 +662,7 @@
  /* ═══════════════════════════════════════════════════
  BRACKET  (tournament overview diagram)
  ═══════════════════════════════════════════════════ */
- .t4-bracket-section { background: #0a0a0a; }
+ .t4-bracket-section { background: #0a1832; }
  .t4-bracket-legend {
  display: flex; flex-wrap: wrap; gap: 8px 18px;
  margin: 0 0 20px;
@@ -714,7 +714,7 @@
  font-family: 'Barlow Condensed', sans-serif;
  font-size: 11px; font-weight: 900;
  letter-spacing: .16em; text-transform: uppercase;
- color: #000; background: var(--t4-gold);
+ color: #0d1f3c; background: var(--t4-gold);
  text-align: center; border-radius: 4px;
  padding: 6px 4px 5px; margin: 0 0 14px;
  }
@@ -826,7 +826,7 @@
  padding: clamp(40px, 7vw, 70px) clamp(16px, 5vw, 48px);
  background:
  radial-gradient(ellipse at 50% 0%, rgba(245,168,0,0.16), transparent 62%),
- linear-gradient(180deg, #100c02, #0a0a0a);
+ linear-gradient(180deg, #112645, #0a1832);
  border-top: 1px solid rgba(245,168,0,0.28);
  border-bottom: 1px solid rgba(245,168,0,0.28);
  text-align: center;
@@ -891,14 +891,14 @@
  .t4-team-card--champ { border-color: var(--t4-gold); background: rgba(245,168,0,0.08); }
  .t4-team-card--runner { border-color: rgba(255,255,255,0.35); }
  .bk-ko--champ {
- color: #000; background: var(--t4-gold);
+ color: #0d1f3c; background: var(--t4-gold);
  border-top: none; font-weight: 900; letter-spacing: .2em;
  }
 
  /* ═══════════════════════════════════════════════════
  INDIVIDUAL AWARDS
  ═══════════════════════════════════════════════════ */
- .t4-awards-section { background: #0a0a0a; }
+ .t4-awards-section { background: #0a1832; }
  .t4-awards-grid {
  display: grid; gap: 10px;
  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -954,7 +954,7 @@
  width: 100%; height: auto; display: block;
  border-radius: 10px;
  border: 1px solid var(--t4-border);
- background: #111;
+ background: #122849;
  }
  .t4-award-poster figcaption {
  font-family: 'Barlow Condensed', sans-serif;
@@ -1150,14 +1150,14 @@
  <span>SEMI-FINALS Maelula United Brothers FC beat Tshamutilikwa Fire Boys FC</span>
  <span>SEMI-FINALS Tshimuthe FC beat Saudi FC</span>
  <span>32 CLUBS 31 ties across Khubvi, Phalama and Makonde Stadium</span>
- <span>2026/27 ABC MOTSEPE LEAGUE KICKS OFF · ABC FC vs Selwana White Vultures · Sat 3 Oct · 15:00</span>
+ <span>2026/27 ABC MOTSEPE LEAGUE IS UNDERWAY · Follow every result &amp; the log live</span>
  <span>CHAMPIONS 2026 Maelula United Brothers FC lift the ABC Foundation trophy</span>
  <span>FINAL Maelula United Brothers FC 0–0 Tshimuthe FC (Maelula win 4–2 on pens)</span>
  <span>ALL 31 TIES AND THE FULL BRACKET ARE LISTED ON THIS PAGE</span>
  <span>SEMI-FINALS Maelula United Brothers FC beat Tshamutilikwa Fire Boys FC</span>
  <span>SEMI-FINALS Tshimuthe FC beat Saudi FC</span>
  <span>32 CLUBS 31 ties across Khubvi, Phalama and Makonde Stadium</span>
- <span>2026/27 ABC MOTSEPE LEAGUE KICKS OFF · ABC FC vs Selwana White Vultures · Sat 3 Oct · 15:00</span>
+ <span>2026/27 ABC MOTSEPE LEAGUE IS UNDERWAY · Follow every result &amp; the log live</span>
  </div>
  </div>
  </div>
@@ -1663,7 +1663,7 @@
           </div>
           <div class="t4-score"><span class="t4-score-box">4</span><span class="t4-score-box t4-score-box--pens">(0)</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box t4-score-box--pens">(0)</span><span class="t4-score-box">2</span></div>
           <div class="t4-result-side t4-result-side--away">
-           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1e3a64"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#4d6a95" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#5d79a3" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#5d79a3"/></svg></span>
            <p class="t4-result-team">Tshimuthe FC</p>
           </div>
          </div>
@@ -1708,7 +1708,7 @@
          <div class="t4-result-row">
           <div class="t4-result-side t4-result-side--home t4-result-side--won">
            <p class="t4-result-team">Tshimuthe FC</p>
-           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span>
+           <span class="t4-result-crest"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1e3a64"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#4d6a95" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#5d79a3" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#5d79a3"/></svg></span>
           </div>
           <div class="t4-score"><span class="t4-score-box t4-score-box--na">&ndash;</span><span class="t4-score-dash">&ndash;</span><span class="t4-score-box t4-score-box--na">&ndash;</span></div>
           <div class="t4-result-side t4-result-side--away">
@@ -1945,7 +1945,7 @@
  SPONSORS TEASER
  ════════════════════════════════════════════════ -->
  <hr class="t4-divider" />
- <section class="t4-section" id="sponsors" style="background:#0a0a0a;">
+ <section class="t4-section" id="sponsors" style="background:#0a1832;">
  <div class="t4-inner t4-inner--center">
  <div class="t4-sponsor-split">
  <figure class="t4-sponsor-thanks">
@@ -2019,19 +2019,19 @@
  </div>
  <!-- 04 Kwena FC Out - Last 32 -->
  <div class="t4-team-card t4-team-card--out t4-team-nologo">
-  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
+  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1e3a64"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#4d6a95" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#5d79a3" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#5d79a3"/></svg></span></div>
   <p class="t4-team-name">Kwena FC</p>
   <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
  <!-- 05 Ngwenani Young Chiefs Out - Last 32 -->
  <div class="t4-team-card t4-team-card--out t4-team-nologo">
-  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
+  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1e3a64"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#4d6a95" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#5d79a3" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#5d79a3"/></svg></span></div>
   <p class="t4-team-name">Ngwenani Young Chiefs</p>
   <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
  <!-- 06 Chelamoya FC Out - Last 16 -->
  <div class="t4-team-card t4-team-card--out t4-team-nologo">
-  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
+  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1e3a64"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#4d6a95" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#5d79a3" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#5d79a3"/></svg></span></div>
   <p class="t4-team-name">Chelamoya FC</p>
   <span class="t4-team-status">Out &middot; Last 16</span>
  </div>
@@ -2049,7 +2049,7 @@
  </div>
  <!-- 09 Mukondeni Royal FC Into Last 8 -->
  <div class="t4-team-card t4-team-card--out t4-team-nologo">
-  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
+  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1e3a64"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#4d6a95" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#5d79a3" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#5d79a3"/></svg></span></div>
   <p class="t4-team-name">Mukondeni Royal FC</p>
   <span class="t4-team-status">Out &middot; Last 8</span>
  </div>
@@ -2061,7 +2061,7 @@
  </div>
  <!-- 11 Dzwerani United Brothers Out - Last 32 -->
  <div class="t4-team-card t4-team-card--out t4-team-nologo">
-  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
+  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1e3a64"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#4d6a95" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#5d79a3" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#5d79a3"/></svg></span></div>
   <p class="t4-team-name">Dzwerani United Brothers</p>
   <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
@@ -2079,25 +2079,25 @@
  </div>
  <!-- 14 Lukau Tshishivhe Tiger Boys Out - Last 16 -->
  <div class="t4-team-card t4-team-card--out t4-team-nologo">
-  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
+  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1e3a64"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#4d6a95" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#5d79a3" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#5d79a3"/></svg></span></div>
   <p class="t4-team-name">Lukau Tshishivhe Tiger Boys</p>
   <span class="t4-team-status">Out &middot; Last 16</span>
  </div>
  <!-- 15 Matanda Rockers FC Out - Last 16 -->
  <div class="t4-team-card t4-team-card--out t4-team-nologo">
-  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
+  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1e3a64"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#4d6a95" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#5d79a3" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#5d79a3"/></svg></span></div>
   <p class="t4-team-name">Matanda Rockers FC</p>
   <span class="t4-team-status">Out &middot; Last 16</span>
  </div>
  <!-- 16 Thengwe Flying Peace Out - Last 32 -->
  <div class="t4-team-card t4-team-card--out t4-team-nologo">
-  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
+  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1e3a64"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#4d6a95" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#5d79a3" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#5d79a3"/></svg></span></div>
   <p class="t4-team-name">Thengwe Flying Peace</p>
   <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
  <!-- 17 Shilumani Training Academy Out - Last 32 -->
  <div class="t4-team-card t4-team-card--out t4-team-nologo">
-  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
+  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1e3a64"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#4d6a95" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#5d79a3" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#5d79a3"/></svg></span></div>
   <p class="t4-team-name">Shilumani Training Academy</p>
   <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
@@ -2115,31 +2115,31 @@
  </div>
  <!-- 20 Phadzima Young Stars FC Out - Last 32 -->
  <div class="t4-team-card t4-team-card--out t4-team-nologo">
-  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
+  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1e3a64"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#4d6a95" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#5d79a3" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#5d79a3"/></svg></span></div>
   <p class="t4-team-name">Phadzima Young Stars FC</p>
   <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
  <!-- 21 Tsemi FC Into Last 8 -->
  <div class="t4-team-card t4-team-card--out t4-team-nologo">
-  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
+  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1e3a64"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#4d6a95" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#5d79a3" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#5d79a3"/></svg></span></div>
   <p class="t4-team-name">Tsemi FC</p>
   <span class="t4-team-status">Out &middot; Last 8</span>
  </div>
  <!-- 22 Maheni Devoted Vultures Out - Last 32 -->
  <div class="t4-team-card t4-team-card--out t4-team-nologo">
-  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
+  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1e3a64"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#4d6a95" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#5d79a3" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#5d79a3"/></svg></span></div>
   <p class="t4-team-name">Maheni Devoted Vultures</p>
   <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
  <!-- 23 Makonde FC Out - Last 32 -->
  <div class="t4-team-card t4-team-card--out t4-team-nologo">
-  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
+  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1e3a64"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#4d6a95" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#5d79a3" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#5d79a3"/></svg></span></div>
   <p class="t4-team-name">Makonde FC</p>
   <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
  <!-- 24 Tshimuthe FC Into Last 8 -->
  <div class="t4-team-card t4-team-card--runner t4-team-nologo">
-  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
+  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1e3a64"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#4d6a95" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#5d79a3" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#5d79a3"/></svg></span></div>
   <p class="t4-team-name">Tshimuthe FC</p>
   <span class="t4-team-status">Runners-up</span>
  </div>
@@ -2187,7 +2187,7 @@
  </div>
  <!-- 32 Vuwa Brave Lions FC Out - Last 32 -->
  <div class="t4-team-card t4-team-card--out t4-team-nologo">
-  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1a1a1a"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#444" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#555" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#555"/></svg></span></div>
+  <div class="t4-team-badge"><span class="t4-badge-shield"><svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#1e3a64"/><path d="M13 4 L20 7.5 V14 C20 18 17 21.5 13 23 C9 21.5 6 18 6 14 V7.5 Z" fill="none" stroke="#4d6a95" stroke-width="1.4" stroke-linejoin="round"/><circle cx="13" cy="14" r="3" fill="none" stroke="#5d79a3" stroke-width="1"/><circle cx="13" cy="14" r="0.9" fill="#5d79a3"/></svg></span></div>
   <p class="t4-team-name">Vuwa Brave Lions FC</p>
   <span class="t4-team-status">Out &middot; Last 32</span>
  </div>
@@ -2329,7 +2329,7 @@
  </main>
 
  <!-- ── FOOTER ─────────────────────────────────────── -->
- <footer class="site-footer" style="background:#080808; border-top:1px solid #1a1a1a;">
+ <footer class="site-footer" style="background:#091730; border-top:1px solid #1e3a64;">
  <div style="max-width:1100px; margin:0 auto; padding:40px clamp(16px,5vw,48px); text-align:center;">
  <img src="images/abc-fc-logo.jpeg" alt="ABC FC" style="width:60px;height:60px;border-radius:50%;object-fit:cover;margin-bottom:14px;" />
  <p style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:#F5A800;margin:0 0 4px;">ABC FC Lion of the North</p>
