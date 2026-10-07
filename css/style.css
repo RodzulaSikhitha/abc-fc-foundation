@@ -705,7 +705,7 @@ p, li { text-wrap: pretty; }
 }
 .fb-live-dot {
   width: 8px; height: 8px; border-radius: 50%;
-  background: #1877F2;
+  background: var(--gold);
   animation: pulse-dot 2s infinite;
   margin-left: auto;
 }
@@ -721,13 +721,13 @@ p, li { text-wrap: pretty; }
 }
 .fb-follow-btn {
   display: inline-flex; align-items: center; gap: 8px;
-  background: #1877F2; color: white;
+  background: var(--gold); color: #111;
   font-family: var(--font-sub); font-size: 13px; font-weight: 800;
   letter-spacing: 0.08em; text-transform: uppercase;
   padding: 12px 24px; border-radius: var(--radius-sm);
   transition: all var(--transition); text-decoration: none;
 }
-.fb-follow-btn:hover { background: #1557c0; color: white; transform: translateY(-1px); }
+.fb-follow-btn:hover { background: var(--gold-light); color: #111; transform: translateY(-1px); }
 
 /* News cards */
 .news-grid {
@@ -912,8 +912,8 @@ p, li { text-wrap: pretty; }
   transition: all var(--transition); text-decoration: none; color: inherit;
 }
 .contact-card:hover { border-color: rgba(245,168,0,0.4); }
-.cc-social { border-left: 3px solid #1877F2; }
-.cc-fb { background: rgba(24,119,242,0.1); }
+.cc-social { border-left: 3px solid var(--gold); }
+.cc-fb { background: rgba(245,168,0,0.1); }
 .cc-radio { background: rgba(245,168,0,0.1); }
 .cc-icon { width: 40px; height: 40px; border-radius: var(--radius-sm); background: linear-gradient(135deg, #1a0d00, var(--black-4)); display: flex; align-items: center; justify-content: center; color: var(--gold); flex-shrink: 0; }
 .contact-card > div { display: flex; flex-direction: column; gap: 2px; flex: 1; }
@@ -948,8 +948,8 @@ p, li { text-wrap: pretty; }
 .footer-col a { font-size: 13px; color: rgba(255,255,255,0.4); transition: color var(--transition); }
 .footer-col a:hover { color: var(--gold); }
 .footer-social { margin-bottom: 12px; }
-.fsoc-btn { display: inline-flex; align-items: center; gap: 8px; background: rgba(24,119,242,0.12); color: #6699ff; border: 1px solid rgba(24,119,242,0.2); font-family: var(--font-sub); font-size: 12px; font-weight: 700; padding: 8px 14px; border-radius: var(--radius-sm); letter-spacing: 0.06em; transition: all var(--transition); }
-.fsoc-btn:hover { background: rgba(24,119,242,0.25); color: #88bbff; }
+.footer-col a.fsoc-btn { display: inline-flex; align-items: center; gap: 8px; background: rgba(245,168,0,0.1); color: var(--gold); border: 1px solid rgba(245,168,0,0.25); font-family: var(--font-sub); font-size: 12px; font-weight: 700; padding: 8px 14px; border-radius: var(--radius-sm); letter-spacing: 0.06em; transition: all var(--transition); }
+.footer-col a.fsoc-btn:hover { background: rgba(245,168,0,0.2); color: var(--gold-light); }
 /* ── Ad Slot ─────────────────────────────────────────────── */
 .ad-slot-wrap {
   display: flex;
@@ -1676,7 +1676,7 @@ p, li { text-wrap: pretty; }
   align-items: center;
   gap: 0.4rem;
   font-size: 0.78rem;
-  color: #0A66C2;
+  color: var(--gold);
   font-family: var(--font-sub);
   font-weight: 600;
   text-decoration: none;
@@ -2185,7 +2185,7 @@ p, li { text-wrap: pretty; }
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #1877F2;
+  color: var(--gold);
   text-decoration: none;
   align-self: flex-start;
 }
@@ -2201,8 +2201,8 @@ p, li { text-wrap: pretty; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #1877F2;
-  color: #fff;
+  background: var(--gold);
+  color: #111;
   font-family: var(--font-sub);
   font-size: 12px;
   font-weight: 800;
@@ -2213,7 +2213,7 @@ p, li { text-wrap: pretty; }
   border-radius: var(--radius-full);
   transition: background var(--transition), transform var(--transition);
 }
-.fb-follow-pill:hover { background: #1557c0; transform: translateY(-1px); }
+.fb-follow-pill:hover { background: var(--gold-light); color: #111; transform: translateY(-1px); }
 
 /* Wider cards on desktop — show 3 at a time */
 @media (min-width: 768px) {

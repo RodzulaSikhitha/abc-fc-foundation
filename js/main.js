@@ -244,11 +244,11 @@ function closeMobileNav() {
   function showFbFallback(container) {
     container.innerHTML = `
       <div style="width:100%;padding:40px 24px;text-align:center;background:var(--surface);border-radius:12px;">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="#1877F2" style="margin:0 auto 16px;"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="#F5A800" style="margin:0 auto 16px;"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
         <p style="font-family:var(--font-sub);font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:0.04em;">Live Feed Requires Cookies</p>
         <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;max-width:36ch;margin-left:auto;margin-right:auto;">Visit our official Facebook page to see all the latest posts, photos and match updates.</p>
         <a href="https://www.facebook.com/p/ABC-fc-61556965480952/" target="_blank" rel="noopener"
-           style="display:inline-flex;align-items:center;gap:8px;background:#1877F2;color:white;font-family:var(--font-sub);font-size:13px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:12px 24px;border-radius:6px;text-decoration:none;">
+           style="display:inline-flex;align-items:center;gap:8px;background:var(--gold,#F5A800);color:#111;font-family:var(--font-sub);font-size:13px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:12px 24px;border-radius:6px;text-decoration:none;">
           Open Facebook Page →
         </a>
       </div>`;
