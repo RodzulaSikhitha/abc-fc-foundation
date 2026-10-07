@@ -283,7 +283,7 @@ p, li { text-wrap: pretty; }
   display: flex;
   width: max-content;
   height: 100%;
-  animation: ticker-scroll 60s linear infinite; /* duration set from the content width in main.js */
+  animation: ticker-scroll 60s linear infinite reverse; /* moves left to right; duration set from the content width in main.js */
   will-change: transform;
 }
 .honours-bar:hover .hb-track { animation-play-state: paused; }

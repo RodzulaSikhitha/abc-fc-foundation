@@ -877,7 +877,8 @@ document.addEventListener('visibilitychange', () => {
 // ── HONOURS & SPONSORS BAR ────────────────────────────────
 // Honours and sponsor logos are listed in data/honours-bar.json as
 //   { "honours": [{ "title": "...", "year": "..." }], "sponsors": [{ "name": "...", "logo": "images/sponsors/x.jpg" }] }
-// The bar hides itself if the list can't be loaded.
+// Sponsors back the ABC Foundation Tournament, not the club, so only bars marked
+// data-sponsors (the tournament pages) show them. The bar hides itself if the list can't be loaded.
 (function initHonoursBar() {
   const bar = document.querySelector('[data-honours-bar]');
   if (!bar || bar.dataset.ready) return; // some pages include main.js twice
@@ -890,12 +891,12 @@ document.addEventListener('visibilitychange', () => {
     .then(r => (r.ok ? r.json() : null))
     .then(data => {
       const honours = (data && data.honours) || [];
-      const sponsors = (data && data.sponsors) || [];
+      const sponsors = (bar.hasAttribute('data-sponsors') && data && data.sponsors) || [];
       if (!honours.length && !sponsors.length) { bar.hidden = true; return; }
 
       const group = honours.map(h => `
         <a class="hb-item" href="honours">${trophy}<span>${esc(h.title)}</span><span class="hb-year">${esc(h.year || '')}</span></a>`).join('')
-        + (sponsors.length ? `<span class="hb-divider">Proudly supported by</span>` + sponsors.map(s => `
+        + (sponsors.length ? `<span class="hb-divider">Tournament sponsors</span>` + sponsors.map(s => `
         <a class="hb-logo" href="tournament-sponsors" title="${esc(s.name)}"><img src="${esc(s.logo)}" alt="${esc(s.name)}" height="22" /></a>`).join('') : '');
 
       bar.innerHTML = `
