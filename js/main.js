@@ -874,5 +874,49 @@ document.addEventListener('visibilitychange', () => {
   }
 })();
 
+// ── HONOURS & SPONSORS BAR ────────────────────────────────
+// Honours and sponsor logos are listed in data/honours-bar.json as
+//   { "honours": [{ "title": "...", "year": "..." }], "sponsors": [{ "name": "...", "logo": "images/sponsors/x.jpg" }] }
+// The bar hides itself if the list can't be loaded.
+(function initHonoursBar() {
+  const bar = document.querySelector('[data-honours-bar]');
+  if (!bar || bar.dataset.ready) return; // some pages include main.js twice
+  bar.dataset.ready = '1';
+
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const trophy = '<svg class="hb-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v1.5a3.5 3.5 0 0 1-3.5 3.5"/><path d="M7 5H4v1.5A3.5 3.5 0 0 0 7.5 10"/><path d="M12 14v4"/><path d="M8.5 21h7l-.6-2.2a1 1 0 0 0-1-.8h-3.8a1 1 0 0 0-1 .8z"/></svg>';
+
+  fetch('data/honours-bar.json', { cache: 'no-cache' })
+    .then(r => (r.ok ? r.json() : null))
+    .then(data => {
+      const honours = (data && data.honours) || [];
+      const sponsors = (data && data.sponsors) || [];
+      if (!honours.length && !sponsors.length) { bar.hidden = true; return; }
+
+      const group = honours.map(h => `
+        <a class="hb-item" href="honours">${trophy}<span>${esc(h.title)}</span><span class="hb-year">${esc(h.year || '')}</span></a>`).join('')
+        + (sponsors.length ? `<span class="hb-divider">Proudly supported by</span>` + sponsors.map(s => `
+        <a class="hb-logo" href="tournament-sponsors" title="${esc(s.name)}"><img src="${esc(s.logo)}" alt="${esc(s.name)}" height="22" /></a>`).join('') : '');
+
+      bar.innerHTML = `
+        <div class="hb-label">${trophy}Honours</div>
+        <div class="hb-track-wrap">
+          <div class="hb-track">
+            <div class="hb-group">${group}</div>
+            <div class="hb-group" aria-hidden="true">${group}</div>
+          </div>
+        </div>`;
+      // The second copy only makes the loop seamless; keep it out of the tab order
+      bar.querySelectorAll('.hb-group[aria-hidden] a').forEach(a => a.setAttribute('tabindex', '-1'));
+
+      // Same reading speed however many honours and sponsors there are (~40px a second)
+      const track = bar.querySelector('.hb-track');
+      const setSpeed = () => { track.style.animationDuration = Math.max(30, track.scrollWidth / 2 / 40) + 's'; };
+      setSpeed();
+      bar.querySelectorAll('img').forEach(img => img.addEventListener('load', setSpeed, { once: true }));
+    })
+    .catch(() => { bar.hidden = true; });
+})();
+
 // Dynamic copyright year
 const fy = document.getElementById('footer-year'); if (fy) fy.textContent = new Date().getFullYear();

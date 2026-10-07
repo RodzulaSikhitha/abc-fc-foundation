@@ -253,6 +253,80 @@ p, li { text-wrap: pretty; }
 }
 .ticker-bar:hover .ticker-content { animation-play-state: paused; }
 
+/* ── HONOURS & SPONSORS BAR (under the header, same size as the ticker) ── */
+.honours-bar {
+  height: var(--ticker-h);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--gold);
+  border-bottom: 1px solid rgba(17,17,17,0.25);
+}
+.honours-bar[hidden] { display: none; }
+.hb-label {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+  padding: 0 14px;
+  background: #111;
+  color: var(--gold);
+  font-family: var(--font-sub);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.hb-track-wrap { flex: 1; overflow: hidden; height: 100%; }
+.hb-track {
+  display: flex;
+  width: max-content;
+  height: 100%;
+  animation: ticker-scroll 60s linear infinite; /* duration set from the content width in main.js */
+  will-change: transform;
+}
+.honours-bar:hover .hb-track { animation-play-state: paused; }
+.hb-group { display: flex; align-items: center; flex-shrink: 0; height: 100%; padding-right: 28px; }
+.hb-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 22px;
+  font-family: var(--font-sub);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #111;
+}
+.hb-item:hover { color: #111; text-decoration: underline; }
+.hb-item .hb-year { font-weight: 600; opacity: 0.6; }
+.hb-ico { width: 13px; height: 13px; flex-shrink: 0; }
+.hb-divider {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  margin: 0 14px 0 22px;
+  padding: 0 10px;
+  border-radius: var(--radius-full);
+  background: #111;
+  color: var(--gold);
+  font-family: var(--font-sub);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.hb-logo { display: inline-flex; flex-shrink: 0; margin: 0 6px; border-radius: 4px; overflow: hidden; box-shadow: 0 0 0 1px rgba(17,17,17,0.35); }
+.hb-logo img { display: block; height: 22px; width: auto; max-width: none; }
+@media (prefers-reduced-motion: reduce) {
+  .hb-track { animation: none; }
+  .hb-track-wrap { overflow-x: auto; }
+}
+
 /* ── HEADER ─────────────────────────────────────────────── */
 .site-header {
   position: sticky;

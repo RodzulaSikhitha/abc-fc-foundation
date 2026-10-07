@@ -1,0 +1,26 @@
+{
+  "honours": [
+    { "title": "ABC Motsepe League Promotion", "year": "2026" },
+    { "title": "Vhembe Regional League Champions", "year": "2025/26" },
+    { "title": "Stream I Champions", "year": "2025/26" },
+    { "title": "Stream I2 Champions", "year": "2024/25" },
+    { "title": "ABC Foundation Tournament Champions", "year": "2025" },
+    { "title": "MLM Annual Soccer Tournament Champions", "year": "2025" },
+    { "title": "VUWA Supercup Champions", "year": "2023" }
+  ],
+  "sponsors": [
+    { "name": "Old Mutual", "logo": "images/sponsors/oldmutual.jpg" },
+    { "name": "Mutupo Legal", "logo": "images/sponsors/mutupo.jpg" },
+    { "name": "Vuwa College", "logo": "images/sponsors/vuwa.jpg" },
+    { "name": "Giraffe Sports", "logo": "images/sponsors/giraffe.jpg" },
+    { "name": "MLM", "logo": "images/sponsors/mlm.jpg" },
+    { "name": "Elelwani Driving School", "logo": "images/sponsors/elelwani.jpg" },
+    { "name": "Wayo Communication", "logo": "images/sponsors/wayo.jpg" },
+    { "name": "Mugomba Media", "logo": "images/sponsors/mugomba.jpg" },
+    { "name": "Clean Bunny Tissue", "logo": "images/sponsors/cleanbunny.jpg" },
+    { "name": "The Grange", "logo": "images/sponsors/thegrange.jpg" },
+    { "name": "Malig Accountants", "logo": "images/sponsors/malig.jpg" },
+    { "name": "ANC Vhembe Region", "logo": "images/sponsors/anc.jpg" },
+    { "name": "STR Environmental Solutions", "logo": "images/sponsors/str.jpg" }
+  ]
+}
