@@ -953,6 +953,8 @@ p, li { text-wrap: pretty; }
 .footer-contact-mini a:hover { color: var(--gold); }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 11px; color: rgba(255,255,255,0.2); }
 .footer-motto { font-family: var(--font-sub); font-weight: 700; letter-spacing: 0.06em; }
+.footer-credit { color: rgba(255,255,255,0.35); }
+.footer-credit:hover { color: var(--gold); }
 
 /* ══════════════════════════════════════════════════════════
    BOTTOM QUICK-NAV (Mobile like Sundowns)
